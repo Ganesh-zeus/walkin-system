@@ -1,0 +1,56 @@
+.account-status {
+    position: relative;
+    height: 56px;
+    background-color: #fff;
+    margin: 24px 8px;
+    border-radius: 2px;
+    padding: 12px 16px;
+    box-sizing: border-box;
+}
+
+.bg-line {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    padding: 0 16px;
+    box-sizing: border-box;
+    top:28px;
+    opacity: 0.5;
+}
+
+.steps {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 32px;
+}
+
+.step {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 0 8px;
+}
+
+.step .step-icon {
+    height: 32px;
+    width: 32px;
+    margin-right:8px;
+    border-radius: 50%;
+    background-color:#757575;
+}
+
+.step .step-icon.completed {
+    background-color: #3FD28B;
+}
+
+.step .step-icon span {
+    font-family: sans-serif;
+}
+
+.step .step-title {
+    font-family: sans-serif;
+}

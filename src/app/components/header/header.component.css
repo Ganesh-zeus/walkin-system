@@ -1,0 +1,27 @@
+.app-header {
+    height: 56px;
+    width: 100%;
+    position: fixed;
+    background-color: #25313F;
+    border-bottom: 2px solid #31B9E4;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+.profile-icon {
+    height: 40px;
+    width: 40px;
+    background-color: #3C4E62;
+    border-radius: 50%;
+    border:2px solid #3FD28B;
+}
+
+.profile-icon-text {
+    color: #fff;
+    font-family: sans-serif;
+}

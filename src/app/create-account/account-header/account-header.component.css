@@ -1,0 +1,45 @@
+.container {
+    background-color: #3C4E62;
+}
+
+.account-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 48px;
+    color: #fff;
+    font-family: sans-serif;
+    padding: 0 16px;
+}
+
+.back {
+    width: 200px;
+}
+
+.back img {
+    transform: rotate(-90deg);
+    width: 16px;
+}
+
+.account-handle {
+    display: flex;
+    justify-content: space-between;
+    width:200px;
+}
+
+.btn-success {
+    width: 90px;
+    height: 28px;
+    background-color: #3FD28B;
+    color: #1F2834;
+    font-size:14px;
+    font-family: sans-serif;
+    border-radius: 2px;
+    border: none;
+    box-shadow: 0 3px 5px #0000003D;
+    opacity: 0.5;
+}
+
+.btn-success.active {
+    opacity: 1;
+}

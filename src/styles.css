@@ -1,1 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+    margin: 0;
+}
+
+body {
+    min-height: 100vh;
+    background-color: #EEEEEE;
+}
+
+.container {
+    padding:0 16px;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex-grow {
+    flex-grow: 1;
+}
