@@ -92,13 +92,13 @@
 
 .profile-image-container label {
   font-size: 12px;
-  font-family: sans-serif;
   color: #1f7a54;
+  font-family: QuicksandBold, sans-serif;
 }
 
 .profile-image-container p {
   font-size: 10px;
-  font-family: sans-serif;
+  font-family: QuicksandBold, sans-serif;
   color: #757575;
 }
 

@@ -17,6 +17,8 @@ import { StepOneComponent } from './create-account/account-main/account-main-con
 import { StepTwoComponent } from './create-account/account-main/account-main-content/step-two/step-two.component';
 import { StepThreeComponent } from './create-account/account-main/account-main-content/step-three/step-three.component';
 import { routingComponents } from './app-routing.module';
+import { WalkinsComponent } from './walkins/walkins.component';
+import { WalkinComponent } from './walkins/walkin/walkin.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { routingComponents } from './app-routing.module';
     AccountMainComponent,
     AccountMainStatusComponent,
     AccountMainContentComponent,
+    WalkinsComponent,
+    WalkinComponent,
   ],
   imports: [
     BrowserModule,

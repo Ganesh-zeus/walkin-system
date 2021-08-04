@@ -7,6 +7,7 @@ import { CreateAccountComponent } from './create-account/create-account.componen
 import { StepOneComponent } from './create-account/account-main/account-main-content/step-one/step-one.component';
 import { StepTwoComponent } from './create-account/account-main/account-main-content/step-two/step-two.component';
 import { StepThreeComponent } from './create-account/account-main/account-main-content/step-three/step-three.component';
+import { WalkinsComponent } from './walkins/walkins.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
       {path:'review',component:StepThreeComponent}
     ]
   },
+  {path:'walkins',component:WalkinsComponent},
   { path: '**', component: PageNotFoundComponent },
 ];
 
@@ -36,5 +38,6 @@ export const routingComponents = [
   StepOneComponent,
   StepTwoComponent,
   StepThreeComponent,
+  WalkinsComponent,
   PageNotFoundComponent
 ]

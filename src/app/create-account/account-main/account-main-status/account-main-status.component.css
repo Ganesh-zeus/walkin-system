@@ -49,14 +49,9 @@
     background-color: #3FD28B;
 }
 
-.step .step-icon span {
-    font-family: sans-serif;
-}
-
 .step .step-title {
-    font-family: sans-serif;
+    font-family: QuicksandBold, sans-serif;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    
 }
