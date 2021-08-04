@@ -1,34 +1,77 @@
 <div class="container">
   <div class="app-login center">
-    <form class="login-form" action="">
+    <form class="login-form" #loginForm="ngForm">
+      <!-- {{ loginForm.value | json }} -->
       <div class="login-header">
         <h2>Login</h2>
       </div>
+
       <div class="form-group">
-        <input type="text" [(ngModel)]="user_email" name="user_email" class="form-input" placeholder="Email ID*" />
+        <input
+          type="text"
+          name="user_email"
+          #userEmail="ngModel"
+          [(ngModel)]="user_email"
+          class="form-input"
+          placeholder="Email ID*"
+          [class.err]="userEmail.invalid && userEmail.touched"
+          required
+        />
         <a href="#" class="recovery-link">FORGOT EMAIL ID?</a>
       </div>
+
       <div class="form-group">
-        <input type="password" [(ngModel)]="user_password" name="user_password" class="form-input" placeholder="Password*" />
+        <input
+          type="password"
+          name="user_password"
+          #userPassword="ngModel"
+          [(ngModel)]="user_password"
+          class="form-input"
+          placeholder="Password*"
+          [class.err]="userPassword.invalid && userPassword.touched"
+          required
+          [attr.type]="password_show ? 'text' : 'password'"
+        />
+
         <img
           src="../../assets/icons/preview.svg"
           class="password-toggle"
           alt="password-toggle"
+          [attr.src]="
+            password_show
+              ? '../../assets/icons/hide-visibility.svg'
+              : '../../assets/icons/preview.svg'
+          "
+          (click)="password_show = !password_show"
         />
         <a href="#" class="recovery-link">FORGOT PASSWORD?</a>
       </div>
       <div class="login-remember">
-        <img *ngIf="rememberChecked" (click)="rememberChecked=!rememberChecked" src="../../assets/icons/checkbox-checked.svg" alt="checked">
-        <img *ngIf="!rememberChecked" (click)="rememberChecked=!rememberChecked" src="../../assets/icons/checkbox-unchecked.svg" alt="unchecked">
+        <img
+          *ngIf="rememberChecked"
+          src="../../assets/icons/checkbox-checked.svg"
+          (click)="rememberChecked=!rememberChecked"
+          alt="checked"
+        />
+        <img
+          *ngIf="!rememberChecked"
+          (click)="rememberChecked = !rememberChecked"
+          src="../../assets/icons/checkbox-unchecked.svg"
+          alt="unchecked"
+        />
         <label for="login-remember">Remember</label>
       </div>
 
       <div class="login-btn">
-        <button type="submit" (click)="validate()" class="login-btn">LOGIN</button>
+        <button type="submit" (click)="validate()" class="login-btn">
+          LOGIN
+        </button>
       </div>
 
       <p>Not registered yet?</p>
-      <a [routerLink]="['/create-account']" class="create-account">Create an account?</a>
+      <a [routerLink]="['/create-account']" class="create-account"
+        >Create an account?</a
+      >
     </form>
   </div>
 </div>
