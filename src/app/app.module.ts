@@ -13,18 +13,20 @@ import { AccountHeaderComponent } from './create-account/account-header/account-
 import { AccountMainComponent } from './create-account/account-main/account-main.component';
 import { AccountMainStatusComponent } from './create-account/account-main/account-main-status/account-main-status.component';
 import { AccountMainContentComponent } from './create-account/account-main/account-main-content/account-main-content.component';
+import { StepOneComponent } from './create-account/account-main/account-main-content/step-one/step-one.component';
+import { StepTwoComponent } from './create-account/account-main/account-main-content/step-two/step-two.component';
+import { StepThreeComponent } from './create-account/account-main/account-main-content/step-three/step-three.component';
+import { routingComponents } from './app-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    LoginComponent,
-    PageNotFoundComponent,
-    CreateAccountComponent,
+    routingComponents,
     AccountHeaderComponent,
     AccountMainComponent,
     AccountMainStatusComponent,
-    AccountMainContentComponent
+    AccountMainContentComponent,
   ],
   imports: [
     BrowserModule,

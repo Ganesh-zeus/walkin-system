@@ -2,7 +2,7 @@
     position: relative;
     height: 56px;
     background-color: #fff;
-    margin: 24px 8px;
+    margin: 1.5rem 0;
     border-radius: 2px;
     padding: 12px 16px;
     box-sizing: border-box;
@@ -29,15 +29,17 @@
     position: relative;
     z-index: 2;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
     background-color: #fff;
-    padding: 0 8px;
+    padding: 0 0.5rem;
+    min-width: 20%;
+    cursor: pointer;
 }
 
 .step .step-icon {
     height: 32px;
-    width: 32px;
+    min-width: 32px;
     margin-right:8px;
     border-radius: 50%;
     background-color:#757575;
@@ -53,4 +55,8 @@
 
 .step .step-title {
     font-family: sans-serif;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
 }

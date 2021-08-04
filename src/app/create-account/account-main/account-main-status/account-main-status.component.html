@@ -1,19 +1,19 @@
 <div class="account-status">
   <div class="bg-line"><hr /></div>
   <div class="steps">
-    <div class="step">
+    <div class="step" (click)="goTo('personal')">
       <div class="step-icon center completed">
         <span>1</span>
       </div>
       <p class="step-title">Personal Information</p>
     </div>
-    <div class="step">
+    <div class="step" (click)="goTo('qualification')">
       <div class="step-icon center">
         <span>2</span>
       </div>
-      <p class="step-title">Qualifications</p>
+      <p class="step-title">Qualifications Details</p>
     </div>
-    <div class="step">
+    <div class="step" (click)="goTo('review')">
       <div class="step-icon center">
         <span>3</span>
       </div>

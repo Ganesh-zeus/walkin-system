@@ -1,0 +1,140 @@
+.step-one {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+
+.personal-form {
+  width: 50%;
+}
+
+.personal-form > * {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.personal-form .form-group {
+  height: 3rem;
+  margin-bottom: 3rem;
+  padding: 0;
+}
+
+.form-group p {
+  height: 1rem;
+  font-size: 12px;
+  font-family: sans-serif;
+  color: #666666;
+}
+
+.form-group input[type="text"],.form-group input[type="email"] {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  height: 2rem;
+  padding: 2px 0;
+  font-size: 1rem;
+}
+
+.form-group input[type="tel"] {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  margin-left: 0.5rem;
+  width: 5rem;
+  height: 2rem;
+}
+
+.form-group .country-code {
+  width: 1rem !important;
+}
+
+.upload-resume {
+  display: flex;
+  align-items: center;
+}
+
+.upload-resume p {
+  font-size: 1rem;
+  font-family: sans-serif;
+  color: #1f7a54;
+  margin-left: 0.5rem;
+}
+
+.select-item {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.select-item p {
+  margin-left: 0.5rem;
+  font-size: 1rem;
+  color: #222;
+}
+
+.select-job-roles {
+  margin-bottom: 3rem;
+}
+
+.referral p {
+  overflow-wrap: anywhere;
+  height: auto;
+}
+
+.profile-image-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 180px;
+}
+
+.profile-image-container label {
+  font-size: 12px;
+  font-family: sans-serif;
+  color: #1f7a54;
+}
+
+.profile-image-container p {
+  font-size: 10px;
+  font-family: sans-serif;
+  color: #757575;
+}
+
+.profile-image {
+  height: 130px;
+  width: 130px;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.profile-image img {
+  height: 100%;
+  width: 100%;
+}
+
+.next {
+  padding: 2rem 0;
+}
+
+.btn-success {
+  height: 28px;
+  padding: 0.25rem 1rem;
+  background-color: #3fd28b;
+  border-radius: 2px;
+  border: none;
+  box-shadow: 0 3px 8px #0000003d;
+  cursor: pointer;
+}
+
+/* error messages */
+input:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.err {
+  border-radius:2px;
+  box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+}

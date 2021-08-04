@@ -14,6 +14,7 @@
 
 .back {
     width: 200px;
+    cursor: pointer;
 }
 
 .back img {
@@ -38,6 +39,7 @@
     border: none;
     box-shadow: 0 3px 5px #0000003D;
     opacity: 0.5;
+    cursor: pointer;
 }
 
 .btn-success.active {
