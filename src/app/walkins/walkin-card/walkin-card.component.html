@@ -1,15 +1,15 @@
 <div class="walkin">
-  <h2 class="walkin-title">Walk In for Designer Job Role</h2>
+  <h2 class="walkin-title">{{walkin.title}}</h2>
 
   <div class="row">
     <div class="date-time">
       <small>Date & Time</small>
-      <p class="date-time-content">10-Jul-2021 to 11-Jul-2021</p>
+      <p class="date-time-content">{{walkin.date_time}}</p>
     </div>
     <span class="tilde"></span>
     <div class="location">
       <img src="../../../assets/icons/location.svg" alt="location-icon" />
-      <p>Mumbai</p>
+      <p>{{walkin.location}}</p>
     </div>
   </div>
 
@@ -18,34 +18,22 @@
   <div class="job-roles">
     <p class="job-role-label">Job Roles :</p>
     <div class="job-role-list">
-      <div class="job-role">
+
+      <div class="job-role" *ngFor="let job_role of walkin.job_roles">
         <div class="job-role-image">
-          <img src="../../../assets/icons/computer.svg" alt="job-role-image" />
+          <img [attr.src]="job_role.image_source" alt="job-role-image" />
         </div>
-        <p>Instructional Designer</p>
+        <p>{{job_role.job_role_title}}</p>
       </div>
 
-      <div class="job-role">
-        <div class="job-role-image">
-          <img src="../../../assets/icons/computer.svg" alt="job-role-image" />
-        </div>
-        <p>Instructional Designer Instr Designer</p>
-      </div>
-
-      <div class="job-role">
-        <div class="job-role-image">
-          <img src="../../../assets/icons/computer.svg" alt="job-role-image" />
-        </div>
-        <p>Instructional Designer</p>
-      </div>
     </div>
   </div>
 
-  <div class="opportunity center">
-    <p>Internship opportunity for MCA studentsInternship opportunity for MCA students</p>
+  <div class="opportunity center" *ngFor="let opportunity of walkin.opportunities">
+    <p>{{opportunity}}</p>
   </div>
 
   <div class="view-more center">
-    <button class="btn-success" (click)="navigateTo('1')">VIEW MORE DETAILS</button>
+    <button class="btn-success" (click)="navigateTo(walkin.id)">VIEW MORE DETAILS</button>
   </div>
 </div>

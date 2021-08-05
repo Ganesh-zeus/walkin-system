@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Walkin } from '../walkin.model';
 
 @Component({
   selector: 'app-walkin-card',
@@ -7,6 +8,8 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./walkin-card.component.css'],
 })
 export class WalkinCardComponent implements OnInit {
+  @Input() walkin:Walkin;
+
   constructor(private router:Router,private route:ActivatedRoute) {}
 
   ngOnInit(): void {}
