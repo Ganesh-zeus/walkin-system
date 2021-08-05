@@ -35,7 +35,7 @@ body {
 }
 
 .container {
-  padding: 0 1rem;
+  padding: 0 1.5rem;
 }
 
 .btn-success {
@@ -48,6 +48,12 @@ body {
   border: none;
   box-shadow: 0 3px 5px #0000003d;
   cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1rem;
+  }
 }
 
 @media (max-width: 375px) {
