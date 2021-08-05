@@ -8,6 +8,8 @@ import { StepOneComponent } from './create-account/account-main/account-main-con
 import { StepTwoComponent } from './create-account/account-main/account-main-content/step-two/step-two.component';
 import { StepThreeComponent } from './create-account/account-main/account-main-content/step-three/step-three.component';
 import { WalkinsComponent } from './walkins/walkins.component';
+import { WalkinComponent } from './walkins/walkin/walkin.component';
+import { WalkinListComponent } from './walkins/walkin-list/walkin-list.component';
 
 
 const routes: Routes = [
@@ -23,7 +25,11 @@ const routes: Routes = [
       {path:'review',component:StepThreeComponent}
     ]
   },
-  {path:'walkins',component:WalkinsComponent},
+  {path:'walkins',component:WalkinsComponent,
+    children:[
+      {path:':walkinId',component:WalkinComponent},
+      {path:'',component:WalkinListComponent}
+    ]},
   { path: '**', component: PageNotFoundComponent },
 ];
 
@@ -39,5 +45,7 @@ export const routingComponents = [
   StepTwoComponent,
   StepThreeComponent,
   WalkinsComponent,
+  WalkinListComponent,
+  WalkinComponent,
   PageNotFoundComponent
 ]

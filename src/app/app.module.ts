@@ -20,6 +20,7 @@ import { routingComponents } from './app-routing.module';
 import { WalkinsComponent } from './walkins/walkins.component';
 import { WalkinComponent } from './walkins/walkin/walkin.component';
 import { WalkinCardComponent } from './walkins/walkin-card/walkin-card.component';
+import { WalkinListComponent } from './walkins/walkin-list/walkin-list.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { WalkinCardComponent } from './walkins/walkin-card/walkin-card.component
     WalkinsComponent,
     WalkinComponent,
     WalkinCardComponent,
+    WalkinListComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [AuthService],

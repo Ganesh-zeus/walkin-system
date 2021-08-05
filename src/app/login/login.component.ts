@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
 
   validate(){
     if(this.user_email!=="" && this.user_password!==""){
-      this.router.navigateByUrl("create-account");  
+      this.router.navigateByUrl("walkins");  
     }
   }
 
