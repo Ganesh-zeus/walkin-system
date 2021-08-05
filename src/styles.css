@@ -35,7 +35,25 @@ body {
 }
 
 .container {
-  padding: 0 16px;
+  padding: 0 1rem;
+}
+
+.btn-success {
+  padding: 0.25rem 1rem;
+  background-color: #3fd28b;
+  color: #1f2834;
+  font-size: 16px;
+  font-family: QuicksandBold, sans-serif;
+  border-radius: 2px;
+  border: none;
+  box-shadow: 0 3px 5px #0000003d;
+  cursor: pointer;
+}
+
+@media (max-width: 375px) {
+  .container {
+    padding: 0 0.5rem;
+  }
 }
 
 .center {

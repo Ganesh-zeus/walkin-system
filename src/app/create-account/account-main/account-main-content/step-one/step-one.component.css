@@ -29,7 +29,8 @@
   color: #666666;
 }
 
-.form-group input[type="text"],.form-group input[type="email"] {
+.form-group input[type="text"],
+.form-group input[type="email"] {
   width: 100%;
   border: none;
   border-bottom: 1px solid #ccc;
@@ -118,12 +119,18 @@
   padding: 2rem 0;
 }
 
-.btn-success {
-  height: 28px;
-  padding: 0.25rem 1rem;
-  background-color: #3fd28b;
-  border-radius: 2px;
-  border: none;
-  box-shadow: 0 3px 8px #0000003d;
-  cursor: pointer;
+@media (max-width: 610px) {
+  .step-one {
+    flex-direction: column;
+  }
+
+  .personal-form {
+    width: 100%;
+  }
+
+  .profile-image-container {
+    order: -1;
+    margin: 2rem auto;
+    margin-top: 0;
+  }
 }

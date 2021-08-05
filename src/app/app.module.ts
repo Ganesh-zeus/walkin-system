@@ -19,6 +19,7 @@ import { StepThreeComponent } from './create-account/account-main/account-main-c
 import { routingComponents } from './app-routing.module';
 import { WalkinsComponent } from './walkins/walkins.component';
 import { WalkinComponent } from './walkins/walkin/walkin.component';
+import { WalkinCardComponent } from './walkins/walkin-card/walkin-card.component';
 
 @NgModule({
   declarations: [
@@ -31,13 +32,10 @@ import { WalkinComponent } from './walkins/walkin/walkin.component';
     AccountMainContentComponent,
     WalkinsComponent,
     WalkinComponent,
+    WalkinCardComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [AuthService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

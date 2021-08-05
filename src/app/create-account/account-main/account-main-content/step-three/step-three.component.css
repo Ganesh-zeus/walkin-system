@@ -10,13 +10,3 @@
 .previous {
   padding: 2rem 0;
 }
-
-.btn-success {
-  height: 28px;
-  padding: 0.25rem 1rem;
-  background-color: #3fd28b;
-  border-radius: 2px;
-  border: none;
-  box-shadow: 0 3px 8px #0000003d;
-  cursor: pointer;
-}
