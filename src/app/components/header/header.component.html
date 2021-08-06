@@ -1,10 +1,12 @@
 <div class="app-header">
   <div class="container navbar">
-    <a href="#" class="app-logo">
+    <a [routerLink]="['/']" class="app-logo">
       <img src="../../../assets/icons/logo-header.svg" alt="logo" />
     </a>
-    <div *ngIf="isLoggedIn" class="profile-icon center">
-      <p class="profile-icon-text">U</p>
-    </div>
+    <!-- 
+      <div class="profile-icon center">
+        <p class="profile-icon-text">U</p>
+      </div> 
+    -->
   </div>
 </div>
