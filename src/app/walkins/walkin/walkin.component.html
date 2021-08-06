@@ -1,1 +1,147 @@
-<p>walkin with id = {{walkinId}} works!</p>
+<div class="walkin">
+  <div class="box">
+    <h2 class="walkin-title">{{ walkin.title }}</h2>
+
+    <div class="row">
+      <div class="date-time">
+        <small>Date & Time</small>
+        <p class="date-time-content">{{ walkin.date_time }}</p>
+      </div>
+      <span class="tilde"></span>
+      <div class="location">
+        <img src="../../../assets/icons/location.svg" alt="location-icon" />
+        <p>{{ walkin.location }}</p>
+      </div>
+    </div>
+
+    <hr />
+
+    <div class="job-roles">
+      <p class="job-role-label">Job Roles :</p>
+      <div class="job-role-list">
+        <div class="job-role" *ngFor="let job_role of walkin.job_roles">
+          <div class="job-role-image">
+            <img [attr.src]="job_role.image_source" alt="job-role-image" />
+          </div>
+          <p>{{ job_role.job_role_title }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="opportunity center"
+      *ngFor="let opportunity of walkin.opportunities"
+    >
+      <p>{{ opportunity }}</p>
+    </div>
+  </div>
+
+  <div class="dropdown">
+    <div
+      class="dropdown-toggle"
+      (click)="templateRef.classList.toggle('open')"
+      #templateRef
+    >
+      <p>Prerequisites & Application Process</p>
+      <div class="dropdown-toggle-image">
+        <img
+          [class.open]="templateRef.classList.contains('open')"
+          src="../../../../../assets/icons/arrow-down.svg"
+          alt="up-down"
+        />
+      </div>
+    </div>
+
+    <div
+      class="descriptions"
+      [class.open]="templateRef.classList.contains('open')"
+    >
+      <div class="description" *ngFor="let desc of walkin.prerequisites">
+        <small>{{ desc.title }} :</small>
+        <p>{{ desc.description }}</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="time-slot-container box">
+    <h3>Time Slots and Preference</h3>
+
+    <form #timeSlotForm="ngForm">
+      <div class="form-radio">
+        <small>Select a time slot :</small>
+        <div class="radio-items">
+          <div class="radio-item" *ngFor="let time_slot of walkin.time_slots">
+            <img
+              src="../../../assets/icons/radio-button-checked.svg"
+              alt="selected"
+            />
+            <p>{{ time_slot.start_time }} to {{ time_slot.end_time }}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-checkbox-container">
+        <small>Select your Preference</small>
+        <div class="form-checkbox" *ngFor="let role of walkin.job_roles">
+          <div
+            class="form-checkbox-input"
+            (click)="role.selected = !role.selected"
+          >
+            <img
+              *ngIf="role.selected"
+              src="../../../assets/icons/checkbox-checked.svg"
+              alt="checked"
+            />
+            <img
+              *ngIf="!role.selected"
+              src="../../../assets/icons/checkbox-unchecked.svg"
+              alt="checked"
+            />
+          </div>
+          <p class="form-checkbox-label">{{ role.job_role_title }}</p>
+        </div>
+      </div>
+
+      <div class="upload-resume">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          height="24px"
+          viewBox="0 0 24 24"
+          width="24px"
+          fill="#1F7A54"
+        >
+          <path d="M0 0h24v24H0z" fill="none" />
+          <path d="M5 4v2h14V4H5zm0 10h4v6h6v-6h4l-7-7-7 7z" />
+        </svg>
+        <p>Upload updated resume</p>
+      </div>
+    </form>
+  </div>
+
+  <div class="dropdown" *ngFor="let jobRole of jobRoleList">
+    <div
+      class="dropdown-toggle"
+      (click)="templateRef.classList.toggle('open')"
+      #templateRef
+    >
+      <p>{{ jobRole.job_role_title }}</p>
+      <div class="dropdown-toggle-image">
+        <img
+          [class.open]="templateRef.classList.contains('open')"
+          src="../../../../../assets/icons/arrow-down.svg"
+          alt="up-down"
+        />
+      </div>
+    </div>
+
+    <div
+      class="descriptions"
+      [class.open]="templateRef.classList.contains('open')"
+    >
+      <div class="description" *ngFor="let desc of jobRole.descriptions">
+        <small>{{ desc.title }} :</small>
+        <p>{{ desc.description }}</p>
+      </div>
+    </div>
+  </div>
+</div>
