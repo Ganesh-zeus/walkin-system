@@ -1,10 +1,392 @@
-.step-three {
+.step-three h3 {
+  font-size: 1rem;
+}
+
+.step-one {
   display: flex;
   width: 100%;
   justify-content: space-between;
   background-color: #fff;
   padding: 1.5rem;
   box-sizing: border-box;
+  margin: 1rem 0;
+}
+
+.personal-form {
+  width: 50%;
+}
+
+.personal-form > * {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.personal-form .form-group {
+  height: 3rem;
+  margin-bottom: 3rem;
+  padding: 0;
+}
+
+.personal-form .form-group p {
+  height: 1rem;
+  font-size: 12px;
+  font-family: sans-serif;
+  color: #666666;
+}
+
+.personal-form .form-group input[type="text"],
+.personal-form .form-group input[type="email"] {
+  width: 100%;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  height: 2rem;
+  padding: 2px 0;
+  font-size: 1rem;
+}
+
+.personal-form .form-group input[type="tel"] {
+  border: none;
+  border-bottom: 1px solid #ccc;
+  margin-left: 0.5rem;
+  width: 5rem;
+  height: 2rem;
+}
+
+.personal-form .form-group .country-code {
+  width: 1rem !important;
+}
+
+.personal-form .upload-resume {
+  display: flex;
+  align-items: center;
+}
+
+.personal-form .upload-resume p {
+  font-size: 1rem;
+  font-family: sans-serif;
+  color: #1f7a54;
+  margin-left: 0.5rem;
+}
+
+.personal-form .select-item {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.personal-form .select-item p {
+  margin-left: 0.5rem;
+  font-size: 1rem;
+  color: #222;
+  text-transform: capitalize;
+}
+
+.personal-form .select-job-roles {
+  margin-bottom: 3rem;
+}
+
+.personal-form .referral p {
+  overflow-wrap: anywhere;
+  height: auto;
+}
+
+.profile-image-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 180px;
+}
+
+.profile-image-container label {
+  font-size: 12px;
+  color: #1f7a54;
+  font-family: QuicksandBold, sans-serif;
+}
+
+.profile-image-container p {
+  font-size: 10px;
+  font-family: QuicksandBold, sans-serif;
+  color: #757575;
+}
+
+.profile-image {
+  height: 130px;
+  width: 130px;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.profile-image img {
+  height: 100%;
+  width: 100%;
+}
+
+/* .next {
+  padding: 2rem 0;
+} */
+
+@media (max-width: 610px) {
+  .personal-form .step-one {
+    flex-direction: column;
+  }
+
+  .personal-form .personal-form {
+    width: 100%;
+  }
+
+  .personal-form .profile-image-container {
+    order: -1;
+    margin: 2rem auto;
+    margin-top: 0;
+  }
+}
+
+/* step two */
+.step-two {
+  width: 100%;
+  box-sizing: border-box;
+  margin: 1rem 0;
+}
+
+/* dropdown CSS */
+.step-two .dropdown-toggle {
+  display: flex;
+  align-items: center;
+  background-color: #dbefff;
+  height: 56px;
+  box-shadow: 0 4px 6px #00000029;
+}
+
+.step-two .dropdown-toggle p {
+  flex-grow: 1;
+  font-size: 1rem;
+  font-family: QuicksandBold, sans-serif;
+  margin-left: 1rem;
+}
+
+.step-two .dropdown-toggle-image {
+  padding: 1rem;
+  border-left: 1px solid #ccc;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.step-two .dropdown-toggle-image img.open {
+  transition-delay: 5ms;
+  animation-timing-function: ease-in;
+  transform: rotate(180deg);
+}
+
+/* qualification details */
+.step-two .educational,
+.professional {
+  background-color: #fff;
+  width: 100%;
+}
+
+.step-two .educational-details,
+.professional-details {
+  display: none;
+  padding: 1.5rem;
+  border-radius: 2px;
+  opacity: 0;
+}
+
+.step-two .educational-details.open,
+.professional-details.open {
+  display: block;
+  opacity: 1;
+}
+
+.step-two .professional {
+  margin-top: 1.5rem;
+}
+
+/* form CSS */
+.step-two input,
+input:focus {
+  border: none;
+  outline: none;
+}
+
+.step-two .form-group,
+.form-radio {
+  width: 200px;
+  height: 50px;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.step-two .form-radio {
+  width: 100%;
+}
+
+.step-two small {
+  font-size: 12px;
+  color: #666;
+  text-transform: capitalize;
+}
+
+.step-two .form-group input {
+  font-size: 1rem;
+  padding: 0.25rem;
+  border-bottom: 1px solid #ccc;
+  margin-top: 0.5rem;
+}
+
+/* form select CSS */
+
+.step-two .select-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.step-two .form-select {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 50px;
+  box-sizing: border-box;
+  width: 48%;
+  margin-bottom: 2rem;
+}
+
+.step-two .select {
+  position: relative;
+}
+
+.step-two .select .option-toggle {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ccc;
+}
+
+.step-two .select .option-toggle p {
+  font-size: 1rem;
+  font-family: QuicksandBold, sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.step-two .select .options {
+  display: none;
+  position: absolute;
+  z-index: 2;
+  margin-top: 0.25rem;
+  width: 100%;
+  max-height: 150px;
+  overflow: auto;
+  background-color: #fff;
+  box-shadow: 0 4px 6px #00000029;
+}
+
+.step-two .options .option {
+  font-size: 1rem;
+  padding: 0.25rem;
+  padding-left: 0.5rem;
+}
+
+.step-two .select .options.open {
+  display: block;
+}
+
+.step-two .select .options .option:hover {
+  background-color: #dce4ed;
+}
+
+.step-two .select .option-toggle img.open {
+  transition-delay: 5ms;
+  animation-timing-function: ease-in;
+  transform: rotate(180deg);
+}
+
+.step-two .form-select input {
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+}
+
+@media (max-width: 768px) {
+  .step-two .form-select {
+    width: 100%;
+  }
+}
+
+/* form radio CSS */
+.step-two .form-radio-items {
+  display: flex;
+}
+
+.step-two .form-radio-item {
+  display: flex;
+  margin-right: 2rem;
+}
+
+.step-two .form-radio-item img {
+  margin-right: 0.5rem;
+}
+
+.step-two .professional-details .form-group {
+  margin-bottom: 0;
+}
+
+/* applicant forms CSS */
+.step-two .experienced-details,
+.fresher-details {
+  background-color: #fff;
+  padding: 2rem;
+  margin-top: 2rem;
+}
+
+.step-two .notice-period {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.step-two .notice-period input {
+  width: 90%;
+}
+
+.step-two .select-item {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.step-two .select-item p {
+  margin-left: 0.5rem;
+  font-size: 1rem;
+  color: #222;
+}
+
+.step-two .select-technologies {
+  margin-bottom: 3rem;
+}
+
+.step-two .w-100 {
+  width: 50%;
+}
+
+@media (max-width: 768px) {
+  .step-two .w-100 {
+    width: 100%;
+  }
+
+  .step-two .notice-period input {
+    width: 100%;
+  }
+}
+
+.step-two .previous {
+  margin-right: 2rem;
+}
+
+.step-two .btn-group {
+  padding: 2rem 0;
 }
 
 .previous {
