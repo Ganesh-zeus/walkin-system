@@ -3,21 +3,23 @@
   <div class="educational dropdown">
     <div
       class="dropdown-toggle"
-      [class.open]="educationalOpen"
-      (click)="educationalOpen = !educationalOpen"
+      (click)="education.classList.toggle('open')"
       #education
     >
       <p>Education Qualifications</p>
       <div class="dropdown-toggle-image">
         <img
-          [class.open]="educationalOpen"
+          [class.open]="education.classList.contains('open')"
           src="../../../../../assets/icons/arrow-down.svg"
           alt="up-down"
         />
       </div>
     </div>
 
-    <div class="educational-details" [class.open]="educationalOpen">
+    <div
+      class="educational-details dropdown-content"
+      [class.open]="education.classList.contains('open')"
+    >
       <form educationalForm="ngForm">
         <div class="form-group">
           <small>Aggregate Percentage*</small>
@@ -29,8 +31,6 @@
           <input type="tel" name="year_of_passing" />
         </div>
 
-        <!-- {title,option[],selectedId} -->
-        <!-- option={id,option_value} -->
         <div class="select-container">
           <!-- qualification -->
           <div class="form-select">
@@ -39,16 +39,20 @@
             <div class="select">
               <div
                 class="option-toggle"
-                (click)="edu.qualificationOpen = !edu.qualificationOpen"
+                (click)="qualificationRef.classList.toggle('open')"
+                #qualificationRef
               >
                 <p>Bachelor in Technology (B.Tech)</p>
                 <img
-                  [class.open]="edu.qualificationOpen"
+                  [class.open]="qualificationRef.classList.contains('open')"
                   src="../../../../../assets/icons/arrow-down.svg"
                   alt="arrow-up-down"
                 />
               </div>
-              <div class="options" [class.open]="edu.qualificationOpen">
+              <div
+                class="options"
+                [class.open]="qualificationRef.classList.contains('open')"
+              >
                 <div class="option">Bachelor in Technology (B.Tech)</div>
                 <div class="option">Bachelor in Engineering (B.E)</div>
               </div>
@@ -62,16 +66,20 @@
             <div class="select">
               <div
                 class="option-toggle"
-                (click)="edu.sreamOpen = !edu.sreamOpen"
+                (click)="streamRef.classList.toggle('open')"
+                #streamRef
               >
                 <p>Information Technology</p>
                 <img
-                  [class.open]="edu.sreamOpen"
+                  [class.open]="streamRef.classList.contains('open')"
                   src="../../../../../assets/icons/arrow-down.svg"
                   alt="arrow-up-down"
                 />
               </div>
-              <div class="options" [class.open]="edu.sreamOpen">
+              <div
+                class="options"
+                [class.open]="streamRef.classList.contains('open')"
+              >
                 <div class="option">Information Technology</div>
                 <div class="option">Computer Engineering</div>
               </div>
@@ -85,16 +93,20 @@
             <div class="select">
               <div
                 class="option-toggle"
-                (click)="edu.collegeOpen = !edu.collegeOpen"
+                (click)="collegeRef.classList.toggle('open')"
+                #collegeRef
               >
                 <p>Vidyalankar Institute of Technology</p>
                 <img
-                  [class.open]="edu.collegeOpen"
+                  [class.open]="collegeRef.classList.contains('open')"
                   src="../../../../../assets/icons/arrow-down.svg"
                   alt="arrow-up-down"
                 />
               </div>
-              <div class="options" [class.open]="edu.collegeOpen">
+              <div
+                class="options"
+                [class.open]="collegeRef.classList.contains('open')"
+              >
                 <div class="option">
                   Vidyalankar Institute of Technology Institute of Technology
                 </div>
@@ -103,7 +115,8 @@
             </div>
           </div>
 
-          <div class="form-select">
+          <!-- <div class="form-select"> -->
+          <div class="form-group">
             <small>If Others, Please Enter Your College Name</small>
             <input type="text" />
           </div>
@@ -121,21 +134,23 @@
   <div class="professional dropdown">
     <div
       class="dropdown-toggle"
-      [class.open]="professionalOpen"
-      (click)="professionalOpen = !professionalOpen"
+      (click)="professional.classList.toggle('open')"
       #professional
     >
       <p>Professional Qualifications</p>
       <div class="dropdown-toggle-image">
         <img
-          [class.open]="professionalOpen"
+          [class.open]="professional.classList.contains('open')"
           src="../../../../../assets/icons/arrow-down.svg"
           alt="up-down"
         />
       </div>
     </div>
 
-    <div class="professional-details" [class.open]="professionalOpen">
+    <div
+      class="professional-details dropdown-content"
+      [class.open]="professional.classList.contains('open')"
+    >
       <form #applicantTypeForm="ngForm">
         <div class="form-radio">
           <small>Applicant Type*</small>
@@ -160,9 +175,9 @@
     </div>
   </div>
 
+  <!-- experienced-details -->
   <div class="experienced-details">
     <form #exeperiencedForm="ngForm">
-
       <div class="form-group">
         <small>Years Of Experience*</small>
         <input type="text" name="aggregate_percentage" />
@@ -178,63 +193,62 @@
         <input type="text" name="aggregate_percentage" />
       </div>
 
-      <div>
-        <p class="form-label">Select all The technologies you are expertise in*</p>
-        <div class="select-technologies">
-          <div class="select-item" *ngFor="let technology of technologies">
+      <div class="form-checkbox-container">
+        <small>Select all The technologies you are expertise in*</small>
+        <div class="form-checkbox" *ngFor="let technology of technologies">
+          <div
+            class="form-checkbox-input"
+            (click)="technology.selected = !technology.selected"
+          >
             <img
               *ngIf="technology.selected"
               src="../../../../../assets/icons/checkbox-checked.svg"
               alt="checked"
-              (click)="technology.selected = !technology.selected"
             />
             <img
               *ngIf="!technology.selected"
               src="../../../../../assets/icons/checkbox-unchecked.svg"
               alt="unchecked"
-              (click)="technology.selected = !technology.selected"
             />
-            <p>{{ technology.title }}</p>
           </div>
+          <p class="form-checkbox-label">{{ technology.title }}</p>
         </div>
       </div>
 
-
-      <div class="form-group w-100">
+      <div class="form-group w-lg">
         <small>If others,please mention</small>
         <input type="text" />
       </div>
 
-      <div>
-        <p class="form-label">Select all The technologies you are familiar in*</p>
-        <div class="select-technologies">
-          <div class="select-item" *ngFor="let technology of technologies">
+      <div class="form-checkbox-container">
+        <small>Select all The technologies you are familiar in*</small>
+        <div class="form-checkbox" *ngFor="let technology of technologies">
+          <div
+            class="form-checkbox-input"
+            (click)="technology.selected = !technology.selected"
+          >
             <img
               *ngIf="technology.selected"
               src="../../../../../assets/icons/checkbox-checked.svg"
               alt="checked"
-              (click)="technology.selected = !technology.selected"
             />
             <img
               *ngIf="!technology.selected"
               src="../../../../../assets/icons/checkbox-unchecked.svg"
               alt="unchecked"
-              (click)="technology.selected = !technology.selected"
             />
-            <p>{{ technology.title }}</p>
           </div>
+          <p class="form-checkbox-label">{{ technology.title }}</p>
         </div>
       </div>
 
-      <div class="form-group w-100">
+      <div class="form-group w-lg">
         <small>If others,please mention</small>
         <input type="text" />
       </div>
 
       <div class="form-radio">
-        <small
-          >Are you currently under notice period?*</small
-        >
+        <small>Are you currently under notice period?*</small>
         <div class="form-radio-items">
           <div class="form-radio-item" name="notice-period">
             <img
@@ -254,12 +268,12 @@
       </div>
 
       <div class="notice-period">
-        <div class="form-group w-100">
+        <div class="form-group w-lg">
           <small>If yes,when will your notice period end?*</small>
           <input type="text" />
         </div>
 
-        <div class="form-group w-100 ml">
+        <div class="form-group w-lg">
           <small>how long is your notice period?* (mention in months)</small>
           <input type="text" />
         </div>
@@ -287,35 +301,34 @@
         </div>
       </div>
 
-      <div class="form-group w-100">
+      <div class="form-group w-lg">
         <small>If yes,which role did you apply for?</small>
         <input type="text" />
       </div>
-
     </form>
-
   </div>
 
   <div class="fresher-details">
     <form #fresherForm="ngForm">
-      <div>
-        <p class="form-label">Select all The technologies you are expertise in*</p>
-        <div class="select-technologies">
-          <div class="select-item" *ngFor="let technology of technologies">
+      <div class="form-checkbox-container">
+        <small>Select all The technologies you are familiar in*</small>
+        <div class="form-checkbox" *ngFor="let technology of technologies">
+          <div
+            class="form-checkbox-input"
+            (click)="technology.selected = !technology.selected"
+          >
             <img
               *ngIf="technology.selected"
               src="../../../../../assets/icons/checkbox-checked.svg"
               alt="checked"
-              (click)="technology.selected = !technology.selected"
             />
             <img
               *ngIf="!technology.selected"
               src="../../../../../assets/icons/checkbox-unchecked.svg"
               alt="unchecked"
-              (click)="technology.selected = !technology.selected"
             />
-            <p>{{ technology.title }}</p>
           </div>
+          <p class="form-checkbox-label">{{ technology.title }}</p>
         </div>
       </div>
 
@@ -341,14 +354,11 @@
         </div>
       </div>
 
-
       <div class="form-group w-100">
         <small>If others,please mention</small>
         <input type="text" />
       </div>
-
     </form>
-
   </div>
 </div>
 

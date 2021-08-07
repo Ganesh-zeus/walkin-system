@@ -1,4 +1,4 @@
-<div class="walkin">
+<div class="walkin-container">
   <div class="box">
     <h2 class="walkin-title">{{ walkin.title }}</h2>
 
@@ -39,13 +39,13 @@
   <div class="dropdown">
     <div
       class="dropdown-toggle"
-      (click)="templateRef.classList.toggle('open')"
-      #templateRef
+      (click)="prerequisitesRef.classList.toggle('open')"
+      #prerequisitesRef
     >
       <p>Prerequisites & Application Process</p>
       <div class="dropdown-toggle-image">
         <img
-          [class.open]="templateRef.classList.contains('open')"
+          [class.open]="prerequisitesRef.classList.contains('open')"
           src="../../../../../assets/icons/arrow-down.svg"
           alt="up-down"
         />
@@ -53,8 +53,8 @@
     </div>
 
     <div
-      class="descriptions"
-      [class.open]="templateRef.classList.contains('open')"
+      class="descriptions dropdown-content"
+      [class.open]="prerequisitesRef.classList.contains('open')"
     >
       <div class="description" *ngFor="let desc of walkin.prerequisites">
         <small>{{ desc.title }} :</small>
@@ -69,8 +69,8 @@
     <form #timeSlotForm="ngForm">
       <div class="form-radio">
         <small>Select a time slot :</small>
-        <div class="radio-items">
-          <div class="radio-item" *ngFor="let time_slot of walkin.time_slots">
+        <div class="form-radio-items">
+          <div class="form-radio-item" *ngFor="let time_slot of walkin.time_slots">
             <img
               src="../../../assets/icons/radio-button-checked.svg"
               alt="selected"
@@ -80,6 +80,7 @@
         </div>
       </div>
 
+      <!-- done -->
       <div class="form-checkbox-container">
         <small>Select your Preference</small>
         <div class="form-checkbox" *ngFor="let role of walkin.job_roles">
@@ -95,13 +96,14 @@
             <img
               *ngIf="!role.selected"
               src="../../../assets/icons/checkbox-unchecked.svg"
-              alt="checked"
+              alt="unchecked"
             />
           </div>
           <p class="form-checkbox-label">{{ role.job_role_title }}</p>
         </div>
       </div>
 
+      <!-- done -->
       <div class="upload-resume">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -135,7 +137,7 @@
     </div>
 
     <div
-      class="descriptions"
+      class="descriptions dropdown-content"
       [class.open]="templateRef.classList.contains('open')"
     >
       <div class="description" *ngFor="let desc of jobRole.descriptions">

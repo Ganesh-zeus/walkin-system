@@ -13,7 +13,6 @@
           #userEmail="ngModel"
           pattern='^(([^()[\]\\.,;:\s@\"]+(\.[^()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$'
           [(ngModel)]="user_email"
-          class="form-input"
           placeholder="Email ID*"
           [class.err]="userEmail.invalid && userEmail.touched"
           required
@@ -27,7 +26,6 @@
           name="user_password"
           #userPassword="ngModel"
           [(ngModel)]="user_password"
-          class="form-input"
           placeholder="Password*"
           [class.err]="userPassword.invalid && userPassword.touched"
           required

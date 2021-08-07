@@ -5,7 +5,7 @@ import { Description, JobRole, TimeSlot, Walkin } from '../walkin.model';
 @Component({
   selector: 'app-walkin',
   templateUrl: './walkin.component.html',
-  styleUrls: ['./walkin.component.css'],
+  styleUrls: ['./walkin-card.css', './walkin.component.css'],
 })
 export class WalkinComponent implements OnInit {
   walkinId: string = '';
@@ -70,7 +70,7 @@ export class WalkinComponent implements OnInit {
     this.jobRoleList
   );
 
-  prerequisitesOpen:boolean = false;
+  prerequisitesOpen: boolean = false;
 
   constructor(private route: ActivatedRoute) {}
 

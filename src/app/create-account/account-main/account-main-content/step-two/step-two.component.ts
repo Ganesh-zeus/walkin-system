@@ -8,9 +8,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class StepTwoComponent implements OnInit {
 
-  educationalOpen:boolean = true;
-  professionalOpen:boolean = true;
-
   technologies:any[] = [
     {selected:true,title:"JavaScript"},
     {selected:false,title:"Angular JS"},
@@ -18,7 +15,7 @@ export class StepTwoComponent implements OnInit {
     {selected:false,title:"Node JS"}
   ]
 
-  edu:any = {qualificationOpen:false,streamOpen:false,collegeOpen:false}
+  // edu:any = {qualificationOpen:false,streamOpen:false,collegeOpen:false}
 
   constructor(private router:Router,private route:ActivatedRoute) { }
 

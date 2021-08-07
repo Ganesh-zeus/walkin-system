@@ -1,4 +1,4 @@
-.form-group {
+.step-two .form-group {
   width: 200px;
 }
 
@@ -39,8 +39,8 @@
 
 @media (max-width: 768px) {
   /* education qualification  */
-  .form-select,
-  .select-container .form-group {
+  .step-two .form-select,
+  .step-two .select-container .form-group {
     width: 100%;
   }
 
@@ -49,13 +49,4 @@
     width: 100%;
     padding-right: 0;
   }
-}
-
-/* navigation buttons CSS */
-.previous {
-  margin-right: 2rem;
-}
-
-.btn-group {
-  padding: 2rem 0;
 }

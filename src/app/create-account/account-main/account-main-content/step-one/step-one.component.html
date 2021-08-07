@@ -1,9 +1,7 @@
 <div class="step-one">
   <form class="personal-form" #personalForm="ngForm">
-    <!-- {{ personalForm.value | json }} -->
-
     <div class="form-group">
-      <p class="form-label">First Name*</p>
+      <small>First Name*</small>
       <input
         type="text"
         name="first_name"
@@ -15,7 +13,7 @@
     </div>
 
     <div class="form-group">
-      <p class="form-label">Last Name*</p>
+      <small>Last Name*</small>
       <input
         type="text"
         name="last_name"
@@ -27,7 +25,7 @@
     </div>
 
     <div class="form-group">
-      <p class="form-label">Email*</p>
+      <small>Email*</small>
       <input
         type="email"
         name="user_email"
@@ -40,30 +38,33 @@
     </div>
 
     <div class="form-group">
-      <p class="form-label">Phone Number*</p>
-      <span>+</span>
-      <input
-        type="tel"
-        name="country-code"
-        class="country-code"
-        #country_code="ngModel"
-        [class.err]="country_code.invalid"
-        [(ngModel)]="personal.phone_number[0]"
-        required
-      />
-      <input
-        type="tel"
-        name="phone"
-        #phone_number="ngModel"
-        [class.err]="phone_number.invalid"
-        [(ngModel)]="personal.phone_number[1]"
-        required
-      />
+      <small>Phone Number*</small>
+      <div class="phone-number">
+        <p>+</p>
+
+        <input
+          type="tel"
+          name="country-code"
+          class="country-code"
+          #country_code="ngModel"
+          [class.err]="country_code.invalid"
+          [(ngModel)]="personal.phone_number[0]"
+          required
+        />
+
+        <input
+          type="tel"
+          name="phone"
+          #phone_number="ngModel"
+          [class.err]="phone_number.invalid"
+          [(ngModel)]="personal.phone_number[1]"
+          required
+        />
+      </div>
     </div>
 
-    <div class="form-group upload-resume">
+    <div class="upload-resume">
       <svg
-        id="upload-icon"
         xmlns="http://www.w3.org/2000/svg"
         height="24px"
         viewBox="0 0 24 24"
@@ -76,7 +77,7 @@
     </div>
 
     <div class="form-group">
-      <p class="form-label">Enter portfolio URL (if any)</p>
+      <small>Enter portfolio URL (if any)</small>
       <input
         type="text"
         name="portfolio_url"
@@ -84,32 +85,33 @@
       />
     </div>
 
-    <div>
-      <p class="form-label">Preferred Job Roles*</p>
-      <div class="select-job-roles">
-        <div class="select-item" *ngFor="let job_role of job_roles">
+    <div class="form-checkbox-container">
+      <small>Preferred Job Roles*</small>
+      <div class="form-checkbox" *ngFor="let job_role of job_roles">
+        <div
+          class="form-checkbox-input"
+          (click)="job_role.selected = !job_role.selected"
+        >
           <img
             *ngIf="job_role.selected"
             src="../../../../../assets/icons/checkbox-checked.svg"
             alt="checked"
-            (click)="job_role.selected = !job_role.selected"
           />
           <img
             *ngIf="!job_role.selected"
             src="../../../../../assets/icons/checkbox-unchecked.svg"
             alt="unchecked"
-            (click)="job_role.selected = !job_role.selected"
           />
-          <p>{{ job_role.role }}</p>
         </div>
+        <p class="form-checkbox-label">{{ job_role.role }}</p>
       </div>
     </div>
 
     <div class="form-group referral">
-      <p class="form-label">
-        If you are registering via a referral,please mention full name of the
-        employee who referred you
-      </p>
+      <small
+        >If you are registering via a referral,please mention full name of the
+        employee who referred you</small
+      >
       <input
         type="text"
         name="referrer_name"
@@ -122,8 +124,8 @@
     <div class="profile-image">
       <img src="../../../../../assets/images/profile.png" alt="profile-image" />
     </div>
-    <label>UPLOAD DISPLAY PICTURE</label>
-    <p class="size-limit">Max. image size: 5MB</p>
+    <p>UPLOAD DISPLAY PICTURE</p>
+    <small>Max. image size: 5MB</small>
   </div>
 </div>
 

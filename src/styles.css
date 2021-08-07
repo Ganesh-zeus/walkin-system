@@ -72,6 +72,211 @@ body {
   flex-grow: 1;
 }
 
+/* form CSS styles */
+
+/* form label */
+form small {
+  font-size: 12px;
+  color: #666;
+  text-transform: capitalize;
+}
+
+/* form-group input CSS */
+.form-group {
+  width: 100%;
+  height: 50px;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.form-group input {
+  font-size: 1rem;
+  padding: 0.25rem;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  margin-top: 0.5rem;
+}
+
+/* form checkbox CSS*/
+.form-checkbox-container {
+  margin-bottom: 2rem;
+}
+
+.form-checkbox-container small {
+  font-size: 12px;
+  color: #666666;
+}
+
+.form-checkbox {
+  display: flex;
+  margin: 0.5rem 0;
+}
+
+.form-checkbox-label {
+  font-family: QuicksandBold, sans-serif;
+}
+
+.form-checkbox-input {
+  margin-right: 0.5rem;
+}
+
+/* form select options CSS */
+
+.form-select {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 50px;
+  box-sizing: border-box;
+  width: 48%;
+  margin-bottom: 2rem;
+}
+
+.select {
+  position: relative;
+}
+
+.select .option-toggle {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ccc;
+}
+
+.select .option-toggle p {
+  font-size: 1rem;
+  font-family: QuicksandBold, sans-serif;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.select .options {
+  display: none;
+  position: absolute;
+  z-index: 2;
+  margin-top: 0.25rem;
+  width: 100%;
+  max-height: 150px;
+  overflow: auto;
+  background-color: #fff;
+  box-shadow: 0 4px 6px #00000029;
+}
+
+.options .option {
+  font-size: 1rem;
+  padding: 0.25rem;
+  padding-left: 0.5rem;
+}
+
+.select .options.open {
+  display: block;
+}
+
+.select .options .option:hover {
+  background-color: #dce4ed;
+}
+
+.select .option-toggle img.open {
+  transition-delay: 5ms;
+  animation-timing-function: ease-in;
+  transform: rotate(180deg);
+}
+
+/* form radio input CSS */
+.form-radio {
+  width: 100%;
+  height: 50px;
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.form-radio-items {
+  display: flex;
+}
+
+.form-radio-item {
+  display: flex;
+  margin-right: 2rem;
+}
+
+.form-radio-item img {
+  margin-right: 0.5rem;
+}
+
+.form-radio-item p {
+  font-family: QuicksandBold, sans-serif;
+}
+
+/* resume upload  */
+.upload-resume {
+  margin: 1rem 0;
+  display: flex;
+  height: 24px;
+}
+
+.upload-resume svg {
+  fill: #1f7a54;
+  margin-right: 0.5rem;
+}
+
+.upload-resume p {
+  color: #1f7a54;
+  font-size: 1rem;
+  font-family: QuicksandBold, sans-serif;
+}
+
+/* dropdown CSS */
+
+.dropdown {
+  background-color: #fff;
+  margin-bottom: 1.5rem;
+}
+
+.dropdown-toggle {
+  display: flex;
+  align-items: center;
+  background-color: #dbefff;
+  height: 56px;
+  box-shadow: 0 4px 6px #00000029;
+  cursor: pointer;
+}
+
+.dropdown-toggle p {
+  flex-grow: 1;
+  font-size: 1rem;
+  font-family: QuicksandBold, sans-serif;
+  margin-left: 1rem;
+}
+
+.dropdown-toggle-image {
+  padding: 1rem;
+  border-left: 1px solid #ccc;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.dropdown-toggle-image img.open {
+  transition-delay: 5ms;
+  animation-timing-function: ease-in;
+  transform: rotate(180deg);
+}
+
+.dropdown-content {
+  display: none;
+  padding: 1.5rem;
+  border-radius: 2px;
+  opacity: 0;
+}
+
+.dropdown-content.open {
+  display: block;
+  opacity: 1;
+}
+
 /* error messages */
 input:focus {
   outline: none;
