@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 // routing modules
 import { AppRoutingModule } from './app-routing.module';
@@ -22,6 +23,8 @@ import { WalkinComponent } from './walkins/walkin/walkin.component';
 import { WalkinCardComponent } from './walkins/walkin-card/walkin-card.component';
 import { WalkinListComponent } from './walkins/walkin-list/walkin-list.component';
 
+import { CoreModule } from './core/core.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +39,7 @@ import { WalkinListComponent } from './walkins/walkin-list/walkin-list.component
     WalkinCardComponent,
     WalkinListComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule, CoreModule],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -1,0 +1,117 @@
+{
+  "cities": ["Ahmadnagar", "Amravati", "Aurangabad", "Mumbai"],
+  "colleges": [
+    "University of Delhi",
+    "Lovely Professional University",
+    "Vidyalankar Institute of Technology",
+    "Indian Institute of Technology Bombay"
+  ],
+  "streams": ["Computer Engineering", "Information Technology", "Biomedical"],
+  "qualifications": [
+    "Bachelor in Technology (B.Tech)",
+    "Bachelor of Engineering (B.E)",
+    "Bachelor of Science in Information Technology(BScIT)"
+  ],
+  "walkins": [
+    {
+      "id": 1,
+      "title": "Walk In for Designer Job Role",
+      "start-date": "2021-07-10",
+      "end-date": "2021-07-11",
+      "internships": [],
+      "venue": "Zeus Systems Pvt.LTD, 1402, 14th floor, Tower B,Peninsula Business PArk, Ganpatro Kadam Marg,Lower Parel(W), Mumbai - 400013, Phone: +91-22-66600000",
+      "location": "Mumbai",
+      "job_roles": [
+        {
+          "job-title": "Instructional Designer",
+          "descriptions": [
+            {
+              "title": "Gross Compensation Package",
+              "description": "Rs.5,00,000 per annum"
+            },
+            {
+              "title": "Role Description",
+              "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa distinctio facilis assumenda impedit, quia doloremque nam illum cupiditate magnam dolorem!"
+            },
+            {
+              "title": "Requirements",
+              "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa distinctio facilis assumenda impedit, quia doloremque nam illum cupiditate magnam dolorem!"
+            }
+          ]
+        }
+      ],
+      "time_slots": [
+        { "start-time": "1:00 PM", "end-time": "3:00 PM" },
+        { "start-time": "9:00 AM", "end-time": "11:00 AM" }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Walkin For Multiple Job Roles",
+      "start-date": "2021-07-10",
+      "end-date": "2021-07-11",
+      "internships": [
+        "Internship opportunity for MCA studentsInternship opportunity for MCA students"
+      ],
+      "venue": "Zeus Systems Pvt.LTD, 1402, 14th floor, Tower B,Peninsula Business PArk, Ganpatro Kadam Marg,Lower Parel(W), Mumbai - 400013, Phone: +91-22-66600000",
+      "location": "Mumbai",
+      "job_roles": [
+        {
+          "job-title": "Instructional Designer",
+          "descriptions": [
+            {
+              "title": "Gross Compensation Package",
+              "description": "Rs.5,00,000 per annum"
+            },
+            {
+              "title": "Role Description",
+              "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa distinctio facilis assumenda impedit, quia doloremque nam illum cupiditate magnam dolorem!"
+            },
+            {
+              "title": "Requirements",
+              "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa distinctio facilis assumenda impedit, quia doloremque nam illum cupiditate magnam dolorem!"
+            }
+          ]
+        },
+        {
+          "job-title": "Software Engineer",
+          "descriptions": [
+            {
+              "title": "Gross Compensation Package",
+              "description": "Rs.6,00,000 per annum"
+            },
+            {
+              "title": "Role Description",
+              "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa distinctio facilis assumenda impedit, quia doloremque nam illum cupiditate magnam dolorem!"
+            },
+            {
+              "title": "Requirements",
+              "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa distinctio facilis assumenda impedit, quia doloremque nam illum cupiditate magnam dolorem!"
+            }
+          ]
+        },
+        {
+          "job-title": "Software Quality Engineer",
+          "descriptions": [
+            {
+              "title": "Gross Compensation Package",
+              "description": "Rs.5,00,000 per annum"
+            },
+            {
+              "title": "Role Description",
+              "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa distinctio facilis assumenda impedit, quia doloremque nam illum cupiditate magnam dolorem!"
+            },
+            {
+              "title": "Requirements",
+              "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa distinctio facilis assumenda impedit, quia doloremque nam illum cupiditate magnam dolorem!"
+            }
+          ]
+        }
+      ],
+      "time_slots": [
+        { "start-time": "1:00 PM", "end-time": "3:00 PM" },
+        { "start-time": "9:00 AM", "end-time": "11:00 AM" }
+      ]
+    }
+  ]
+}
