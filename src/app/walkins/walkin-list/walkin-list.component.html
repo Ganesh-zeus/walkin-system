@@ -1,3 +1,10 @@
-<div *ngFor="let walkin of walkinList">
-  <app-walkin-card [walkin]="walkin"></app-walkin-card>
+<div *ngIf="walkinList; else loading">
+  <div *ngFor="let walkin of walkinList">
+    <app-walkin-card [walkin]="walkin"></app-walkin-card>
+  </div>
 </div>
+<ng-template #loading>
+  <div class="center">
+    <h1>Loading ...</h1>
+  </div>
+</ng-template>

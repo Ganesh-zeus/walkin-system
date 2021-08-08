@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Walkin } from '../walkin.model';
+
+import { IWalkin } from 'src/app/shared/models/walkin.model';
 
 @Component({
   selector: 'app-walkin-card',
@@ -8,13 +9,13 @@ import { Walkin } from '../walkin.model';
   styleUrls: ['./walkin-card.component.css'],
 })
 export class WalkinCardComponent implements OnInit {
-  @Input() walkin:Walkin;
+  @Input() walkin: IWalkin;
 
-  constructor(private router:Router,private route:ActivatedRoute) {}
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {}
 
-  navigateTo(id:string){
-    this.router.navigate([id],{relativeTo:this.route});
+  navigateTo(id: number) {
+    this.router.navigate([id], { relativeTo: this.route });
   }
 }

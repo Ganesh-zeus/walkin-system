@@ -16,102 +16,237 @@
     {
       "id": 1,
       "title": "Walk In for Designer Job Role",
-      "start-date": "2021-07-10",
-      "end-date": "2021-07-11",
-      "internships": [],
-      "venue": "Zeus Systems Pvt.LTD, 1402, 14th floor, Tower B,Peninsula Business PArk, Ganpatro Kadam Marg,Lower Parel(W), Mumbai - 400013, Phone: +91-22-66600000",
+      "dates": ["2021-07-10", "2021-07-11"],
       "location": "Mumbai",
+      "opportunities": [],
       "job_roles": [
         {
-          "job-title": "Instructional Designer",
+          "id": 1,
+          "job_title": "Instructional Designer",
+          "image_url": "",
           "descriptions": [
             {
+              "id": 1,
               "title": "Gross Compensation Package",
               "description": "Rs.5,00,000 per annum"
             },
             {
+              "id": 2,
               "title": "Role Description",
               "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa distinctio facilis assumenda impedit, quia doloremque nam illum cupiditate magnam dolorem!"
             },
             {
+              "id": 3,
               "title": "Requirements",
               "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa distinctio facilis assumenda impedit, quia doloremque nam illum cupiditate magnam dolorem!"
             }
           ]
         }
       ],
+      "prerequisites": [
+        {
+          "id": 1,
+          "title": "General Instructions",
+          "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa distinctio facilis assumenda impedit, quia doloremque nam illum cupiditate magnam dolorem!"
+        },
+        {
+          "id": 2,
+          "title": "Instructions for the Exam",
+          "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa distinctio facilis assumenda impedit, quia doloremque nam illum cupiditate magnam dolorem!"
+        }
+      ],
       "time_slots": [
-        { "start-time": "1:00 PM", "end-time": "3:00 PM" },
-        { "start-time": "9:00 AM", "end-time": "11:00 AM" }
-      ]
+        { "id": 1, "start_time": "1:00 PM", "end_time": "3:00 PM" },
+        { "id": 2, "start_time": "9:00 AM", "end_time": "11:00 AM" }
+      ],
+      "preffered_job_roles": [
+        {
+          "id": 1,
+          "job_title": "Instructional Designer",
+          "image_url": "",
+          "descriptions": [
+            {
+              "id": 1,
+              "title": "Gross Compensation Package",
+              "description": "Rs.5,00,000 per annum"
+            },
+            {
+              "id": 2,
+              "title": "Role Description",
+              "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa distinctio facilis assumenda impedit, quia doloremque nam illum cupiditate magnam dolorem!"
+            },
+            {
+              "id": 3,
+              "title": "Requirements",
+              "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa distinctio facilis assumenda impedit, quia doloremque nam illum cupiditate magnam dolorem!"
+            }
+          ]
+        }
+      ],
+      "venue": "Zeus Systems Pvt.LTD, 1402, 14th floor, Tower B,Peninsula Business PArk, Ganpatro Kadam Marg,Lower Parel(W), Mumbai - 400013, Phone: +91-22-66600000"
     },
     {
       "id": 2,
       "title": "Walkin For Multiple Job Roles",
-      "start-date": "2021-07-10",
-      "end-date": "2021-07-11",
-      "internships": [
+      "dates": ["2021-07-10", "2021-07-11"],
+      "location": "Chennai",
+      "opportunities": [
         "Internship opportunity for MCA studentsInternship opportunity for MCA students"
       ],
-      "venue": "Zeus Systems Pvt.LTD, 1402, 14th floor, Tower B,Peninsula Business PArk, Ganpatro Kadam Marg,Lower Parel(W), Mumbai - 400013, Phone: +91-22-66600000",
-      "location": "Mumbai",
+
       "job_roles": [
         {
-          "job-title": "Instructional Designer",
+          "id": 1,
+          "job_title": "Instructional Designer",
+          "image_url": "",
           "descriptions": [
             {
+              "id": 1,
               "title": "Gross Compensation Package",
               "description": "Rs.5,00,000 per annum"
             },
             {
+              "id": 2,
               "title": "Role Description",
               "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa distinctio facilis assumenda impedit, quia doloremque nam illum cupiditate magnam dolorem!"
             },
             {
+              "id": 3,
               "title": "Requirements",
               "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa distinctio facilis assumenda impedit, quia doloremque nam illum cupiditate magnam dolorem!"
             }
           ]
         },
         {
-          "job-title": "Software Engineer",
+          "id": 2,
+          "job_title": "Software Engineer",
+          "image_url": "",
           "descriptions": [
             {
+              "id": 1,
               "title": "Gross Compensation Package",
               "description": "Rs.6,00,000 per annum"
             },
             {
+              "id": 2,
               "title": "Role Description",
               "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa distinctio facilis assumenda impedit, quia doloremque nam illum cupiditate magnam dolorem!"
             },
             {
+              "id": 3,
               "title": "Requirements",
               "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa distinctio facilis assumenda impedit, quia doloremque nam illum cupiditate magnam dolorem!"
             }
           ]
         },
         {
-          "job-title": "Software Quality Engineer",
+          "id": 3,
+          "job_title": "Software Quality Engineer",
+          "image_url": "",
           "descriptions": [
             {
+              "id": 1,
               "title": "Gross Compensation Package",
               "description": "Rs.5,00,000 per annum"
             },
             {
+              "id": 2,
               "title": "Role Description",
               "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa distinctio facilis assumenda impedit, quia doloremque nam illum cupiditate magnam dolorem!"
             },
             {
+              "id": 3,
               "title": "Requirements",
               "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa distinctio facilis assumenda impedit, quia doloremque nam illum cupiditate magnam dolorem!"
             }
           ]
         }
       ],
+      "prerequisites": [
+        {
+          "id": 1,
+          "title": "General Instructions",
+          "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa distinctio facilis assumenda impedit, quia doloremque nam illum cupiditate magnam dolorem!"
+        },
+        {
+          "id": 2,
+          "title": "Instructions for the Exam",
+          "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa distinctio facilis assumenda impedit, quia doloremque nam illum cupiditate magnam dolorem!"
+        }
+      ],
       "time_slots": [
-        { "start-time": "1:00 PM", "end-time": "3:00 PM" },
-        { "start-time": "9:00 AM", "end-time": "11:00 AM" }
-      ]
+        { "id": 1, "start_time": "1:00 PM", "end_time": "3:00 PM" },
+        { "id": 2, "start_time": "9:00 AM", "end_time": "11:00 AM" }
+      ],
+      "preffered_job_roles": [
+        {
+          "id": 1,
+          "job_title": "Instructional Designer",
+          "image_url": "",
+          "descriptions": [
+            {
+              "id": 1,
+              "title": "Gross Compensation Package",
+              "description": "Rs.5,00,000 per annum"
+            },
+            {
+              "id": 2,
+              "title": "Role Description",
+              "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa distinctio facilis assumenda impedit, quia doloremque nam illum cupiditate magnam dolorem!"
+            },
+            {
+              "id": 3,
+              "title": "Requirements",
+              "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa distinctio facilis assumenda impedit, quia doloremque nam illum cupiditate magnam dolorem!"
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "job_title": "Software Engineer",
+          "image_url": "",
+          "descriptions": [
+            {
+              "id": 1,
+              "title": "Gross Compensation Package",
+              "description": "Rs.6,00,000 per annum"
+            },
+            {
+              "id": 2,
+              "title": "Role Description",
+              "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa distinctio facilis assumenda impedit, quia doloremque nam illum cupiditate magnam dolorem!"
+            },
+            {
+              "id": 3,
+              "title": "Requirements",
+              "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa distinctio facilis assumenda impedit, quia doloremque nam illum cupiditate magnam dolorem!"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "job_title": "Software Quality Engineer",
+          "image_url": "",
+          "descriptions": [
+            {
+              "id": 1,
+              "title": "Gross Compensation Package",
+              "description": "Rs.5,00,000 per annum"
+            },
+            {
+              "id": 2,
+              "title": "Role Description",
+              "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa distinctio facilis assumenda impedit, quia doloremque nam illum cupiditate magnam dolorem!"
+            },
+            {
+              "id": 3,
+              "title": "Requirements",
+              "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa distinctio facilis assumenda impedit, quia doloremque nam illum cupiditate magnam dolorem!"
+            }
+          ]
+        }
+      ],
+      "venue": "Zeus Systems Pvt.LTD, 1402, 14th floor, Tower B,Peninsula Business PArk, Ganpatro Kadam Marg,Lower Parel(W), Mumbai - 400013, Phone: +91-22-66600000"
     }
   ]
 }

@@ -1,11 +1,13 @@
-<div class="walkin-container">
+<div *ngIf="walkin; else loading" class="walkin-container">
   <div class="box">
     <h2 class="walkin-title">{{ walkin.title }}</h2>
 
     <div class="row">
       <div class="date-time">
         <small>Date & Time</small>
-        <p class="date-time-content">{{ walkin.date_time }}</p>
+        <p class="date-time-content">
+          {{ walkin.dates[0] }} to {{ walkin.dates[1] }}
+        </p>
       </div>
       <span class="tilde"></span>
       <div class="location">
@@ -21,9 +23,13 @@
       <div class="job-role-list">
         <div class="job-role" *ngFor="let job_role of walkin.job_roles">
           <div class="job-role-image">
-            <img [attr.src]="job_role.image_source" alt="job-role-image" />
+            <!-- <img [attr.src]="job_role.image_url" alt="job-role-image" /> -->
+            <img
+              src="../../../assets/icons/computer.svg"
+              alt="job-role-image"
+            />
           </div>
-          <p>{{ job_role.job_role_title }}</p>
+          <p>{{ job_role.job_title }}</p>
         </div>
       </div>
     </div>
@@ -70,10 +76,21 @@
       <div class="form-radio">
         <small>Select a time slot :</small>
         <div class="form-radio-items">
-          <div class="form-radio-item" *ngFor="let time_slot of walkin.time_slots">
+          <div
+            class="form-radio-item"
+            *ngFor="let time_slot of walkin.time_slots"
+            (click)="time_slot_selected = time_slot.id"
+          >
             <img
+              *ngIf="time_slot_selected === time_slot.id"
               src="../../../assets/icons/radio-button-checked.svg"
               alt="selected"
+            />
+
+            <img
+              *ngIf="time_slot_selected !== time_slot.id"
+              src="../../../assets/icons/radio-button-unchecked.svg"
+              alt="unselected"
             />
             <p>{{ time_slot.start_time }} to {{ time_slot.end_time }}</p>
           </div>
@@ -83,7 +100,10 @@
       <!-- done -->
       <div class="form-checkbox-container">
         <small>Select your Preference</small>
-        <div class="form-checkbox" *ngFor="let role of walkin.job_roles">
+        <div
+          class="form-checkbox"
+          *ngFor="let role of walkin.preffered_job_roles"
+        >
           <div
             class="form-checkbox-input"
             (click)="role.selected = !role.selected"
@@ -99,7 +119,7 @@
               alt="unchecked"
             />
           </div>
-          <p class="form-checkbox-label">{{ role.job_role_title }}</p>
+          <p class="form-checkbox-label">{{ role.job_title }}</p>
         </div>
       </div>
 
@@ -120,13 +140,13 @@
     </form>
   </div>
 
-  <div class="dropdown" *ngFor="let jobRole of jobRoleList">
+  <div class="dropdown" *ngFor="let jobRole of walkin.job_roles">
     <div
       class="dropdown-toggle"
       (click)="templateRef.classList.toggle('open')"
       #templateRef
     >
-      <p>{{ jobRole.job_role_title }}</p>
+      <p>{{ jobRole.job_title }}</p>
       <div class="dropdown-toggle-image">
         <img
           [class.open]="templateRef.classList.contains('open')"
@@ -147,3 +167,9 @@
     </div>
   </div>
 </div>
+
+<ng-template #loading>
+  <div class="center">
+    <h1>Loading...</h1>
+  </div>
+</ng-template>
