@@ -48,3 +48,20 @@
   margin:0.5rem 0;
 }
 
+.upload-resume {
+  margin: 1rem 0;
+  display: flex;
+  height: 24px;
+}
+  
+.upload-resume svg {
+  fill: #1f7a54;
+  margin-right: 0.5rem;
+}
+
+.upload-resume p {
+  color: #1f7a54;
+  font-size: 1rem;
+  font-family: QuicksandBold, sans-serif;
+}
+
