@@ -1,16 +1,5 @@
-export interface IDescription {
-  id: number;
-  title: string;
-  description: string;
-}
-
-export interface IJobRole {
-  id: number;
-  job_title: string;
-  image_url: string;
-  descriptions: IDescription[];
-  selected?: boolean;
-}
+import { IDescription } from "./description.model";
+import { IJobRole } from "./job-role.model";
 
 export interface ITimeSlot {
   id: number;
