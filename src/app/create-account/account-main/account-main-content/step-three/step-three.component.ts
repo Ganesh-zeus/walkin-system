@@ -32,15 +32,17 @@ export class StepThreeComponent implements OnInit {
     {selected:false,title:"Node JS"}
   ]
 
-  edu:any = {qualificationOpen:false,streamOpen:false,collegeOpen:false}
-
+  applicant_type:string = 'experienced';
+  appeared_test_before:boolean = false;
+  currently_under_notice_period:boolean = false;
 
   constructor(private router:Router,private route:ActivatedRoute) { }
 
   ngOnInit(): void {
   }
 
-  previous(){
-    this.router.navigate(['../','qualification'],{relativeTo:this.route});
+  navigateTo(path:string){
+    this.router.navigate(['../',path],{relativeTo:this.route});
   }
+  
 }

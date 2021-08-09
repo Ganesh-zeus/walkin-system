@@ -155,17 +155,37 @@
         <div class="form-radio">
           <small>Applicant Type*</small>
           <div class="form-radio-items">
-            <div class="form-radio-item" name="applicant-type">
+            <div
+              class="form-radio-item"
+              name="applicant-type"
+              (click)="applicant_type = 'fresher'"
+            >
               <img
+                *ngIf="applicant_type === 'fresher'"
                 src="../../../../../assets/icons/radio-button-checked.svg"
-                alt="radio-icon"
+                alt="selected"
+              />
+              <img
+                *ngIf="applicant_type !== 'fresher'"
+                src="../../../../../assets/icons/radio-button-unchecked.svg"
+                alt="not selected"
               />
               <p>Fresher</p>
             </div>
-            <div class="form-radio-item" name="applicant-type">
+            <div
+              class="form-radio-item"
+              name="applicant-type"
+              (click)="applicant_type = 'experienced'"
+            >
               <img
+                *ngIf="applicant_type === 'experienced'"
+                src="../../../../../assets/icons/radio-button-checked.svg"
+                alt="selected"
+              />
+              <img
+                *ngIf="applicant_type !== 'experienced'"
                 src="../../../../../assets/icons/radio-button-unchecked.svg"
-                alt="radio-icon"
+                alt="not selected"
               />
               <p>Experienced</p>
             </div>
@@ -176,7 +196,7 @@
   </div>
 
   <!-- experienced-details -->
-  <div class="experienced-details">
+  <div *ngIf="applicant_type === 'experienced'" class="experienced-details">
     <form #exeperiencedForm="ngForm">
       <div class="form-group">
         <small>Years Of Experience*</small>
@@ -249,18 +269,43 @@
 
       <div class="form-radio">
         <small>Are you currently under notice period?*</small>
+
         <div class="form-radio-items">
-          <div class="form-radio-item" name="notice-period">
+          <div
+            class="form-radio-item"
+            name="notice-period"
+            (click)="
+              currently_under_notice_period = !currently_under_notice_period
+            "
+          >
             <img
+              *ngIf="currently_under_notice_period"
               src="../../../../../assets/icons/radio-button-checked.svg"
-              alt="radio-icon"
+              alt="selected"
+            />
+            <img
+              *ngIf="!currently_under_notice_period"
+              src="../../../../../assets/icons/radio-button-unchecked.svg"
+              alt="not selected"
             />
             <p>Yes</p>
           </div>
-          <div class="form-radio-item" name="notice-period">
+          <div
+            class="form-radio-item"
+            name="notice-period"
+            (click)="
+              currently_under_notice_period = !currently_under_notice_period
+            "
+          >
             <img
+              *ngIf="!currently_under_notice_period"
+              src="../../../../../assets/icons/radio-button-checked.svg"
+              alt="selected"
+            />
+            <img
+              *ngIf="currently_under_notice_period"
               src="../../../../../assets/icons/radio-button-unchecked.svg"
-              alt="radio-icon"
+              alt="not selected"
             />
             <p>No</p>
           </div>
@@ -284,17 +329,37 @@
           >Have you appeared for any Zeus test in the past 12 Months?*</small
         >
         <div class="form-radio-items">
-          <div class="form-radio-item" name="appeared-test">
+          <div
+            class="form-radio-item"
+            name="appeared-test"
+            (click)="appeared_test_before = !appeared_test_before"
+          >
             <img
+              *ngIf="appeared_test_before"
               src="../../../../../assets/icons/radio-button-checked.svg"
-              alt="radio-icon"
+              alt="selected"
+            />
+            <img
+              *ngIf="!appeared_test_before"
+              src="../../../../../assets/icons/radio-button-unchecked.svg"
+              alt="not selected"
             />
             <p>Yes</p>
           </div>
-          <div class="form-radio-item" name="appeared-test">
+          <div
+            class="form-radio-item"
+            name="appeared-test"
+            (click)="appeared_test_before = !appeared_test_before"
+          >
             <img
+              *ngIf="!appeared_test_before"
+              src="../../../../../assets/icons/radio-button-checked.svg"
+              alt="selected"
+            />
+            <img
+              *ngIf="appeared_test_before"
               src="../../../../../assets/icons/radio-button-unchecked.svg"
-              alt="radio-icon"
+              alt="not selected"
             />
             <p>No</p>
           </div>
@@ -308,7 +373,7 @@
     </form>
   </div>
 
-  <div class="fresher-details">
+  <div *ngIf="applicant_type === 'fresher'" class="fresher-details">
     <form #fresherForm="ngForm">
       <div class="form-checkbox-container">
         <small>Select all The technologies you are familiar in*</small>
@@ -337,17 +402,37 @@
           >Have you appeared for any Zeus test in the past 12 Months?*</small
         >
         <div class="form-radio-items">
-          <div class="form-radio-item" name="appeared-test">
+          <div
+            class="form-radio-item"
+            name="appeared-test"
+            (click)="appeared_test_before = !appeared_test_before"
+          >
             <img
+              *ngIf="appeared_test_before"
               src="../../../../../assets/icons/radio-button-checked.svg"
-              alt="radio-icon"
+              alt="selected"
+            />
+            <img
+              *ngIf="!appeared_test_before"
+              src="../../../../../assets/icons/radio-button-unchecked.svg"
+              alt="not selected"
             />
             <p>Yes</p>
           </div>
-          <div class="form-radio-item" name="appeared-test">
+          <div
+            class="form-radio-item"
+            name="appeared-test"
+            (click)="appeared_test_before = !appeared_test_before"
+          >
             <img
+              *ngIf="!appeared_test_before"
+              src="../../../../../assets/icons/radio-button-checked.svg"
+              alt="selected"
+            />
+            <img
+              *ngIf="appeared_test_before"
               src="../../../../../assets/icons/radio-button-unchecked.svg"
-              alt="radio-icon"
+              alt="not selected"
             />
             <p>No</p>
           </div>
@@ -363,6 +448,6 @@
 </div>
 
 <div class="btn-group center">
-  <button class="btn-success previous" (click)="previous()">PREVIOUS</button>
-  <button class="btn-success" (click)="next()">NEXT</button>
+  <button class="btn-success previous" (click)="navigateTo('personal')">PREVIOUS</button>
+  <button class="btn-success" (click)="navigateTo('review')">NEXT</button>
 </div>

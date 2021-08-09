@@ -7,6 +7,16 @@
   box-sizing: border-box;
 }
 
+.step-one .form-group {
+  height: fit-content;
+}
+
+.form-group p {
+  font-size: 1rem;
+  font-family: QuicksandBold, sans-serif;
+  margin-top: 0.75rem;
+}
+
 .personal-form {
   width: 50%;
 }
@@ -19,16 +29,32 @@
 
 .phone-number p {
   height: 100%;
-  font-size: 1.5rem;
+  font-size: 1rem;
+  margin-right: 0.5rem;
 }
 
-.phone-number input {
-  margin: 0 0.5rem;
-  width: 100px;
+/* resume upload  */
+.upload-resume {
+  margin: 1.5rem 0;
+  display: flex;
+  height: 24px;
+  width: 100%;
 }
 
-.phone-number .country-code {
-  width: 1rem !important;
+.upload-resume svg {
+  min-width: 2rem;
+}
+
+.upload-resume p {
+  font-size: 1rem; 
+  white-space: nowrap;
+}
+
+.resume-name {
+  margin-left: 0.5rem;
+  font-family: QuicksandBold, sans-serif;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .profile-image-container {
@@ -36,18 +62,6 @@
   align-items: center;
   flex-direction: column;
   width: 180px;
-}
-
-.profile-image-container p {
-  font-size: 12px;
-  color: #1f7a54;
-  font-family: QuicksandBold, sans-serif;
-}
-
-.profile-image-container small {
-  font-size: 10px;
-  font-family: QuicksandBold, sans-serif;
-  color: #757575;
 }
 
 .profile-image {

@@ -28,7 +28,7 @@ export class StepOneComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  next(){
-    this.router.navigate(['../','qualification'],{relativeTo:this.route});
+  navigateTo(path:string){
+    this.router.navigate(['../',path],{relativeTo:this.route});
   }
 }

@@ -1,68 +1,35 @@
 <div class="step-three">
-  <h3 class="title">Personal Information</h3>
+  <div class="headers">
+    <h3 class="title">Personal Information</h3>
+    <div class="edit" (click)="navigateTo('personal')">
+      <img src="../../../../../assets/icons/edit.svg" alt="edit-icon" />
+      <p>Edit</p>
+    </div>
+  </div>
 
   <div class="step-one">
     <form class="personal-form" #personalForm="ngForm">
       <div class="form-group">
         <small>First Name*</small>
-        <input
-          type="text"
-          name="first_name"
-          #first_name="ngModel"
-          [class.err]="first_name.invalid"
-          [(ngModel)]="personal.first_name"
-          required
-        />
+        <p>John</p>
       </div>
 
       <div class="form-group">
         <small>Last Name*</small>
-        <input
-          type="text"
-          name="last_name"
-          #last_name="ngModel"
-          [class.err]="last_name.invalid"
-          [(ngModel)]="personal.last_name"
-          required
-        />
+        <p>Watson</p>
       </div>
 
       <div class="form-group">
         <small>Email*</small>
-        <input
-          type="email"
-          name="user_email"
-          #user_email="ngModel"
-          pattern='^(([^()[\]\\.,;:\s@\"]+(\.[^()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$'
-          [class.err]="user_email.invalid"
-          [(ngModel)]="personal.user_email"
-          required
-        />
+        <p>Johnwatson@example.com</p>
       </div>
 
       <div class="form-group">
         <small>Phone Number*</small>
         <div class="phone-number">
           <p>+</p>
-
-          <input
-            type="tel"
-            name="country-code"
-            class="country-code"
-            #country_code="ngModel"
-            [class.err]="country_code.invalid"
-            [(ngModel)]="personal.phone_number[0]"
-            required
-          />
-
-          <input
-            type="tel"
-            name="phone"
-            #phone_number="ngModel"
-            [class.err]="phone_number.invalid"
-            [(ngModel)]="personal.phone_number[1]"
-            required
-          />
+          <p>91</p>
+          <p>9876543210</p>
         </div>
       </div>
 
@@ -77,37 +44,18 @@
           <path d="M5 4v2h14V4H5zm0 10h4v6h6v-6h4l-7-7-7 7z" />
         </svg>
         <p>UPLOAD RESUME</p>
+        <p class="resume-name">MyResume.pdf</p>
       </div>
 
       <div class="form-group">
         <small>Enter portfolio URL (if any)</small>
-        <input
-          type="text"
-          name="portfolio_url"
-          [(ngModel)]="personal.portfolio_url"
-        />
+        <p>www.myportfolio.in</p>
       </div>
 
-      <div class="form-checkbox-container">
+      <div class="form-group">
         <small>Preferred Job Roles*</small>
-        <div class="form-checkbox" *ngFor="let job_role of job_roles">
-          <div
-            class="form-checkbox-input"
-            (click)="job_role.selected = !job_role.selected"
-          >
-            <img
-              *ngIf="job_role.selected"
-              src="../../../../../assets/icons/checkbox-checked.svg"
-              alt="checked"
-            />
-            <img
-              *ngIf="!job_role.selected"
-              src="../../../../../assets/icons/checkbox-unchecked.svg"
-              alt="unchecked"
-            />
-          </div>
-          <p class="form-checkbox-label">{{ job_role.role }}</p>
-        </div>
+        <p>Instructional Designer</p>
+        <p>Software Quality Engineer</p>
       </div>
 
       <div class="form-group referral">
@@ -115,11 +63,7 @@
           >If you are registering via a referral,please mention full name of the
           employee who referred you</small
         >
-        <input
-          type="text"
-          name="referrer_name"
-          [(ngModel)]="personal.referrer_name"
-        />
+        <p>-</p>
       </div>
     </form>
 
@@ -130,12 +74,16 @@
           alt="profile-image"
         />
       </div>
-      <p>UPLOAD DISPLAY PICTURE</p>
-      <small>Max. image size: 5MB</small>
     </div>
   </div>
 
-  <h3 class="title">Qualifications</h3>
+  <div class="headers">
+    <h3 class="title">Qualifications</h3>
+    <div class="edit" (click)="navigateTo('qualification')">
+      <img src="../../../../../assets/icons/edit.svg" alt="edit-icon" />
+      <p>Edit</p>
+    </div>
+  </div>
 
   <div class="step-two">
     <!-- education qualifications -->
@@ -162,108 +110,43 @@
         <form educationalForm="ngForm">
           <div class="form-group">
             <small>Aggregate Percentage*</small>
-            <input type="text" name="aggregate_percentage" />
+            <p>65</p>
           </div>
 
           <div class="form-group">
             <small>Year of Passing*</small>
-            <input type="tel" name="year_of_passing" />
+            <p>2021</p>
           </div>
 
           <div class="select-container">
             <!-- qualification -->
             <div class="form-select">
               <small>Qualification*</small>
-
-              <div class="select">
-                <div
-                  class="option-toggle"
-                  (click)="qualificationRef.classList.toggle('open')"
-                  #qualificationRef
-                >
-                  <p>Bachelor in Technology (B.Tech)</p>
-                  <img
-                    [class.open]="qualificationRef.classList.contains('open')"
-                    src="../../../../../assets/icons/arrow-down.svg"
-                    alt="arrow-up-down"
-                  />
-                </div>
-                <div
-                  class="options"
-                  [class.open]="qualificationRef.classList.contains('open')"
-                >
-                  <div class="option">Bachelor in Technology (B.Tech)</div>
-                  <div class="option">Bachelor in Engineering (B.E)</div>
-                </div>
-              </div>
+              <p>Bachelor in Technology (BTech)</p>
             </div>
 
             <!-- stream -->
             <div class="form-select">
               <small>Stream*</small>
-
-              <div class="select">
-                <div
-                  class="option-toggle"
-                  (click)="streamRef.classList.toggle('open')"
-                  #streamRef
-                >
-                  <p>Information Technology</p>
-                  <img
-                    [class.open]="streamRef.classList.contains('open')"
-                    src="../../../../../assets/icons/arrow-down.svg"
-                    alt="arrow-up-down"
-                  />
-                </div>
-                <div
-                  class="options"
-                  [class.open]="streamRef.classList.contains('open')"
-                >
-                  <div class="option">Information Technology</div>
-                  <div class="option">Computer Engineering</div>
-                </div>
-              </div>
+              <p>Information Technology</p>
             </div>
 
             <!-- college -->
             <div class="form-select">
               <small>College*</small>
-
-              <div class="select">
-                <div
-                  class="option-toggle"
-                  (click)="collegeRef.classList.toggle('open')"
-                  #collegeRef
-                >
-                  <p>Vidyalankar Institute of Technology</p>
-                  <img
-                    [class.open]="collegeRef.classList.contains('open')"
-                    src="../../../../../assets/icons/arrow-down.svg"
-                    alt="arrow-up-down"
-                  />
-                </div>
-                <div
-                  class="options"
-                  [class.open]="collegeRef.classList.contains('open')"
-                >
-                  <div class="option">
-                    Vidyalankar Institute of Technology Institute of Technology
-                  </div>
-                  <div class="option">College of Engineering Pune</div>
-                </div>
-              </div>
+              <p>Pune Institute of Technology (PT)</p>
             </div>
 
             <!-- <div class="form-select"> -->
             <div class="form-group">
               <small>If Others, Please Enter Your College Name</small>
-              <input type="text" />
+              <p>-</p>
             </div>
           </div>
 
           <div class="form-group">
             <small>Where is your college located?</small>
-            <input type="text" name="aggregate_percentage" />
+            <p>Pune</p>
           </div>
         </form>
       </div>
@@ -290,164 +173,81 @@
         class="professional-details dropdown-content"
         [class.open]="professional.classList.contains('open')"
       >
-        <form #applicantTypeForm="ngForm">
-          <div class="form-radio">
-            <small>Applicant Type*</small>
-            <div class="form-radio-items">
-              <div class="form-radio-item" name="applicant-type">
-                <img
-                  src="../../../../../assets/icons/radio-button-checked.svg"
-                  alt="radio-icon"
-                />
-                <p>Fresher</p>
-              </div>
-              <div class="form-radio-item" name="applicant-type">
-                <img
-                  src="../../../../../assets/icons/radio-button-unchecked.svg"
-                  alt="radio-icon"
-                />
-                <p>Experienced</p>
-              </div>
-            </div>
-          </div>
-        </form>
+        <small>Applicant Type*</small>
+        <p class="applicant-type">{{ applicant_type }}</p>
       </div>
     </div>
 
     <!-- experienced-details -->
-    <div class="experienced-details">
+    <div *ngIf="applicant_type === 'experienced'" class="experienced-details">
       <form #exeperiencedForm="ngForm">
         <div class="form-group">
           <small>Years Of Experience*</small>
-          <input type="text" name="aggregate_percentage" />
         </div>
 
         <div class="form-group">
           <small>Current CTC* (In Rupees)</small>
-          <input type="text" name="aggregate_percentage" />
+          <p>5,00,000</p>
         </div>
 
         <div class="form-group">
           <small>Expected CTC* (In Rupees)</small>
-          <input type="text" name="aggregate_percentage" />
+          <p>6,00,000</p>
         </div>
 
-        <div class="form-checkbox-container">
+        <div class="form-group">
           <small>Select all The technologies you are expertise in*</small>
-          <div class="form-checkbox" *ngFor="let technology of technologies">
-            <div
-              class="form-checkbox-input"
-              (click)="technology.selected = !technology.selected"
-            >
-              <img
-                *ngIf="technology.selected"
-                src="../../../../../assets/icons/checkbox-checked.svg"
-                alt="checked"
-              />
-              <img
-                *ngIf="!technology.selected"
-                src="../../../../../assets/icons/checkbox-unchecked.svg"
-                alt="unchecked"
-              />
-            </div>
-            <p class="form-checkbox-label">{{ technology.title }}</p>
-          </div>
+          <p>JavaScript</p>
         </div>
 
         <div class="form-group w-lg">
           <small>If others,please mention</small>
-          <input type="text" />
+          <p>-</p>
         </div>
 
-        <div class="form-checkbox-container">
+        <div class="form-group">
           <small>Select all The technologies you are familiar in*</small>
-          <div class="form-checkbox" *ngFor="let technology of technologies">
-            <div
-              class="form-checkbox-input"
-              (click)="technology.selected = !technology.selected"
-            >
-              <img
-                *ngIf="technology.selected"
-                src="../../../../../assets/icons/checkbox-checked.svg"
-                alt="checked"
-              />
-              <img
-                *ngIf="!technology.selected"
-                src="../../../../../assets/icons/checkbox-unchecked.svg"
-                alt="unchecked"
-              />
-            </div>
-            <p class="form-checkbox-label">{{ technology.title }}</p>
-          </div>
+          <p>AngularJS</p>
+          <p>ReactJS</p>
         </div>
 
         <div class="form-group w-lg">
           <small>If others,please mention</small>
-          <input type="text" />
+          <p>-</p>
         </div>
 
-        <div class="form-radio">
+        <div class="form-group">
           <small>Are you currently under notice period?*</small>
-          <div class="form-radio-items">
-            <div class="form-radio-item" name="notice-period">
-              <img
-                src="../../../../../assets/icons/radio-button-checked.svg"
-                alt="radio-icon"
-              />
-              <p>Yes</p>
-            </div>
-            <div class="form-radio-item" name="notice-period">
-              <img
-                src="../../../../../assets/icons/radio-button-unchecked.svg"
-                alt="radio-icon"
-              />
-              <p>No</p>
-            </div>
-          </div>
+          <p>Yes</p>
         </div>
 
         <div class="notice-period">
           <div class="form-group w-lg">
             <small>If yes,when will your notice period end?*</small>
-            <input type="text" />
+            <p>20 May 2020</p>
           </div>
 
           <div class="form-group w-lg">
             <small>how long is your notice period?* (mention in months)</small>
-            <input type="text" />
+            <p>2 months</p>
           </div>
         </div>
 
-        <div class="form-radio">
+        <div class="form-group">
           <small
             >Have you appeared for any Zeus test in the past 12 Months?*</small
           >
-          <div class="form-radio-items">
-            <div class="form-radio-item" name="appeared-test">
-              <img
-                src="../../../../../assets/icons/radio-button-checked.svg"
-                alt="radio-icon"
-              />
-              <p>Yes</p>
-            </div>
-            <div class="form-radio-item" name="appeared-test">
-              <img
-                src="../../../../../assets/icons/radio-button-unchecked.svg"
-                alt="radio-icon"
-              />
-              <p>No</p>
-            </div>
-          </div>
+          <p>No</p>
         </div>
 
         <div class="form-group w-lg">
           <small>If yes,which role did you apply for?</small>
-          <input type="text" />
+          <p>-</p>
         </div>
       </form>
     </div>
 
-    <div class="fresher-details">
+    <div *ngIf="applicant_type === 'fresher'" class="fresher-details">
       <form #fresherForm="ngForm">
         <div class="form-checkbox-container">
           <small>Select all The technologies you are familiar in*</small>
@@ -476,17 +276,37 @@
             >Have you appeared for any Zeus test in the past 12 Months?*</small
           >
           <div class="form-radio-items">
-            <div class="form-radio-item" name="appeared-test">
+            <div
+              class="form-radio-item"
+              name="appeared-test"
+              (click)="appeared_test_before = !appeared_test_before"
+            >
               <img
+                *ngIf="appeared_test_before"
                 src="../../../../../assets/icons/radio-button-checked.svg"
-                alt="radio-icon"
+                alt="selected"
+              />
+              <img
+                *ngIf="!appeared_test_before"
+                src="../../../../../assets/icons/radio-button-unchecked.svg"
+                alt="not selected"
               />
               <p>Yes</p>
             </div>
-            <div class="form-radio-item" name="appeared-test">
+            <div
+              class="form-radio-item"
+              name="appeared-test"
+              (click)="appeared_test_before = !appeared_test_before"
+            >
               <img
+                *ngIf="!appeared_test_before"
+                src="../../../../../assets/icons/radio-button-checked.svg"
+                alt="selected"
+              />
+              <img
+                *ngIf="appeared_test_before"
                 src="../../../../../assets/icons/radio-button-unchecked.svg"
-                alt="radio-icon"
+                alt="not selected"
               />
               <p>No</p>
             </div>
@@ -502,6 +322,8 @@
   </div>
 
   <div class="previous center">
-    <button class="btn-success" (click)="previous()">PREVIOUS</button>
+    <button class="btn-success" (click)="navigateTo('qualification')">
+      PREVIOUS
+    </button>
   </div>
 </div>
