@@ -7,6 +7,7 @@ import { AccountMainComponent } from './account-main/account-main.component';
 import { AccountMainStatusComponent } from './account-main/account-main-status/account-main-status.component';
 import { AccountMainContentComponent } from './account-main/account-main-content/account-main-content.component';
 import { FormsModule } from '@angular/forms';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -15,9 +16,10 @@ import { FormsModule } from '@angular/forms';
     AccountHeaderComponent,
     AccountMainComponent,
     AccountMainStatusComponent,
-    AccountMainContentComponent,
+    AccountMainContentComponent, 
   ],
-  imports: [CommonModule, CreateAccountRoutingModule,FormsModule],
+  imports: [CommonModule, CreateAccountRoutingModule,FormsModule,SharedModule],
+  providers:[]
 })
 
 export class CreateAccountModule {}

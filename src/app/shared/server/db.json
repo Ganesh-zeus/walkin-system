@@ -1,16 +1,95 @@
 {
-  "cities": ["Ahmadnagar", "Amravati", "Aurangabad", "Mumbai"],
   "colleges": [
-    "University of Delhi",
-    "Lovely Professional University",
-    "Vidyalankar Institute of Technology",
-    "Indian Institute of Technology Bombay"
+    { "id": 1, "college_name": "Indian Institute of Technology Bombay" },
+    { "id": 2, "college_name": "Lovely Professional University" },
+    { "id": 3, "college_name": "Vidyalankar Institute of Technology" }
   ],
-  "streams": ["Computer Engineering", "Information Technology", "Biomedical"],
+  "streams": [
+    { "id": 1, "stream_name": "Computer Engineering" },
+    { "id": 2, "stream_name": "Information Technology" },
+    { "id": 3, "stream_name": "Biomedical" }
+  ],
   "qualifications": [
-    "Bachelor in Technology (B.Tech)",
-    "Bachelor of Engineering (B.E)",
-    "Bachelor of Science in Information Technology(BScIT)"
+    { "id": 1, "qualification_name": "Bachelor in Technology (B.Tech)" },
+    { "id": 2, "qualification_name": "Bachelor of Engineering (B.E)" },
+    {
+      "id": 3,
+      "qualification_name": "Bachelor of Science in Information Technology(BScIT)"
+    }
+  ],
+  "technologies": [
+    { "id": 1, "title": "JavaScript" },
+    { "id": 2, "title": "Angular JS" },
+    { "id": 3, "title": "React JS" },
+    { "id": 4, "title": "Node JS" }
+  ],
+  "job_roles": [
+    {
+      "id": 1,
+      "job_title": "Instructional Designer",
+      "image_url": "",
+      "descriptions": [
+        {
+          "id": 1,
+          "title": "Gross Compensation Package",
+          "description": "Rs.5,00,000 per annum"
+        },
+        {
+          "id": 2,
+          "title": "Role Description",
+          "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa distinctio facilis assumenda impedit, quia doloremque nam illum cupiditate magnam dolorem!"
+        },
+        {
+          "id": 3,
+          "title": "Requirements",
+          "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa distinctio facilis assumenda impedit, quia doloremque nam illum cupiditate magnam dolorem!"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "job_title": "Software Engineer",
+      "image_url": "",
+      "descriptions": [
+        {
+          "id": 1,
+          "title": "Gross Compensation Package",
+          "description": "Rs.6,00,000 per annum"
+        },
+        {
+          "id": 2,
+          "title": "Role Description",
+          "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa distinctio facilis assumenda impedit, quia doloremque nam illum cupiditate magnam dolorem!"
+        },
+        {
+          "id": 3,
+          "title": "Requirements",
+          "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa distinctio facilis assumenda impedit, quia doloremque nam illum cupiditate magnam dolorem!"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "job_title": "Software Quality Engineer",
+      "image_url": "",
+      "descriptions": [
+        {
+          "id": 1,
+          "title": "Gross Compensation Package",
+          "description": "Rs.5,00,000 per annum"
+        },
+        {
+          "id": 2,
+          "title": "Role Description",
+          "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa distinctio facilis assumenda impedit, quia doloremque nam illum cupiditate magnam dolorem!"
+        },
+        {
+          "id": 3,
+          "title": "Requirements",
+          "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa distinctio facilis assumenda impedit, quia doloremque nam illum cupiditate magnam dolorem!"
+        }
+      ]
+    }
   ],
   "walkins": [
     {

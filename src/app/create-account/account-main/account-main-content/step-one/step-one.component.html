@@ -6,7 +6,7 @@
         type="text"
         name="first_name"
         #first_name="ngModel"
-        [class.err]="first_name.invalid"
+        [class.err]="first_name.touched && first_name.invalid"
         [(ngModel)]="personal.first_name"
         required
       />
@@ -18,7 +18,7 @@
         type="text"
         name="last_name"
         #last_name="ngModel"
-        [class.err]="last_name.invalid"
+        [class.err]="last_name.touched && last_name.invalid"
         [(ngModel)]="personal.last_name"
         required
       />
@@ -31,7 +31,7 @@
         name="user_email"
         #user_email="ngModel"
         pattern='^(([^()[\]\\.,;:\s@\"]+(\.[^()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$'
-        [class.err]="user_email.invalid"
+        [class.err]="user_email.touched && user_email.invalid"
         [(ngModel)]="personal.user_email"
         required
       />
@@ -47,7 +47,7 @@
           name="country-code"
           class="country-code"
           #country_code="ngModel"
-          [class.err]="country_code.invalid"
+          [class.err]="country_code.touched && country_code.invalid"
           [(ngModel)]="personal.phone_number[0]"
           required
         />
@@ -56,7 +56,7 @@
           type="tel"
           name="phone"
           #phone_number="ngModel"
-          [class.err]="phone_number.invalid"
+          [class.err]="phone_number.touched && phone_number.invalid"
           [(ngModel)]="personal.phone_number[1]"
           required
         />
@@ -87,7 +87,7 @@
 
     <div class="form-checkbox-container">
       <small>Preferred Job Roles*</small>
-      <div class="form-checkbox" *ngFor="let job_role of job_roles">
+      <div class="form-checkbox" *ngFor="let job_role of personal.preferred_job_roles">
         <div
           class="form-checkbox-input"
           (click)="job_role.selected = !job_role.selected"
@@ -103,7 +103,7 @@
             alt="unchecked"
           />
         </div>
-        <p class="form-checkbox-label">{{ job_role.role }}</p>
+        <p class="form-checkbox-label">{{ job_role.job_title }}</p>
       </div>
     </div>
 
@@ -128,7 +128,11 @@
     <small>Max. image size: 5MB</small>
   </div>
 </div>
-
 <div class="next center">
-  <button class="btn-success" (click)="navigateTo('qualification')">NEXT</button>
+  <button
+    class="btn-success"
+    (click)="navigateTo(personalForm.valid, 'qualification')"
+  >
+    NEXT
+  </button>
 </div>

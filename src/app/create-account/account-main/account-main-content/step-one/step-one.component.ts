@@ -1,34 +1,39 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { Personal,JobRole } from '../User.model';
+import { UserService } from 'src/app/core/services/user.service';
+import { IPersonalDetails } from 'src/app/shared/models/user.model';
 
 @Component({
   selector: 'app-step-one',
   templateUrl: './step-one.component.html',
-  styleUrls: ['./step-one.component.css']
+  styleUrls: ['./step-one.component.css'],
 })
 export class StepOneComponent implements OnInit {
+  // job_roles: IJobRole[] = [
+  //   { id: 1, selected: true, job_title: 'Instructional Designer' },
+  //   { id: 2, selected: false, job_title: 'Software Engineer' },
+  //   { id: 3, selected: true, job_title: 'Software Quality Engineer' },
+  // ];
 
-  job_roles:JobRole[] = [
-    new JobRole(true,"Instructional Designer"),
-    new JobRole(false,"Software Engineer"),
-    new JobRole(true,"Software Quality Engineer"),
-  ]
+  // job_roles: IJobRole[] = [];
 
-  personal:Personal = new Personal(
-    "John","Watson","Johnwatson@example.com",
-    ["91","9876543210"],"www.myportfolio.in",
-    this.job_roles,"",false
-  );
+  personal: IPersonalDetails = {} as any;
 
-  constructor(private router:Router,private route:ActivatedRoute) { 
-  }
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {
+    this.personal = this.userService.personalDetails;
   }
 
-  navigateTo(path:string){
-    this.router.navigate(['../',path],{relativeTo:this.route});
+  navigateTo(isFormValid: boolean | null, path: string) {
+    if (isFormValid) {
+      console.log(this.userService.personalDetails);
+      this.router.navigate(['../', path], { relativeTo: this.route });
+    }
   }
 }

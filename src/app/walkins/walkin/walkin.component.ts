@@ -18,7 +18,7 @@ export class WalkinComponent implements OnInit {
   ) {}
 
   walkin: IWalkin;
-  time_slot_selected:number;
+  time_slot_selected: number;
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
@@ -31,7 +31,5 @@ export class WalkinComponent implements OnInit {
       this.time_slot_selected = this.walkin.time_slots[0].id;
       console.log(this.walkin);
     });
-
-
   }
 }

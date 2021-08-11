@@ -11,25 +11,25 @@
     <form class="personal-form" #personalForm="ngForm">
       <div class="form-group">
         <small>First Name*</small>
-        <p>John</p>
+        <p>{{ personalDetails.first_name }}</p>
       </div>
 
       <div class="form-group">
         <small>Last Name*</small>
-        <p>Watson</p>
+        <p>{{ personalDetails.last_name }}</p>
       </div>
 
       <div class="form-group">
         <small>Email*</small>
-        <p>Johnwatson@example.com</p>
+        <p>{{ personalDetails.user_email }}</p>
       </div>
 
       <div class="form-group">
         <small>Phone Number*</small>
         <div class="phone-number">
-          <p>+</p>
-          <p>91</p>
-          <p>9876543210</p>
+          <p *ngIf="personalDetails.phone_number[0]">+</p>
+          <p>{{ personalDetails.phone_number[0] }}</p>
+          <p>{{ personalDetails.phone_number[1] }}</p>
         </div>
       </div>
 
@@ -49,11 +49,14 @@
 
       <div class="form-group">
         <small>Enter portfolio URL (if any)</small>
-        <p>www.myportfolio.in</p>
+        <p>{{ personalDetails.portfolio_url }}</p>
       </div>
 
       <div class="form-group">
         <small>Preferred Job Roles*</small>
+        <p *ngFor="let job_roles of personalDetails.preferred_job_roles | filterJobs: 'selected'">
+          {{ job_roles.job_title }}
+        </p>
         <p>Instructional Designer</p>
         <p>Software Quality Engineer</p>
       </div>
@@ -63,7 +66,12 @@
           >If you are registering via a referral,please mention full name of the
           employee who referred you</small
         >
-        <p>-</p>
+        <p *ngIf="personalDetails.referrer_name; else referrerdash">
+          {{ personalDetails.referrer_name }}
+        </p>
+        <ng-template #referrerdash>
+          <p>-</p>
+        </ng-template>
       </div>
     </form>
 
@@ -90,13 +98,13 @@
     <div class="educational dropdown">
       <div
         class="dropdown-toggle"
-        (click)="education.classList.toggle('open')"
-        #education
+        (click)="educationalDropdown.classList.toggle('open')"
+        #educationalDropdown
       >
         <p>Education Qualifications</p>
         <div class="dropdown-toggle-image">
           <img
-            [class.open]="education.classList.contains('open')"
+            [class.open]="educationalDropdown.classList.contains('open')"
             src="../../../../../assets/icons/arrow-down.svg"
             alt="up-down"
           />
@@ -105,48 +113,49 @@
 
       <div
         class="educational-details dropdown-content"
-        [class.open]="education.classList.contains('open')"
+        [class.open]="educationalDropdown.classList.contains('open')"
       >
         <form educationalForm="ngForm">
           <div class="form-group">
             <small>Aggregate Percentage*</small>
-            <p>65</p>
+            <p>{{educationalDetails.aggregate_percentage}}</p>
           </div>
 
           <div class="form-group">
             <small>Year of Passing*</small>
-            <p>2021</p>
+            <p>{{educationalDetails.year_of_passing}}</p>
           </div>
 
           <div class="select-container">
             <!-- qualification -->
             <div class="form-select">
               <small>Qualification*</small>
-              <p>Bachelor in Technology (BTech)</p>
+              <p>{{educationalDetails.qualification}}</p>
             </div>
 
             <!-- stream -->
             <div class="form-select">
               <small>Stream*</small>
-              <p>Information Technology</p>
+              <p>{{educationalDetails.stream}}</p>
             </div>
 
             <!-- college -->
             <div class="form-select">
               <small>College*</small>
-              <p>Pune Institute of Technology (PT)</p>
+              <p>{{educationalDetails.college}}</p>
             </div>
 
             <!-- <div class="form-select"> -->
             <div class="form-group">
               <small>If Others, Please Enter Your College Name</small>
+              <p *ngIf="">{{educationalDetails.other_college}}</p>
               <p>-</p>
             </div>
           </div>
 
           <div class="form-group">
             <small>Where is your college located?</small>
-            <p>Pune</p>
+            <p>{{educationalDetails.college_location}}</p>
           </div>
         </form>
       </div>
@@ -156,13 +165,13 @@
     <div class="professional dropdown">
       <div
         class="dropdown-toggle"
-        (click)="professional.classList.toggle('open')"
-        #professional
+        (click)="professionalDropdown.classList.toggle('open')"
+        #professionalDropdown
       >
         <p>Professional Qualifications</p>
         <div class="dropdown-toggle-image">
           <img
-            [class.open]="professional.classList.contains('open')"
+            [class.open]="professionalDropdown.classList.contains('open')"
             src="../../../../../assets/icons/arrow-down.svg"
             alt="up-down"
           />
@@ -171,7 +180,7 @@
 
       <div
         class="professional-details dropdown-content"
-        [class.open]="professional.classList.contains('open')"
+        [class.open]="professionalDropdown.classList.contains('open')"
       >
         <small>Applicant Type*</small>
         <p class="applicant-type">{{ applicant_type }}</p>

@@ -50,6 +50,11 @@ body {
   cursor: pointer;
 }
 
+.btn-disabled {
+  opacity: 0.5;
+  cursor: unset;
+}
+
 @media (max-width: 768px) {
   .container {
     padding: 0 1rem;
@@ -138,12 +143,22 @@ form small {
   position: relative;
 }
 
+.select:active {
+  border-radius: 2px;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
 .select .option-toggle {
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #ccc;
 }
 
+.select .option-toggle.open
+{
+  border-radius: 2px;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
 .select .option-toggle p {
   font-size: 1rem;
   font-family: QuicksandBold, sans-serif;
@@ -156,12 +171,13 @@ form small {
   display: none;
   position: absolute;
   z-index: 2;
-  margin-top: 0.25rem;
+  padding: 0.5rem 0;
+  border-radius: 5px;
   width: 100%;
   max-height: 150px;
   overflow: auto;
   background-color: #fff;
-  box-shadow: 0 4px 6px #00000029;
+  box-shadow: -1px 2px 1px 1px #00000029;
 }
 
 .options .option {
@@ -175,7 +191,7 @@ form small {
 }
 
 .select .options .option:hover {
-  background-color: #dce4ed;
+  background-color: #DEDEDE;
 }
 
 .select .option-toggle img.open {
@@ -262,6 +278,7 @@ form small {
 /* error messages */
 input:focus {
   outline: none;
+  border-radius: 2px;
   box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
 }
 

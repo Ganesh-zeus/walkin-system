@@ -3,13 +3,13 @@
   <div class="educational dropdown">
     <div
       class="dropdown-toggle"
-      (click)="education.classList.toggle('open')"
-      #education
+      (click)="educationalDropdown.classList.toggle('open')"
+      #educationalDropdown
     >
       <p>Education Qualifications</p>
       <div class="dropdown-toggle-image">
         <img
-          [class.open]="education.classList.contains('open')"
+          [class.open]="educationalDropdown.classList.contains('open')"
           src="../../../../../assets/icons/arrow-down.svg"
           alt="up-down"
         />
@@ -18,17 +18,34 @@
 
     <div
       class="educational-details dropdown-content"
-      [class.open]="education.classList.contains('open')"
+      [class.open]="educationalDropdown.classList.contains('open')"
     >
-      <form educationalForm="ngForm">
+      <form #educationalForm="ngForm">
+        {{ educationalForm.valid }}
         <div class="form-group">
           <small>Aggregate Percentage*</small>
-          <input type="text" name="aggregate_percentage" />
+          <input
+            type="text"
+            name="aggregate_percentage"
+            #aggregate_percentage="ngModel"
+            [class.err]="
+              aggregate_percentage.touched && aggregate_percentage.invalid
+            "
+            [(ngModel)]="educationalQualifications.aggregate_percentage"
+            required
+          />
         </div>
 
         <div class="form-group">
           <small>Year of Passing*</small>
-          <input type="tel" name="year_of_passing" />
+          <input
+            type="tel"
+            name="year_of_passing"
+            #year_of_passing="ngModel"
+            [class.err]="year_of_passing.touched && year_of_passing.invalid"
+            [(ngModel)]="educationalQualifications.year_of_passing"
+            required
+          />
         </div>
 
         <div class="select-container">
@@ -42,7 +59,7 @@
                 (click)="qualificationRef.classList.toggle('open')"
                 #qualificationRef
               >
-                <p>Bachelor in Technology (B.Tech)</p>
+                <p>{{ educationalQualifications.qualification }}</p>
                 <img
                   [class.open]="qualificationRef.classList.contains('open')"
                   src="../../../../../assets/icons/arrow-down.svg"
@@ -50,11 +67,22 @@
                 />
               </div>
               <div
+                *ngIf="qualifications"
                 class="options"
                 [class.open]="qualificationRef.classList.contains('open')"
               >
-                <div class="option">Bachelor in Technology (B.Tech)</div>
-                <div class="option">Bachelor in Engineering (B.E)</div>
+                <!-- qualifications -->
+                <div
+                  class="option"
+                  *ngFor="let qualification of qualifications"
+                  (click)="
+                    qualificationRef.classList.toggle('open');
+                    educationalQualifications.qualification =
+                      qualification.qualification_name
+                  "
+                >
+                  {{ qualification.qualification_name }}
+                </div>
               </div>
             </div>
           </div>
@@ -69,7 +97,7 @@
                 (click)="streamRef.classList.toggle('open')"
                 #streamRef
               >
-                <p>Information Technology</p>
+                <p>{{ educationalQualifications.stream }}</p>
                 <img
                   [class.open]="streamRef.classList.contains('open')"
                   src="../../../../../assets/icons/arrow-down.svg"
@@ -80,8 +108,16 @@
                 class="options"
                 [class.open]="streamRef.classList.contains('open')"
               >
-                <div class="option">Information Technology</div>
-                <div class="option">Computer Engineering</div>
+                <div
+                  class="option"
+                  *ngFor="let stream of streams"
+                  (click)="
+                    streamRef.classList.toggle('open');
+                    educationalQualifications.stream = stream.stream_name
+                  "
+                >
+                  {{ stream.stream_name }}
+                </div>
               </div>
             </div>
           </div>
@@ -96,7 +132,7 @@
                 (click)="collegeRef.classList.toggle('open')"
                 #collegeRef
               >
-                <p>Vidyalankar Institute of Technology</p>
+                <p>{{ educationalQualifications.college }}</p>
                 <img
                   [class.open]="collegeRef.classList.contains('open')"
                   src="../../../../../assets/icons/arrow-down.svg"
@@ -107,24 +143,42 @@
                 class="options"
                 [class.open]="collegeRef.classList.contains('open')"
               >
-                <div class="option">
-                  Vidyalankar Institute of Technology Institute of Technology
+                <div
+                  class="option"
+                  *ngFor="let college of colleges"
+                  (click)="
+                    collegeRef.classList.toggle('open');
+                    educationalQualifications.college = college.college_name
+                  "
+                >
+                  {{ college.college_name }}
                 </div>
-                <div class="option">College of Engineering Pune</div>
               </div>
             </div>
           </div>
 
-          <!-- <div class="form-select"> -->
           <div class="form-group">
             <small>If Others, Please Enter Your College Name</small>
-            <input type="text" />
+            <input
+              type="text"
+              name="other_college"
+              #other_college="ngModel"
+              [class.err]="other_college.touched && other_college.invalid"
+              [(ngModel)]="educationalQualifications.other_college"
+            />
           </div>
         </div>
 
         <div class="form-group">
-          <small>Where is your college located?</small>
-          <input type="text" name="aggregate_percentage" />
+          <small>Where is your college located?*</small>
+          <input
+            type="text"
+            name="college_location"
+            #college_location="ngModel"
+            [class.err]="college_location.touched && college_location.invalid"
+            [(ngModel)]="educationalQualifications.college_location"
+            required
+          />
         </div>
       </form>
     </div>
@@ -134,13 +188,13 @@
   <div class="professional dropdown">
     <div
       class="dropdown-toggle"
-      (click)="professional.classList.toggle('open')"
-      #professional
+      (click)="professionalDropdown.classList.toggle('open')"
+      #professionalDropdown
     >
       <p>Professional Qualifications</p>
       <div class="dropdown-toggle-image">
         <img
-          [class.open]="professional.classList.contains('open')"
+          [class.open]="professionalDropdown.classList.contains('open')"
           src="../../../../../assets/icons/arrow-down.svg"
           alt="up-down"
         />
@@ -149,7 +203,7 @@
 
     <div
       class="professional-details dropdown-content"
-      [class.open]="professional.classList.contains('open')"
+      [class.open]="professionalDropdown.classList.contains('open')"
     >
       <form #applicantTypeForm="ngForm">
         <div class="form-radio">
@@ -200,22 +254,46 @@
     <form #exeperiencedForm="ngForm">
       <div class="form-group">
         <small>Years Of Experience*</small>
-        <input type="text" name="aggregate_percentage" />
+        <!-- <input type="text" name="aggregate_percentage" /> -->
+        <input
+          type="text"
+          name="years_of_experience"
+          #years_of_experience="ngModel"
+          [class.err]="years_of_experience.touched && years_of_experience.invalid"
+          [(ngModel)]="experiencedQualifications.years_of_experience"
+        />
       </div>
 
       <div class="form-group">
         <small>Current CTC* (In Rupees)</small>
-        <input type="text" name="aggregate_percentage" />
+        <!-- <input type="text" name="aggregate_percentage" /> -->
+        <input
+          type="text"
+          name="current_ctc"
+          #current_ctc="ngModel"
+          [class.err]="current_ctc.touched && current_ctc.invalid"
+          [(ngModel)]="experiencedQualifications.current_ctc"
+        />
       </div>
 
       <div class="form-group">
         <small>Expected CTC* (In Rupees)</small>
-        <input type="text" name="aggregate_percentage" />
+        <!-- <input type="text" name="aggregate_percentage" /> -->
+        <input
+          type="text"
+          name="expected_ctc"
+          #expected_ctc="ngModel"
+          [class.err]="expected_ctc.touched && expected_ctc.invalid"
+          [(ngModel)]="experiencedQualifications.expected_ctc"
+        />
       </div>
 
       <div class="form-checkbox-container">
         <small>Select all The technologies you are expertise in*</small>
-        <div class="form-checkbox" *ngFor="let technology of technologies">
+        <div
+          class="form-checkbox"
+          *ngFor="let technology of experienced_expertise_technologies"
+        >
           <div
             class="form-checkbox-input"
             (click)="technology.selected = !technology.selected"
@@ -237,12 +315,22 @@
 
       <div class="form-group w-lg">
         <small>If others,please mention</small>
-        <input type="text" />
+        <!-- <input type="text" /> -->
+        <input
+          type="text"
+          name="other_expertise_technologies"
+          #other_expertise_technologies="ngModel"
+          [class.err]="other_expertise_technologies.touched && other_expertise_technologies.invalid"
+          [(ngModel)]="experiencedQualifications.other_expertise_technologies"
+        />
       </div>
 
       <div class="form-checkbox-container">
         <small>Select all The technologies you are familiar in*</small>
-        <div class="form-checkbox" *ngFor="let technology of technologies">
+        <div
+          class="form-checkbox"
+          *ngFor="let technology of experienced_familiar_technologies"
+        >
           <div
             class="form-checkbox-input"
             (click)="technology.selected = !technology.selected"
@@ -264,7 +352,14 @@
 
       <div class="form-group w-lg">
         <small>If others,please mention</small>
-        <input type="text" />
+        <!-- <input type="text" /> -->
+        <input
+          type="text"
+          name="other_familiar_technologies"
+          #other_familiar_technologies="ngModel"
+          [class.err]="other_familiar_technologies.touched && other_familiar_technologies.invalid"
+          [(ngModel)]="experiencedQualifications.other_familiar_technologies"
+        />
       </div>
 
       <div class="form-radio">
@@ -315,12 +410,26 @@
       <div class="notice-period">
         <div class="form-group w-lg">
           <small>If yes,when will your notice period end?*</small>
-          <input type="text" />
+          <!-- <input type="text" /> -->
+          <input
+          type="text"
+          name="notice_period_end"
+          #notice_period_end="ngModel"
+          [class.err]="notice_period_end.touched && notice_period_end.invalid"
+          [(ngModel)]="experiencedQualifications.notice_period_end"
+        />
         </div>
 
         <div class="form-group w-lg">
           <small>how long is your notice period?* (mention in months)</small>
-          <input type="text" />
+          <!-- <input type="text" /> -->
+          <input
+          type="text"
+          name="notice_period_months"
+          #notice_period_months="ngModel"
+          [class.err]="notice_period_months.touched && notice_period_months.invalid"
+          [(ngModel)]="experiencedQualifications.notice_period_months"
+        />
         </div>
       </div>
 
@@ -368,7 +477,14 @@
 
       <div class="form-group w-lg">
         <small>If yes,which role did you apply for?</small>
-        <input type="text" />
+        <!-- <input type="text" /> -->
+        <input
+          type="text"
+          name="notice_period_months"
+          #notice_period_months="ngModel"
+          [class.err]="notice_period_months.touched && notice_period_months.invalid"
+          [(ngModel)]="experiencedQualifications.notice_period_months"
+        />
       </div>
     </form>
   </div>
@@ -377,7 +493,10 @@
     <form #fresherForm="ngForm">
       <div class="form-checkbox-container">
         <small>Select all The technologies you are familiar in*</small>
-        <div class="form-checkbox" *ngFor="let technology of technologies">
+        <div
+          class="form-checkbox"
+          *ngFor="let technology of fresher_familiar_technologies"
+        >
           <div
             class="form-checkbox-input"
             (click)="technology.selected = !technology.selected"
@@ -441,13 +560,22 @@
 
       <div class="form-group w-100">
         <small>If others,please mention</small>
-        <input type="text" />
+        <!-- <input type="text" /> -->
+        <input
+          type="text"
+          name="role_appeared_before"
+          #role_appeared_before="ngModel"
+          [class.err]="role_appeared_before.touched && role_appeared_before.invalid"
+          [(ngModel)]="fresherQualifications.role_appeared_before"
+        />
       </div>
     </form>
   </div>
 </div>
 
 <div class="btn-group center">
-  <button class="btn-success previous" (click)="navigateTo('personal')">PREVIOUS</button>
+  <button class="btn-success previous" (click)="navigateTo('personal')">
+    PREVIOUS
+  </button>
   <button class="btn-success" (click)="navigateTo('review')">NEXT</button>
 </div>

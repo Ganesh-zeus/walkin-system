@@ -1,5 +1,5 @@
 import { IDescription } from "./description.model";
-import { IJobRole } from "./job-role.model";
+import { IJobRole, IJobRoleDetails } from "./job-role.model";
 
 export interface ITimeSlot {
   id: number;
@@ -13,7 +13,7 @@ export interface IWalkin {
   dates: string[];
   location: string;
   opportunities: string[];
-  job_roles: IJobRole[]; 
+  job_roles: IJobRoleDetails[]; 
   prerequisites: IDescription[];
   time_slots: ITimeSlot[];
   preffered_job_roles: IJobRole[];
