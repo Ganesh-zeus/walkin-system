@@ -16,6 +16,7 @@
 
 .applicant-type {
   margin-top:1rem;
+  font-family: QuicksandBold, sans-serif;
   text-transform: capitalize;
 }
 
@@ -36,6 +37,11 @@
   background-color: #fff;
   padding: 2rem;
   margin-top: 2rem;
+}
+
+.experienced-details p,
+.fresher-details p {
+  font-family: QuicksandBold, sans-serif;
 }
 
 .notice-period {

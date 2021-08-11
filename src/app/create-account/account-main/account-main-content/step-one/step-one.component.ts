@@ -10,14 +10,6 @@ import { IPersonalDetails } from 'src/app/shared/models/user.model';
   styleUrls: ['./step-one.component.css'],
 })
 export class StepOneComponent implements OnInit {
-  // job_roles: IJobRole[] = [
-  //   { id: 1, selected: true, job_title: 'Instructional Designer' },
-  //   { id: 2, selected: false, job_title: 'Software Engineer' },
-  //   { id: 3, selected: true, job_title: 'Software Quality Engineer' },
-  // ];
-
-  // job_roles: IJobRole[] = [];
-
   personal: IPersonalDetails = {} as any;
 
   constructor(
@@ -31,8 +23,10 @@ export class StepOneComponent implements OnInit {
   }
 
   navigateTo(isFormValid: boolean | null, path: string) {
+    this.userService.stepOneIsValid = false;
+
     if (isFormValid) {
-      console.log(this.userService.personalDetails);
+      this.userService.stepOneIsValid = true;
       this.router.navigate(['../', path], { relativeTo: this.route });
     }
   }

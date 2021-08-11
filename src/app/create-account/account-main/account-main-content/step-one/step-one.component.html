@@ -87,7 +87,10 @@
 
     <div class="form-checkbox-container">
       <small>Preferred Job Roles*</small>
-      <div class="form-checkbox" *ngFor="let job_role of personal.preferred_job_roles">
+      <div
+        class="form-checkbox"
+        *ngFor="let job_role of personal.preferred_job_roles"
+      >
         <div
           class="form-checkbox-input"
           (click)="job_role.selected = !job_role.selected"

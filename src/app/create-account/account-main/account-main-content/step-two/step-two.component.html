@@ -32,6 +32,7 @@
               aggregate_percentage.touched && aggregate_percentage.invalid
             "
             [(ngModel)]="educationalQualifications.aggregate_percentage"
+            pattern="^[0-9]{1,2}$"
             required
           />
         </div>
@@ -44,6 +45,7 @@
             #year_of_passing="ngModel"
             [class.err]="year_of_passing.touched && year_of_passing.invalid"
             [(ngModel)]="educationalQualifications.year_of_passing"
+            pattern="^[0-9]{4}$"
             required
           />
         </div>
@@ -165,6 +167,7 @@
               #other_college="ngModel"
               [class.err]="other_college.touched && other_college.invalid"
               [(ngModel)]="educationalQualifications.other_college"
+              pattern="^[a-zA-Z]*$"
             />
           </div>
         </div>
@@ -177,6 +180,7 @@
             #college_location="ngModel"
             [class.err]="college_location.touched && college_location.invalid"
             [(ngModel)]="educationalQualifications.college_location"
+            pattern="^[a-zA-Z]*$"
             required
           />
         </div>
@@ -187,7 +191,7 @@
   <!-- professional qualifications -->
   <div class="professional dropdown">
     <div
-      class="dropdown-toggle"
+      class="dropdown-toggle open"
       (click)="professionalDropdown.classList.toggle('open')"
       #professionalDropdown
     >
@@ -212,36 +216,36 @@
             <div
               class="form-radio-item"
               name="applicant-type"
-              (click)="applicant_type = 'fresher'"
+              (click)="toggleApplicantType()"
             >
               <img
-                *ngIf="applicant_type === 'fresher'"
+                *ngIf="applicant_type === APPLICANT_TYPE[0]"
                 src="../../../../../assets/icons/radio-button-checked.svg"
                 alt="selected"
               />
               <img
-                *ngIf="applicant_type !== 'fresher'"
+                *ngIf="applicant_type !== APPLICANT_TYPE[0]"
                 src="../../../../../assets/icons/radio-button-unchecked.svg"
                 alt="not selected"
               />
-              <p>Fresher</p>
+              <p>{{ APPLICANT_TYPE[0] }}</p>
             </div>
             <div
               class="form-radio-item"
               name="applicant-type"
-              (click)="applicant_type = 'experienced'"
+              (click)="toggleApplicantType()"
             >
               <img
-                *ngIf="applicant_type === 'experienced'"
+                *ngIf="applicant_type === APPLICANT_TYPE[1]"
                 src="../../../../../assets/icons/radio-button-checked.svg"
                 alt="selected"
               />
               <img
-                *ngIf="applicant_type !== 'experienced'"
+                *ngIf="applicant_type !== APPLICANT_TYPE[1]"
                 src="../../../../../assets/icons/radio-button-unchecked.svg"
                 alt="not selected"
               />
-              <p>Experienced</p>
+              <p>{{ APPLICANT_TYPE[1] }}</p>
             </div>
           </div>
         </div>
@@ -250,41 +254,50 @@
   </div>
 
   <!-- experienced-details -->
-  <div *ngIf="applicant_type === 'experienced'" class="experienced-details">
+  <div *ngIf="applicant_type === APPLICANT_TYPE[1]" class="experienced-details">
     <form #exeperiencedForm="ngForm">
+      {{ exeperiencedForm.valid }}
       <div class="form-group">
         <small>Years Of Experience*</small>
-        <!-- <input type="text" name="aggregate_percentage" /> -->
+
         <input
           type="text"
           name="years_of_experience"
           #years_of_experience="ngModel"
-          [class.err]="years_of_experience.touched && years_of_experience.invalid"
+          [class.err]="
+            years_of_experience.touched && years_of_experience.invalid
+          "
           [(ngModel)]="experiencedQualifications.years_of_experience"
+          pattern="^[0-9]{1,2}$"
+          [required]="applicant_type === APPLICANT_TYPE[1]"
         />
       </div>
 
       <div class="form-group">
         <small>Current CTC* (In Rupees)</small>
-        <!-- <input type="text" name="aggregate_percentage" /> -->
+
         <input
           type="text"
           name="current_ctc"
           #current_ctc="ngModel"
           [class.err]="current_ctc.touched && current_ctc.invalid"
           [(ngModel)]="experiencedQualifications.current_ctc"
+          pattern="^[0-9]{1,}$"
+          [required]="applicant_type === APPLICANT_TYPE[1]"
         />
       </div>
 
       <div class="form-group">
         <small>Expected CTC* (In Rupees)</small>
-        <!-- <input type="text" name="aggregate_percentage" /> -->
+
         <input
           type="text"
           name="expected_ctc"
           #expected_ctc="ngModel"
           [class.err]="expected_ctc.touched && expected_ctc.invalid"
           [(ngModel)]="experiencedQualifications.expected_ctc"
+          pattern="^[0-9]{1,}$"
+          [required]="applicant_type === APPLICANT_TYPE[1]"
         />
       </div>
 
@@ -292,11 +305,14 @@
         <small>Select all The technologies you are expertise in*</small>
         <div
           class="form-checkbox"
-          *ngFor="let technology of experienced_expertise_technologies"
+          *ngFor="
+            let technology of experienced_expertise_technologies;
+            let idx = index
+          "
         >
           <div
             class="form-checkbox-input"
-            (click)="technology.selected = !technology.selected"
+            (click)="toggleTechnologySelected(TECHNOLOGY_TYPE[2], idx)"
           >
             <img
               *ngIf="technology.selected"
@@ -314,13 +330,17 @@
       </div>
 
       <div class="form-group w-lg">
-        <small>If others,please mention</small>
-        <!-- <input type="text" /> -->
+        <small>If others, please mention</small>
+
         <input
           type="text"
           name="other_expertise_technologies"
           #other_expertise_technologies="ngModel"
-          [class.err]="other_expertise_technologies.touched && other_expertise_technologies.invalid"
+          [class.err]="
+            other_expertise_technologies.touched &&
+            other_expertise_technologies.invalid
+          "
+          pattern="^[a-zA-Z]*$"
           [(ngModel)]="experiencedQualifications.other_expertise_technologies"
         />
       </div>
@@ -329,11 +349,14 @@
         <small>Select all The technologies you are familiar in*</small>
         <div
           class="form-checkbox"
-          *ngFor="let technology of experienced_familiar_technologies"
+          *ngFor="
+            let technology of experienced_familiar_technologies;
+            let idx = index
+          "
         >
           <div
             class="form-checkbox-input"
-            (click)="technology.selected = !technology.selected"
+            (click)="toggleTechnologySelected(TECHNOLOGY_TYPE[1], idx)"
           >
             <img
               *ngIf="technology.selected"
@@ -351,13 +374,17 @@
       </div>
 
       <div class="form-group w-lg">
-        <small>If others,please mention</small>
-        <!-- <input type="text" /> -->
+        <small>If others, please mention</small>
+
         <input
           type="text"
           name="other_familiar_technologies"
           #other_familiar_technologies="ngModel"
-          [class.err]="other_familiar_technologies.touched && other_familiar_technologies.invalid"
+          [class.err]="
+            other_familiar_technologies.touched &&
+            other_familiar_technologies.invalid
+          "
+          pattern="^[a-zA-Z]*$"
           [(ngModel)]="experiencedQualifications.other_familiar_technologies"
         />
       </div>
@@ -369,9 +396,7 @@
           <div
             class="form-radio-item"
             name="notice-period"
-            (click)="
-              currently_under_notice_period = !currently_under_notice_period
-            "
+            (click)="toggleNoticePeriodStatus()"
           >
             <img
               *ngIf="currently_under_notice_period"
@@ -388,9 +413,7 @@
           <div
             class="form-radio-item"
             name="notice-period"
-            (click)="
-              currently_under_notice_period = !currently_under_notice_period
-            "
+            (click)="toggleNoticePeriodStatus()"
           >
             <img
               *ngIf="!currently_under_notice_period"
@@ -410,26 +433,36 @@
       <div class="notice-period">
         <div class="form-group w-lg">
           <small>If yes,when will your notice period end?*</small>
-          <!-- <input type="text" /> -->
           <input
-          type="text"
-          name="notice_period_end"
-          #notice_period_end="ngModel"
-          [class.err]="notice_period_end.touched && notice_period_end.invalid"
-          [(ngModel)]="experiencedQualifications.notice_period_end"
-        />
+            type="date"
+            name="notice_period_end"
+            #notice_period_end="ngModel"
+            [class.err]="notice_period_end.touched && notice_period_end.invalid"
+            [(ngModel)]="experiencedQualifications.notice_period_end"
+            [required]="
+              applicant_type === APPLICANT_TYPE[1] &&
+              currently_under_notice_period
+            "
+          />
         </div>
 
         <div class="form-group w-lg">
           <small>how long is your notice period?* (mention in months)</small>
-          <!-- <input type="text" /> -->
+
           <input
-          type="text"
-          name="notice_period_months"
-          #notice_period_months="ngModel"
-          [class.err]="notice_period_months.touched && notice_period_months.invalid"
-          [(ngModel)]="experiencedQualifications.notice_period_months"
-        />
+            type="text"
+            name="notice_period_months"
+            #notice_period_months="ngModel"
+            [class.err]="
+              notice_period_months.touched && notice_period_months.invalid
+            "
+            [(ngModel)]="experiencedQualifications.notice_period_months"
+            pattern="^[0-9]{1,2}$"
+            [required]="
+              applicant_type === APPLICANT_TYPE[1] &&
+              currently_under_notice_period
+            "
+          />
         </div>
       </div>
 
@@ -441,15 +474,15 @@
           <div
             class="form-radio-item"
             name="appeared-test"
-            (click)="appeared_test_before = !appeared_test_before"
+            (click)="toggleAppearedStatus(APPLICANT_TYPE[1])"
           >
             <img
-              *ngIf="appeared_test_before"
+              *ngIf="appeared_test_before[1]"
               src="../../../../../assets/icons/radio-button-checked.svg"
               alt="selected"
             />
             <img
-              *ngIf="!appeared_test_before"
+              *ngIf="!appeared_test_before[1]"
               src="../../../../../assets/icons/radio-button-unchecked.svg"
               alt="not selected"
             />
@@ -458,15 +491,15 @@
           <div
             class="form-radio-item"
             name="appeared-test"
-            (click)="appeared_test_before = !appeared_test_before"
+            (click)="toggleAppearedStatus(APPLICANT_TYPE[1])"
           >
             <img
-              *ngIf="!appeared_test_before"
+              *ngIf="!appeared_test_before[1]"
               src="../../../../../assets/icons/radio-button-checked.svg"
               alt="selected"
             />
             <img
-              *ngIf="appeared_test_before"
+              *ngIf="appeared_test_before[1]"
               src="../../../../../assets/icons/radio-button-unchecked.svg"
               alt="not selected"
             />
@@ -477,29 +510,39 @@
 
       <div class="form-group w-lg">
         <small>If yes,which role did you apply for?</small>
-        <!-- <input type="text" /> -->
+
         <input
           type="text"
-          name="notice_period_months"
-          #notice_period_months="ngModel"
-          [class.err]="notice_period_months.touched && notice_period_months.invalid"
-          [(ngModel)]="experiencedQualifications.notice_period_months"
+          name="role_appeared_before"
+          #role_appeared_before="ngModel"
+          [class.err]="
+            role_appeared_before.touched && role_appeared_before.invalid
+          "
+          [(ngModel)]="experiencedQualifications.role_appeared_before"
+          pattern="^[a-zA-Z]*$"
+          [required]="
+            applicant_type === APPLICANT_TYPE[1] && appeared_test_before[1]
+          "
         />
       </div>
     </form>
   </div>
 
-  <div *ngIf="applicant_type === 'fresher'" class="fresher-details">
+  <div *ngIf="applicant_type === APPLICANT_TYPE[0]" class="fresher-details">
     <form #fresherForm="ngForm">
+      {{ fresherForm.valid }}
       <div class="form-checkbox-container">
         <small>Select all The technologies you are familiar in*</small>
         <div
           class="form-checkbox"
-          *ngFor="let technology of fresher_familiar_technologies"
+          *ngFor="
+            let technology of fresher_familiar_technologies;
+            let idx = index
+          "
         >
           <div
             class="form-checkbox-input"
-            (click)="technology.selected = !technology.selected"
+            (click)="toggleTechnologySelected(TECHNOLOGY_TYPE[0], idx)"
           >
             <img
               *ngIf="technology.selected"
@@ -516,6 +559,22 @@
         </div>
       </div>
 
+      <div class="form-group w-lg">
+        <small>If others, please mention</small>
+
+        <input
+          type="text"
+          name="other_familiar_technologies"
+          #other_familiar_technologies="ngModel"
+          [class.err]="
+            other_familiar_technologies.touched &&
+            other_familiar_technologies.invalid
+          "
+          pattern="^[a-zA-Z]*$"
+          [(ngModel)]="fresherQualifications.other_familiar_technologies"
+        />
+      </div>
+
       <div class="form-radio">
         <small
           >Have you appeared for any Zeus test in the past 12 Months?*</small
@@ -524,15 +583,15 @@
           <div
             class="form-radio-item"
             name="appeared-test"
-            (click)="appeared_test_before = !appeared_test_before"
+            (click)="toggleAppearedStatus(APPLICANT_TYPE[0])"
           >
             <img
-              *ngIf="appeared_test_before"
+              *ngIf="appeared_test_before[0]"
               src="../../../../../assets/icons/radio-button-checked.svg"
               alt="selected"
             />
             <img
-              *ngIf="!appeared_test_before"
+              *ngIf="!appeared_test_before[0]"
               src="../../../../../assets/icons/radio-button-unchecked.svg"
               alt="not selected"
             />
@@ -541,15 +600,15 @@
           <div
             class="form-radio-item"
             name="appeared-test"
-            (click)="appeared_test_before = !appeared_test_before"
+            (click)="toggleAppearedStatus(APPLICANT_TYPE[0])"
           >
             <img
-              *ngIf="!appeared_test_before"
+              *ngIf="!appeared_test_before[0]"
               src="../../../../../assets/icons/radio-button-checked.svg"
               alt="selected"
             />
             <img
-              *ngIf="appeared_test_before"
+              *ngIf="appeared_test_before[0]"
               src="../../../../../assets/icons/radio-button-unchecked.svg"
               alt="not selected"
             />
@@ -558,15 +617,20 @@
         </div>
       </div>
 
-      <div class="form-group w-100">
-        <small>If others,please mention</small>
-        <!-- <input type="text" /> -->
+      <div class="form-group w-lg">
+        <small>If Yes,Which role did you apply For?</small>
         <input
           type="text"
           name="role_appeared_before"
           #role_appeared_before="ngModel"
-          [class.err]="role_appeared_before.touched && role_appeared_before.invalid"
+          [class.err]="
+            role_appeared_before.touched && role_appeared_before.invalid
+          "
           [(ngModel)]="fresherQualifications.role_appeared_before"
+          pattern="^[a-zA-Z]*$"
+          [required]="
+            applicant_type === APPLICANT_TYPE[0] && appeared_test_before[0]
+          "
         />
       </div>
     </form>

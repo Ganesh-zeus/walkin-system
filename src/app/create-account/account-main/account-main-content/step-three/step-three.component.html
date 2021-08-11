@@ -54,11 +54,9 @@
 
       <div class="form-group">
         <small>Preferred Job Roles*</small>
-        <p *ngFor="let job_roles of personalDetails.preferred_job_roles | filterJobs: 'selected'">
+        <p *ngFor="let job_roles of personalDetails.preferred_job_roles">
           {{ job_roles.job_title }}
         </p>
-        <p>Instructional Designer</p>
-        <p>Software Quality Engineer</p>
       </div>
 
       <div class="form-group referral">
@@ -97,7 +95,7 @@
     <!-- education qualifications -->
     <div class="educational dropdown">
       <div
-        class="dropdown-toggle"
+        class="dropdown-toggle open"
         (click)="educationalDropdown.classList.toggle('open')"
         #educationalDropdown
       >
@@ -118,44 +116,43 @@
         <form educationalForm="ngForm">
           <div class="form-group">
             <small>Aggregate Percentage*</small>
-            <p>{{educationalDetails.aggregate_percentage}}</p>
+            <p>{{ educationalDetails.aggregate_percentage }}</p>
           </div>
 
           <div class="form-group">
             <small>Year of Passing*</small>
-            <p>{{educationalDetails.year_of_passing}}</p>
+            <p>{{ educationalDetails.year_of_passing }}</p>
           </div>
 
           <div class="select-container">
             <!-- qualification -->
             <div class="form-select">
               <small>Qualification*</small>
-              <p>{{educationalDetails.qualification}}</p>
+              <p>{{ educationalDetails.qualification }}</p>
             </div>
 
             <!-- stream -->
             <div class="form-select">
               <small>Stream*</small>
-              <p>{{educationalDetails.stream}}</p>
+              <p>{{ educationalDetails.stream }}</p>
             </div>
 
             <!-- college -->
             <div class="form-select">
               <small>College*</small>
-              <p>{{educationalDetails.college}}</p>
+              <p>{{ educationalDetails.college }}</p>
             </div>
 
-            <!-- <div class="form-select"> -->
             <div class="form-group">
               <small>If Others, Please Enter Your College Name</small>
-              <p *ngIf="">{{educationalDetails.other_college}}</p>
+              <p *ngIf="">{{ educationalDetails.other_college }}</p>
               <p>-</p>
             </div>
           </div>
 
           <div class="form-group">
             <small>Where is your college located?</small>
-            <p>{{educationalDetails.college_location}}</p>
+            <p>{{ educationalDetails.college_location }}</p>
           </div>
         </form>
       </div>
@@ -164,7 +161,7 @@
     <!-- professional qualifications -->
     <div class="professional dropdown">
       <div
-        class="dropdown-toggle"
+        class="dropdown-toggle open"
         (click)="professionalDropdown.classList.toggle('open')"
         #professionalDropdown
       >
@@ -188,57 +185,77 @@
     </div>
 
     <!-- experienced-details -->
-    <div *ngIf="applicant_type === 'experienced'" class="experienced-details">
+    <div
+      *ngIf="applicant_type === APPLICANT_TYPE[1]"
+      class="experienced-details"
+    >
       <form #exeperiencedForm="ngForm">
         <div class="form-group">
           <small>Years Of Experience*</small>
+          <p>{{ experiencedDetails.years_of_experience }}</p>
         </div>
 
         <div class="form-group">
           <small>Current CTC* (In Rupees)</small>
-          <p>5,00,000</p>
+          <p>{{ experiencedDetails.current_ctc }}</p>
         </div>
 
         <div class="form-group">
           <small>Expected CTC* (In Rupees)</small>
-          <p>6,00,000</p>
+          <p>{{ experiencedDetails.expected_ctc }}</p>
         </div>
 
         <div class="form-group">
           <small>Select all The technologies you are expertise in*</small>
-          <p>JavaScript</p>
+          <p *ngFor="let technology of experienced_expertise_technologies">
+            {{ technology.title }}
+          </p>
         </div>
 
         <div class="form-group w-lg">
           <small>If others,please mention</small>
-          <p>-</p>
+          <p *ngIf="experiencedDetails.other_expertise_technologies">
+            {{ experiencedDetails.other_expertise_technologies }}
+          </p>
+          <p *ngIf="!experiencedDetails.other_expertise_technologies">-</p>
         </div>
 
         <div class="form-group">
           <small>Select all The technologies you are familiar in*</small>
-          <p>AngularJS</p>
-          <p>ReactJS</p>
+          <p *ngFor="let technology of experienced_familiar_technologies">
+            {{ technology.title }}
+          </p>
         </div>
 
         <div class="form-group w-lg">
           <small>If others,please mention</small>
-          <p>-</p>
+          <p *ngIf="experiencedDetails.other_familiar_technologies">
+            {{ experiencedDetails.other_familiar_technologies }}
+          </p>
+          <p *ngIf="!experiencedDetails.other_familiar_technologies">-</p>
         </div>
 
         <div class="form-group">
           <small>Are you currently under notice period?*</small>
-          <p>Yes</p>
+          <p *ngIf="currently_under_notice_period">Yes</p>
+          <p *ngIf="!currently_under_notice_period">No</p>
         </div>
 
         <div class="notice-period">
           <div class="form-group w-lg">
             <small>If yes,when will your notice period end?*</small>
-            <p>20 May 2020</p>
+            <p *ngIf="experiencedDetails.notice_period_end">
+              {{ experiencedDetails.notice_period_end }}
+            </p>
+            <p *ngIf="!experiencedDetails.notice_period_end">-</p>
           </div>
 
           <div class="form-group w-lg">
             <small>how long is your notice period?* (mention in months)</small>
-            <p>2 months</p>
+            <p *ngIf="experiencedDetails.notice_period_months">
+              {{ experiencedDetails.notice_period_months }} months
+            </p>
+            <p *ngIf="experiencedDetails.notice_period_months">-</p>
           </div>
         </div>
 
@@ -246,85 +263,43 @@
           <small
             >Have you appeared for any Zeus test in the past 12 Months?*</small
           >
-          <p>No</p>
+          <p *ngIf="appeared_test_before[1]">Yes</p>
+          <p *ngIf="!appeared_test_before[1]">No</p>
         </div>
 
         <div class="form-group w-lg">
           <small>If yes,which role did you apply for?</small>
-          <p>-</p>
+          <p *ngIf="experiencedDetails.role_appeared_before">
+            {{ experiencedDetails.role_appeared_before }}
+          </p>
+          <p *ngIf="!experiencedDetails.role_appeared_before">-</p>
         </div>
       </form>
     </div>
 
-    <div *ngIf="applicant_type === 'fresher'" class="fresher-details">
+    <div *ngIf="applicant_type === APPLICANT_TYPE[0]" class="fresher-details">
       <form #fresherForm="ngForm">
         <div class="form-checkbox-container">
           <small>Select all The technologies you are familiar in*</small>
-          <div class="form-checkbox" *ngFor="let technology of technologies">
-            <div
-              class="form-checkbox-input"
-              (click)="technology.selected = !technology.selected"
-            >
-              <img
-                *ngIf="technology.selected"
-                src="../../../../../assets/icons/checkbox-checked.svg"
-                alt="checked"
-              />
-              <img
-                *ngIf="!technology.selected"
-                src="../../../../../assets/icons/checkbox-unchecked.svg"
-                alt="unchecked"
-              />
-            </div>
-            <p class="form-checkbox-label">{{ technology.title }}</p>
-          </div>
+          <p *ngFor="let technology of fresher_familiar_technologies">
+            {{ technology.title }}
+          </p>
         </div>
 
         <div class="form-radio">
           <small
             >Have you appeared for any Zeus test in the past 12 Months?*</small
           >
-          <div class="form-radio-items">
-            <div
-              class="form-radio-item"
-              name="appeared-test"
-              (click)="appeared_test_before = !appeared_test_before"
-            >
-              <img
-                *ngIf="appeared_test_before"
-                src="../../../../../assets/icons/radio-button-checked.svg"
-                alt="selected"
-              />
-              <img
-                *ngIf="!appeared_test_before"
-                src="../../../../../assets/icons/radio-button-unchecked.svg"
-                alt="not selected"
-              />
-              <p>Yes</p>
-            </div>
-            <div
-              class="form-radio-item"
-              name="appeared-test"
-              (click)="appeared_test_before = !appeared_test_before"
-            >
-              <img
-                *ngIf="!appeared_test_before"
-                src="../../../../../assets/icons/radio-button-checked.svg"
-                alt="selected"
-              />
-              <img
-                *ngIf="appeared_test_before"
-                src="../../../../../assets/icons/radio-button-unchecked.svg"
-                alt="not selected"
-              />
-              <p>No</p>
-            </div>
-          </div>
+          <p *ngIf="appeared_test_before[0]">Yes</p>
+          <p *ngIf="!appeared_test_before[0]">No</p>
         </div>
 
         <div class="form-group w-100">
-          <small>If others,please mention</small>
-          <input type="text" />
+          <small>If Yes,Which role did you apply For?</small>
+          <p *ngIf="experiencedDetails.role_appeared_before">
+            {{ experiencedDetails.role_appeared_before }}
+          </p>
+          <p *ngIf="!experiencedDetails.role_appeared_before">-</p>
         </div>
       </form>
     </div>

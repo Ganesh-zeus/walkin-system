@@ -1,9 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, OnInit } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
-import { catchError, tap } from 'rxjs/operators';
-import { IJobRole } from 'src/app/shared/models/job-role.model';
-import { ITechnologies } from 'src/app/shared/models/technologies.model';
+import { Injectable } from '@angular/core';
+import { throwError } from 'rxjs';
+
+// model imports
 import {
   ICollege,
   IEducationalQualifications,
@@ -14,6 +13,9 @@ import {
   IQualification,
   IStream,
 } from 'src/app/shared/models/user.model';
+import { ITechnologies } from 'src/app/shared/models/technologies.model';
+
+// service imports
 import { CollegeService } from './college.service';
 import { JobRoleService } from './job-role.service';
 import { QualificationService } from './qualification.service';
@@ -25,6 +27,9 @@ import { TechnologyService } from './technology.service';
 })
 export class UserService {
   api_url: string = 'http://localhost:3000';
+
+  stepOneIsValid:boolean;
+  stepTwoIsValid:boolean;
 
   // User form details
   personalDetails: IPersonalDetails = {} as any;
@@ -39,11 +44,14 @@ export class UserService {
   colleges: ICollege[] = [];
 
   // technologies
-  fresher_familiar_technologies: ITechnologies[];
-  experienced_familiar_technologies: ITechnologies[];
-  experienced_expertise_technologies: ITechnologies[];
+  fresher_familiar_technologies: ITechnologies[] = [];
+  experienced_familiar_technologies: ITechnologies[] = [];
+  experienced_expertise_technologies: ITechnologies[] = [];
 
-  applicant_type:string = 'fresher';
+  applicant_type: string = 'Fresher';
+  // 0:fresher, 1:experienced
+  appeared_test_before: [boolean, boolean] = [false, false];
+  currently_under_notice_period: boolean = false;
 
   constructor(
     private httpClient: HttpClient,
@@ -55,9 +63,6 @@ export class UserService {
   ) {
     // necessary initialization
     this.personalDetails.phone_number = new Array(2);
-    this.fresherQualifications.familiar_technologies = [];
-    this.experiencedQualifications.familiar_technologies = [];
-    this.experiencedQualifications.expertise_technologies = [];
 
     // get preferred job roles
     this.jobRoleService.getJobRoles().subscribe((_jobRoles) => {
