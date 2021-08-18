@@ -44,13 +44,6 @@ export class StepTwoComponent implements OnInit {
     return this.fresherForm.valid;
   }
 
-  // technologies: ITechnologies[] = [
-  //   { id: 1, title: 'JavaScript', selected: true },
-  //   { id: 2, title: 'Angular JS', selected: false },
-  //   { id: 3, title: 'React JS', selected: false },
-  //   { id: 4, title: 'Node JS', selected: false },
-  // ];
-
   fresher_familiar_technologies: ITechnologies[];
   experienced_familiar_technologies: ITechnologies[];
   experienced_expertise_technologies: ITechnologies[];
@@ -91,11 +84,6 @@ export class StepTwoComponent implements OnInit {
     this.appeared_test_before = this.userService.appeared_test_before;
     this.currently_under_notice_period = this.userService.currently_under_notice_period;
 
-    // this.currently_under_notice_period = this.userService
-    //   .experiencedQualifications.currently_under_notice_period
-    //   ? this.userService.experiencedQualifications.currently_under_notice_period
-    //   : false;
-
     this.fresher_familiar_technologies =
       this.userService.fresher_familiar_technologies;
 
@@ -104,22 +92,6 @@ export class StepTwoComponent implements OnInit {
 
     this.experienced_expertise_technologies =
       this.userService.experienced_expertise_technologies;
-
-    // initialize based on value stored in userService
-    // this.educationalQualifications.qualification = this.userService
-    //   .educationalQualifications.qualification
-    //   ? this.userService.educationalQualifications.qualification
-    //   : this.qualifications[0].qualification_name;
-
-    // this.educationalQualifications.stream = this.userService
-    //   .educationalQualifications.stream
-    //   ? this.userService.educationalQualifications.stream
-    //   : this.streams[0].stream_name;
-
-    // this.educationalQualifications.college = this.userService
-    //   .educationalQualifications.college
-    //   ? this.userService.educationalQualifications.college
-    //   : this.colleges[0].college_name;
   }
 
   toggleApplicantType() {
