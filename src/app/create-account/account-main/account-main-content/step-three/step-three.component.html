@@ -11,25 +11,25 @@
     <form class="personal-form" #personalForm="ngForm">
       <div class="form-group">
         <small>First Name*</small>
-        <p>{{ personalDetails.first_name }}</p>
+        <p>{{ personalDetails.firstName | uppercase }}</p>
       </div>
 
       <div class="form-group">
         <small>Last Name*</small>
-        <p>{{ personalDetails.last_name }}</p>
+        <p>{{ personalDetails.lastName | uppercase }}</p>
       </div>
 
       <div class="form-group">
         <small>Email*</small>
-        <p>{{ personalDetails.user_email }}</p>
+        <p>{{ personalDetails.userEmail }}</p>
       </div>
 
       <div class="form-group">
         <small>Phone Number*</small>
         <div class="phone-number">
-          <p *ngIf="personalDetails.phone_number[0]">+</p>
-          <p>{{ personalDetails.phone_number[0] }}</p>
-          <p>{{ personalDetails.phone_number[1] }}</p>
+          <p *ngIf="personalDetails.phoneNumber">+</p>
+          <p>{{ personalDetails.countryCode }}</p>
+          <p>{{ personalDetails.phoneNumber }}</p>
         </div>
       </div>
 
@@ -49,13 +49,13 @@
 
       <div class="form-group">
         <small>Enter portfolio URL (if any)</small>
-        <p>{{ personalDetails.portfolio_url }}</p>
+        <p>{{ personalDetails.portfolioUrl }}</p>
       </div>
 
       <div class="form-group">
         <small>Preferred Job Roles*</small>
-        <p *ngFor="let job_roles of personalDetails.preferred_job_roles">
-          {{ job_roles.job_title }}
+        <p *ngFor="let job_roles of preferredJobRoles">
+          {{ job_roles.jobTitle }}
         </p>
       </div>
 
@@ -64,12 +64,28 @@
           >If you are registering via a referral,please mention full name of the
           employee who referred you</small
         >
-        <p *ngIf="personalDetails.referrer_name; else referrerdash">
-          {{ personalDetails.referrer_name }}
+        <p *ngIf="personalDetails.referrerName; else referrerdash">
+          {{ personalDetails.referrerName | uppercase }}
         </p>
         <ng-template #referrerdash>
           <p>-</p>
         </ng-template>
+      </div>
+
+      <div class="form-checkbox">
+        <div class="form-checkbox-input">
+          <img
+            *ngIf="personalDetails.jobUpdates"
+            src="../../../../../assets/icons/checkbox-checked.svg"
+            alt="checked"
+          />
+          <img
+            *ngIf="!personalDetails.jobUpdates"
+            src="../../../../../assets/icons/checkbox-unchecked.svg"
+            alt="unchecked"
+          />
+        </div>
+        <p class="form-checkbox-label">Send me job related updates via mail</p>
       </div>
     </form>
 
@@ -116,43 +132,45 @@
         <form educationalForm="ngForm">
           <div class="form-group">
             <small>Aggregate Percentage*</small>
-            <p>{{ educationalDetails.aggregate_percentage }}</p>
+            <p>{{ educationalDetails.aggregatePercentage }}</p>
           </div>
 
           <div class="form-group">
             <small>Year of Passing*</small>
-            <p>{{ educationalDetails.year_of_passing }}</p>
+            <p>{{ educationalDetails.yearOfPassing }}</p>
           </div>
 
           <div class="select-container">
             <!-- qualification -->
             <div class="form-select">
               <small>Qualification*</small>
-              <p>{{ educationalDetails.qualification }}</p>
+              <p>{{ educationalDetails.qualificationName }}</p>
             </div>
 
             <!-- stream -->
             <div class="form-select">
               <small>Stream*</small>
-              <p>{{ educationalDetails.stream }}</p>
+              <p>{{ educationalDetails.streamName }}</p>
             </div>
 
             <!-- college -->
             <div class="form-select">
               <small>College*</small>
-              <p>{{ educationalDetails.college }}</p>
+              <p>{{ educationalDetails.collegeName }}</p>
             </div>
 
             <div class="form-group">
               <small>If Others, Please Enter Your College Name</small>
-              <p *ngIf="">{{ educationalDetails.other_college }}</p>
-              <p>-</p>
+              <p *ngIf="educationalDetails.otherCollegeName;else otherCollegeDash">{{ educationalDetails.otherCollegeName }}</p>
+              <ng-template #otherCollegeDash>
+                <p>-</p>
+              </ng-template>
             </div>
           </div>
 
           <div class="form-group">
             <small>Where is your college located?</small>
-            <p>{{ educationalDetails.college_location }}</p>
+            <p>{{ educationalDetails.collegeLocation }}</p>
           </div>
         </form>
       </div>

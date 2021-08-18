@@ -9,11 +9,9 @@ import {
   IExperiencedQualifications,
   IFresherQualifications,
   IPersonalDetails,
-  IProfessionalQualifications,
   IQualification,
   IStream,
 } from 'src/app/shared/models/user.model';
-import { ITechnologies } from 'src/app/shared/models/technologies.model';
 
 // service imports
 import { CollegeService } from './college.service';
@@ -28,30 +26,21 @@ import { TechnologyService } from './technology.service';
 export class UserService {
   api_url: string = 'http://localhost:3000';
 
-  stepOneIsValid:boolean;
-  stepTwoIsValid:boolean;
+  stepOneIsValid: boolean;
+  stepTwoIsValid: boolean;
 
   // User form details
   personalDetails: IPersonalDetails = {} as any;
   educationalQualifications: IEducationalQualifications = {} as any;
   experiencedQualifications: IExperiencedQualifications = {} as any;
   fresherQualifications: IFresherQualifications = {} as any;
-  professionalQualifications: IProfessionalQualifications = {} as any;
 
   // educational select options
   qualifications: IQualification[] = [];
   streams: IStream[] = [];
   colleges: ICollege[] = [];
 
-  // technologies
-  fresher_familiar_technologies: ITechnologies[] = [];
-  experienced_familiar_technologies: ITechnologies[] = [];
-  experienced_expertise_technologies: ITechnologies[] = [];
-
-  applicant_type: string = 'Fresher';
-  // 0:fresher, 1:experienced
-  appeared_test_before: [boolean, boolean] = [false, false];
-  currently_under_notice_period: boolean = false;
+  applicant_type: string = 'Fresher'; // 0:fresher, 1:experienced
 
   constructor(
     private httpClient: HttpClient,
@@ -61,12 +50,14 @@ export class UserService {
     private collegeService: CollegeService,
     private technologyService: TechnologyService
   ) {
-    // necessary initialization
-    this.personalDetails.phone_number = new Array(2);
+    // necessary initializations
+    this.fresherQualifications.appeared_test_before = false;
+    this.experiencedQualifications.appeared_test_before = false;
+    this.experiencedQualifications.currently_under_notice_period = false;
 
     // get preferred job roles
     this.jobRoleService.getJobRoles().subscribe((_jobRoles) => {
-      this.personalDetails.preferred_job_roles = _jobRoles;
+      this.personalDetails.preferredJobRoles = _jobRoles;
     });
 
     // get qualifications
@@ -75,43 +66,35 @@ export class UserService {
       .subscribe((_qualifications) => {
         this.qualifications = _qualifications;
 
-        this.educationalQualifications.qualification = this
-          .educationalQualifications.qualification
-          ? this.educationalQualifications.qualification
-          : this.qualifications[0].qualificationName;
+        this.educationalQualifications.qualificationName =
+          this.qualifications[0].qualificationName;
       });
 
     // get streams
     this.streamService.getStreams().subscribe((_streams) => {
       this.streams = _streams;
 
-      this.educationalQualifications.stream = this.educationalQualifications
-        .stream
-        ? this.educationalQualifications.stream
-        : this.streams[0].streamName;
+      this.educationalQualifications.streamName = this.streams[0].streamName;
     });
 
     // get colleges
     this.collegeService.getColleges().subscribe((_colleges) => {
       this.colleges = _colleges;
 
-      this.educationalQualifications.college = this.educationalQualifications
-        .college
-        ? this.educationalQualifications.college
-        : this.colleges[0].collegeName;
+      this.educationalQualifications.collegeName = this.colleges[0].collegeName;
     });
 
     // get technologies
     this.technologyService.getTechnologies().subscribe((_technologies) => {
-      this.fresher_familiar_technologies = _technologies;
+      this.fresherQualifications.familiar_technologies = _technologies;
     });
 
     this.technologyService.getTechnologies().subscribe((_technologies) => {
-      this.experienced_familiar_technologies = _technologies;
+      this.experiencedQualifications.familiar_technologies = _technologies;
     });
 
     this.technologyService.getTechnologies().subscribe((_technologies) => {
-      this.experienced_expertise_technologies = _technologies;
+      this.experiencedQualifications.expertise_technologies = _technologies;
     });
   }
 

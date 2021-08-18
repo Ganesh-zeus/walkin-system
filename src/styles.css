@@ -152,6 +152,7 @@ form small {
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #ccc;
+  cursor: pointer;
 }
 
 .select .option-toggle.open
@@ -192,6 +193,7 @@ form small {
 
 .select .options .option:hover {
   background-color: #DEDEDE;
+  cursor: pointer;
 }
 
 .select .option-toggle img.open {

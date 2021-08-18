@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from 'src/app/core/services/user.service';
+import { IJobRole } from 'src/app/shared/models/job-role.model';
 import { ITechnologies } from 'src/app/shared/models/technologies.model';
 
 import {
@@ -8,7 +9,6 @@ import {
   IExperiencedQualifications,
   IPersonalDetails,
 } from 'src/app/shared/models/user.model';
-import { Personal, JobRole } from '../User.model';
 
 @Component({
   selector: 'app-step-three',
@@ -16,40 +16,18 @@ import { Personal, JobRole } from '../User.model';
   styleUrls: ['./step-one.css', './step-two.css', './step-three.component.css'],
 })
 export class StepThreeComponent implements OnInit {
-  // job_roles: JobRole[] = [
-  //   new JobRole(true, 'Instructional Designer'),
-  //   new JobRole(false, 'Software Engineer'),
-  //   new JobRole(true, 'Software Quality Engineer'),
-  // ];
-
-  // personal: Personal = new Personal(
-  //   'John',
-  //   'Watson',
-  //   'Johnwatson@example.com',
-  //   ['91', '9876543210'],
-  //   'www.myportfolio.in',
-  //   this.job_roles,
-  //   '',
-  //   false
-  // );
-
   educationalOpen: boolean = true;
   professionalOpen: boolean = true;
 
-  technologies: any[] = [
-    { selected: true, title: 'JavaScript' },
-    { selected: false, title: 'Angular JS' },
-    { selected: false, title: 'React JS' },
-    { selected: false, title: 'Node JS' },
-  ];
-
   applicant_type: string;
-  appeared_test_before: [boolean, boolean];
-  currently_under_notice_period: boolean = false;
+  appeared_test_before: [boolean, boolean] = [false, false];
+  currently_under_notice_period: boolean;
 
   personalDetails: IPersonalDetails;
   educationalDetails: IEducationalQualifications;
   experiencedDetails: IExperiencedQualifications;
+
+  preferredJobRoles: IJobRole[] = [];
 
   fresher_familiar_technologies: ITechnologies[];
   experienced_familiar_technologies: ITechnologies[];
@@ -68,19 +46,37 @@ export class StepThreeComponent implements OnInit {
     this.educationalDetails = this.userService.educationalQualifications;
     this.experiencedDetails = this.userService.experiencedQualifications;
 
-    this.fresher_familiar_technologies =
-      this.userService.fresher_familiar_technologies;
+    this.fresher_familiar_technologies = this.filterTechnologies(
+      this.userService.fresherQualifications.familiar_technologies
+    );
 
-    this.experienced_familiar_technologies =
-      this.userService.experienced_familiar_technologies;
+    this.experienced_familiar_technologies = this.filterTechnologies(
+      this.userService.experiencedQualifications.familiar_technologies
+    );
 
-    this.experienced_expertise_technologies =
-      this.userService.experienced_expertise_technologies;
+    this.experienced_expertise_technologies = this.filterTechnologies(
+      this.userService.experiencedQualifications.expertise_technologies
+    );
+
+    this.preferredJobRoles = this.personalDetails.preferredJobRoles;
+
+    this.preferredJobRoles = this.preferredJobRoles.filter(
+      (jobRole) => jobRole.selected === true
+    );
 
     this.applicant_type = this.userService.applicant_type;
-    this.appeared_test_before = this.userService.appeared_test_before;
+
+    this.appeared_test_before[0] =
+      this.userService.fresherQualifications.appeared_test_before;
+    this.appeared_test_before[1] =
+      this.userService.experiencedQualifications.appeared_test_before;
+
     this.currently_under_notice_period =
-      this.userService.currently_under_notice_period;
+      this.userService.experiencedQualifications.currently_under_notice_period;
+  }
+
+  filterTechnologies(technologies: ITechnologies[]) {
+    return technologies.filter((technology) => technology.selected === true);
   }
 
   navigateTo(path: string) {

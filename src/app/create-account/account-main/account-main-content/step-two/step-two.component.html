@@ -2,7 +2,7 @@
   <!-- education qualifications -->
   <div class="educational dropdown">
     <div
-      class="dropdown-toggle"
+      class="dropdown-toggle open"
       (click)="educationalDropdown.classList.toggle('open')"
       #educationalDropdown
     >
@@ -31,7 +31,7 @@
             [class.err]="
               aggregate_percentage.touched && aggregate_percentage.invalid
             "
-            [(ngModel)]="educationalQualifications.aggregate_percentage"
+            [(ngModel)]="educationalQualifications.aggregatePercentage"
             pattern="^[0-9]{1,2}$"
             required
           />
@@ -44,7 +44,7 @@
             name="year_of_passing"
             #year_of_passing="ngModel"
             [class.err]="year_of_passing.touched && year_of_passing.invalid"
-            [(ngModel)]="educationalQualifications.year_of_passing"
+            [(ngModel)]="educationalQualifications.yearOfPassing"
             pattern="^[0-9]{4}$"
             required
           />
@@ -61,7 +61,7 @@
                 (click)="qualificationRef.classList.toggle('open')"
                 #qualificationRef
               >
-                <p>{{ educationalQualifications.qualification }}</p>
+                <p>{{ educationalQualifications.qualificationName }}</p>
                 <img
                   [class.open]="qualificationRef.classList.contains('open')"
                   src="../../../../../assets/icons/arrow-down.svg"
@@ -79,7 +79,7 @@
                   *ngFor="let qualification of qualifications"
                   (click)="
                     qualificationRef.classList.toggle('open');
-                    educationalQualifications.qualification =
+                    educationalQualifications.qualificationName =
                       qualification.qualificationName
                   "
                 >
@@ -99,7 +99,7 @@
                 (click)="streamRef.classList.toggle('open')"
                 #streamRef
               >
-                <p>{{ educationalQualifications.stream }}</p>
+                <p>{{ educationalQualifications.streamName }}</p>
                 <img
                   [class.open]="streamRef.classList.contains('open')"
                   src="../../../../../assets/icons/arrow-down.svg"
@@ -115,7 +115,7 @@
                   *ngFor="let stream of streams"
                   (click)="
                     streamRef.classList.toggle('open');
-                    educationalQualifications.stream = stream.streamName
+                    educationalQualifications.streamName = stream.streamName
                   "
                 >
                   {{ stream.streamName }}
@@ -134,7 +134,7 @@
                 (click)="collegeRef.classList.toggle('open')"
                 #collegeRef
               >
-                <p>{{ educationalQualifications.college }}</p>
+                <p>{{ educationalQualifications.collegeName }}</p>
                 <img
                   [class.open]="collegeRef.classList.contains('open')"
                   src="../../../../../assets/icons/arrow-down.svg"
@@ -150,7 +150,7 @@
                   *ngFor="let college of colleges"
                   (click)="
                     collegeRef.classList.toggle('open');
-                    educationalQualifications.college = college.collegeName
+                    educationalQualifications.collegeName = college.collegeName
                   "
                 >
                   {{ college.collegeName }}
@@ -166,7 +166,7 @@
               name="other_college"
               #other_college="ngModel"
               [class.err]="other_college.touched && other_college.invalid"
-              [(ngModel)]="educationalQualifications.other_college"
+              [(ngModel)]="educationalQualifications.otherCollegeName"
               pattern="^[a-zA-Z]*$"
             />
           </div>
@@ -179,7 +179,7 @@
             name="college_location"
             #college_location="ngModel"
             [class.err]="college_location.touched && college_location.invalid"
-            [(ngModel)]="educationalQualifications.college_location"
+            [(ngModel)]="educationalQualifications.collegeLocation"
             pattern="^[a-zA-Z]*$"
             required
           />
@@ -575,12 +575,13 @@
         />
       </div>
 
-      <div class="form-radio">
+      <div class="form-radio" *ngIf="appeared_test_before">
         <small
           >Have you appeared for any Zeus test in the past 12 Months?*</small
         >
         <div class="form-radio-items">
           <div
+
             class="form-radio-item"
             name="appeared-test"
             (click)="toggleAppearedStatus(APPLICANT_TYPE[0])"
