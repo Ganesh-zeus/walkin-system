@@ -3,19 +3,35 @@ import { IJobRole, IJobRoleDetails } from "./job-role.model";
 
 export interface ITimeSlot {
   id: number;
-  start_time: string;
-  end_time: string;
+  startTime: string;
+  endTime: string;
+}
+
+export interface IOpportunity {
+  id:number;
+  opportunity:string
 }
 
 export interface IWalkin {
   id: number;
   title: string;
-  dates: string[];
-  location: string;
-  opportunities: string[];
-  job_roles: IJobRoleDetails[]; 
+  startDate:string;
+  lastDate:string;
+  city: string;
+  opportunities: IOpportunity[];
+  jobRoles: IJobRole[];
+}
+
+export interface IWalkinDetails {
+  id: number;
+  title: string;
+  startDate:string;
+  lastDate:string;
+  city: string;
+  opportunities: IOpportunity[];
+  jobRoles: IJobRoleDetails[]; 
   prerequisites: IDescription[];
-  time_slots: ITimeSlot[];
-  preffered_job_roles: IJobRole[];
+  timeSlots: ITimeSlot[];
+  preferredJobRoles: IJobRole[];
   venue:string
 }

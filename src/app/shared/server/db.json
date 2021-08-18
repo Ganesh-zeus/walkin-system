@@ -1,32 +1,32 @@
 {
   "colleges": [
-    { "id": 1, "college_name": "Indian Institute of Technology Bombay" },
-    { "id": 2, "college_name": "Lovely Professional University" },
-    { "id": 3, "college_name": "Vidyalankar Institute of Technology" }
+    { "id": 1, "collegeName": "Indian Institute of Technology Bombay" },
+    { "id": 2, "collegeName": "Lovely Professional University" },
+    { "id": 3, "collegeName": "Vidyalankar Institute of Technology" }
   ],
   "streams": [
-    { "id": 1, "stream_name": "Computer Engineering" },
-    { "id": 2, "stream_name": "Information Technology" },
-    { "id": 3, "stream_name": "Biomedical" }
+    { "id": 1, "streamName": "Computer Engineering" },
+    { "id": 2, "streamName": "Information Technology" },
+    { "id": 3, "streamName": "Biomedical" }
   ],
   "qualifications": [
-    { "id": 1, "qualification_name": "Bachelor in Technology (B.Tech)" },
-    { "id": 2, "qualification_name": "Bachelor of Engineering (B.E)" },
+    { "id": 1, "qualificationName": "Bachelor in Technology (B.Tech)" },
+    { "id": 2, "qualificationName": "Bachelor of Engineering (B.E)" },
     {
       "id": 3,
-      "qualification_name": "Bachelor of Science in Information Technology(BScIT)"
+      "qualificationName": "Bachelor of Science in Information Technology(BScIT)"
     }
   ],
   "technologies": [
-    { "id": 1, "title": "JavaScript" },
-    { "id": 2, "title": "Angular JS" },
-    { "id": 3, "title": "React JS" },
-    { "id": 4, "title": "Node JS" }
+    { "id": 1, "technologyName": "JavaScript" },
+    { "id": 2, "technologyName": "Angular JS" },
+    { "id": 3, "technologyName": "React JS" },
+    { "id": 4, "technologyName": "Node JS" }
   ],
   "job_roles": [
     {
       "id": 1,
-      "job_title": "Instructional Designer",
+      "jobTitle": "Instructional Designer",
       "image_url": "",
       "descriptions": [
         {
@@ -48,7 +48,7 @@
     },
     {
       "id": 2,
-      "job_title": "Software Engineer",
+      "jobTitle": "Software Engineer",
       "image_url": "",
       "descriptions": [
         {
@@ -70,7 +70,7 @@
     },
     {
       "id": 3,
-      "job_title": "Software Quality Engineer",
+      "jobTitle": "Software Quality Engineer",
       "image_url": "",
       "descriptions": [
         {
@@ -91,18 +91,68 @@
       ]
     }
   ],
+  "walkin-list": [
+    {
+      "id": 1,
+      "title": "Walk In for Designer Job Role",
+      "startDate": "2021-07-10",
+      "lastDate": "2021-07-11",
+      "city": "Mumbai",
+      "venue": "",
+      "opportunities": [
+        {
+          "id": 1,
+          "opportunity": "Internship opportunity for MCA studentsInternship opportunity for MCA students"
+        }
+      ],
+      "jobRoles": [
+        {
+          "id": 1,
+          "jobTitle": "Instructional Designer",
+          "jobImageUrl": ""
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Walkin For Multiple Job Roles",
+      "startDate": "2021-07-10",
+      "lastDate": "2021-07-11",
+      "city": "Chennai",
+      "venue": "",
+      "opportunities": [
+        {
+          "id": 1,
+          "opportunity": "Internship opportunity for MCA studentsInternship opportunity for MCA students"
+        }
+      ],
+      "jobRoles": [
+        {
+          "id": 1,
+          "jobTitle": "Instructional Designer",
+          "jobImageUrl": ""
+        },
+        {
+          "id": 2,
+          "jobTitle": "Software Engineer",
+          "jobImageUrl": ""
+        }
+      ]
+    }
+  ],
   "walkins": [
     {
       "id": 1,
       "title": "Walk In for Designer Job Role",
-      "dates": ["2021-07-10", "2021-07-11"],
-      "location": "Mumbai",
+      "startDate": "2021-07-10",
+      "lastDate": "2021-07-11",
+      "city": "Mumbai",
       "opportunities": [],
-      "job_roles": [
+      "jobRoles": [
         {
           "id": 1,
-          "job_title": "Instructional Designer",
-          "image_url": "",
+          "jobTitle": "Instructional Designer",
+          "jobImageUrl": "",
           "descriptions": [
             {
               "id": 1,
@@ -134,15 +184,15 @@
           "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa distinctio facilis assumenda impedit, quia doloremque nam illum cupiditate magnam dolorem!"
         }
       ],
-      "time_slots": [
-        { "id": 1, "start_time": "1:00 PM", "end_time": "3:00 PM" },
-        { "id": 2, "start_time": "9:00 AM", "end_time": "11:00 AM" }
+      "timeSlots": [
+        { "id": 1, "startTime": "1:00 PM", "endTime": "3:00 PM" },
+        { "id": 2, "startTime": "9:00 AM", "endTime": "11:00 AM" }
       ],
-      "preffered_job_roles": [
+      "preferredJobRoles": [
         {
           "id": 1,
-          "job_title": "Instructional Designer",
-          "image_url": "",
+          "jobTitle": "Instructional Designer",
+          "jobImageUrl": "",
           "descriptions": [
             {
               "id": 1,
@@ -167,17 +217,20 @@
     {
       "id": 2,
       "title": "Walkin For Multiple Job Roles",
-      "dates": ["2021-07-10", "2021-07-11"],
-      "location": "Chennai",
+      "startDate": "2021-07-10",
+      "lastDate": "2021-07-11",
+      "city": "Chennai",
       "opportunities": [
-        "Internship opportunity for MCA studentsInternship opportunity for MCA students"
-      ],
-
-      "job_roles": [
         {
           "id": 1,
-          "job_title": "Instructional Designer",
-          "image_url": "",
+          "opportunity": "Internship opportunity for MCA studentsInternship opportunity for MCA students"
+        }
+      ],
+      "jobRoles": [
+        {
+          "id": 1,
+          "jobTitle": "Instructional Designer",
+          "jobImageUrl": "",
           "descriptions": [
             {
               "id": 1,
@@ -198,7 +251,7 @@
         },
         {
           "id": 2,
-          "job_title": "Software Engineer",
+          "jobTitle": "Software Engineer",
           "image_url": "",
           "descriptions": [
             {
@@ -220,7 +273,7 @@
         },
         {
           "id": 3,
-          "job_title": "Software Quality Engineer",
+          "jobTitle": "Software Quality Engineer",
           "image_url": "",
           "descriptions": [
             {
@@ -253,76 +306,25 @@
           "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa distinctio facilis assumenda impedit, quia doloremque nam illum cupiditate magnam dolorem!"
         }
       ],
-      "time_slots": [
-        { "id": 1, "start_time": "1:00 PM", "end_time": "3:00 PM" },
-        { "id": 2, "start_time": "9:00 AM", "end_time": "11:00 AM" }
+      "timeSlots": [
+        { "id": 1, "startTime": "1:00 PM", "endTime": "3:00 PM" },
+        { "id": 2, "startTime": "9:00 AM", "endTime": "11:00 AM" }
       ],
-      "preffered_job_roles": [
+      "preferredJobRoles": [
         {
           "id": 1,
-          "job_title": "Instructional Designer",
-          "image_url": "",
-          "descriptions": [
-            {
-              "id": 1,
-              "title": "Gross Compensation Package",
-              "description": "Rs.5,00,000 per annum"
-            },
-            {
-              "id": 2,
-              "title": "Role Description",
-              "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa distinctio facilis assumenda impedit, quia doloremque nam illum cupiditate magnam dolorem!"
-            },
-            {
-              "id": 3,
-              "title": "Requirements",
-              "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa distinctio facilis assumenda impedit, quia doloremque nam illum cupiditate magnam dolorem!"
-            }
-          ]
+          "jobTitle": "Instructional Designer",
+          "jobImageUrl": ""
         },
         {
           "id": 2,
-          "job_title": "Software Engineer",
-          "image_url": "",
-          "descriptions": [
-            {
-              "id": 1,
-              "title": "Gross Compensation Package",
-              "description": "Rs.6,00,000 per annum"
-            },
-            {
-              "id": 2,
-              "title": "Role Description",
-              "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa distinctio facilis assumenda impedit, quia doloremque nam illum cupiditate magnam dolorem!"
-            },
-            {
-              "id": 3,
-              "title": "Requirements",
-              "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa distinctio facilis assumenda impedit, quia doloremque nam illum cupiditate magnam dolorem!"
-            }
-          ]
+          "jobTitle": "Software Engineer",
+          "jobImageUrl": ""
         },
         {
           "id": 3,
-          "job_title": "Software Quality Engineer",
-          "image_url": "",
-          "descriptions": [
-            {
-              "id": 1,
-              "title": "Gross Compensation Package",
-              "description": "Rs.5,00,000 per annum"
-            },
-            {
-              "id": 2,
-              "title": "Role Description",
-              "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa distinctio facilis assumenda impedit, quia doloremque nam illum cupiditate magnam dolorem!"
-            },
-            {
-              "id": 3,
-              "title": "Requirements",
-              "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa distinctio facilis assumenda impedit, quia doloremque nam illum cupiditate magnam dolorem!"
-            }
-          ]
+          "jobTitle": "Software Quality Engineer",
+          "jobImageUrl": ""
         }
       ],
       "venue": "Zeus Systems Pvt.LTD, 1402, 14th floor, Tower B,Peninsula Business PArk, Ganpatro Kadam Marg,Lower Parel(W), Mumbai - 400013, Phone: +91-22-66600000"

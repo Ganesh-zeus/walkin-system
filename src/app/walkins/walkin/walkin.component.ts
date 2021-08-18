@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { WalkinService } from 'src/app/core/services/walkin.service';
-import { IWalkin } from 'src/app/shared/models/walkin.model';
+import { IWalkinDetails } from 'src/app/shared/models/walkin.model';
 
 @Component({
   selector: 'app-walkin',
@@ -17,7 +17,7 @@ export class WalkinComponent implements OnInit {
     private walkinService: WalkinService
   ) {}
 
-  walkin: IWalkin;
+  walkin: IWalkinDetails;
   time_slot_selected: number;
 
   ngOnInit(): void {
@@ -28,8 +28,7 @@ export class WalkinComponent implements OnInit {
 
     this.walkinService.getWalkinById(this.walkinId).subscribe((walkinData) => {
       this.walkin = walkinData;
-      this.time_slot_selected = this.walkin.time_slots[0].id;
-      console.log(this.walkin);
+      this.time_slot_selected = this.walkin.timeSlots[0].id;
     });
   }
 }

@@ -5,13 +5,13 @@
     <div class="date-time">
       <small>Date & Time</small>
       <p class="date-time-content">
-        {{ walkin.dates[0] }} to {{ walkin.dates[1] }}
+        {{ walkin.startDate}} to {{ walkin.lastDate }}
       </p>
     </div>
     <span class="tilde"></span>
     <div class="location">
       <img src="../../../assets/icons/location.svg" alt="location-icon" />
-      <p>{{ walkin.location }}</p>
+      <p>{{ walkin.city }}</p>
     </div>
   </div>
 
@@ -20,12 +20,12 @@
   <div class="job-roles">
     <p class="job-role-label">Job Roles :</p>
     <div class="job-role-list">
-      <div class="job-role" *ngFor="let job_role of walkin.job_roles">
+      <div class="job-role" *ngFor="let job_role of walkin.jobRoles">
         <div class="job-role-image">
           <!-- <img [attr.src]="" alt="job-role-image" /> -->
           <img src="../../../assets/icons/computer.svg" alt="job-role-image" />
         </div>
-        <p>{{ job_role.job_title }}</p>
+        <p>{{ job_role.jobTitle }}</p>
       </div>
     </div>
   </div>
@@ -34,7 +34,7 @@
     class="opportunity center"
     *ngFor="let opportunity of walkin.opportunities"
   >
-    <p>{{ opportunity }}</p>
+    <p>{{ opportunity.opportunity }}</p>
   </div>
 
   <div class="view-more center">

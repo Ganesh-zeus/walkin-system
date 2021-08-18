@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { IWalkin } from 'src/app/shared/models/walkin.model';
+import { IWalkin,IWalkinDetails } from 'src/app/shared/models/walkin.model';
 
 @Injectable({
   providedIn: 'root',
@@ -12,17 +12,17 @@ export class WalkinService {
 
   constructor(private httpClient: HttpClient) {}
 
-  getWalkinById(id: number): Observable<IWalkin> {
+  getWalkinById(id: number): Observable<IWalkinDetails> {
     let API_URL = `${this.api_url}/walkins/${id}`;
     return this.httpClient
-      .get<IWalkin>(API_URL)
+      .get<IWalkinDetails>(API_URL)
       .pipe(
         tap((walkin) => {
-          for (let job_role of walkin.preffered_job_roles) {
+          for (let job_role of walkin.preferredJobRoles) {
             job_role.selected = false;
           }
 
-          console.log(walkin.time_slots);
+          console.log(walkin.timeSlots);
           
         })
       )
@@ -30,7 +30,7 @@ export class WalkinService {
   }
 
   getAllWalkins(): Observable<IWalkin[]> {
-    let API_URL = `${this.api_url}/walkins`;
+    let API_URL = `${this.api_url}/walkin-list`;
     return this.httpClient
       .get<IWalkin[]>(API_URL)
       .pipe(catchError(this.errorHandler));

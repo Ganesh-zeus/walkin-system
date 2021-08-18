@@ -6,13 +6,13 @@
       <div class="date-time">
         <small>Date & Time</small>
         <p class="date-time-content">
-          {{ walkin.dates[0] }} to {{ walkin.dates[1] }}
+          {{ walkin.startDate }} to {{ walkin.lastDate }}
         </p>
       </div>
       <span class="tilde"></span>
       <div class="location">
         <img src="../../../assets/icons/location.svg" alt="location-icon" />
-        <p>{{ walkin.location }}</p>
+        <p>{{ walkin.city }}</p>
       </div>
     </div>
 
@@ -21,24 +21,24 @@
     <div class="job-roles">
       <p class="job-role-label">Job Roles :</p>
       <div class="job-role-list">
-        <div class="job-role" *ngFor="let job_role of walkin.job_roles">
+        <div class="job-role" *ngFor="let job_role of walkin.jobRoles">
           <div class="job-role-image">
-            <!-- <img [attr.src]="job_role.image_url" alt="job-role-image" /> -->
+            <!-- <img [attr.src]="job_role.jobImageUrl" alt="job-role-image" /> -->
             <img
               src="../../../assets/icons/computer.svg"
               alt="job-role-image"
             />
           </div>
-          <p>{{ job_role.job_title }}</p>
+          <p>{{ job_role.jobTitle }}</p>
         </div>
       </div>
     </div>
 
-    <div
+    <div 
       class="opportunity center"
       *ngFor="let opportunity of walkin.opportunities"
     >
-      <p>{{ opportunity }}</p>
+      <p>{{ opportunity.opportunity }}</p>
     </div>
   </div>
 
@@ -62,9 +62,9 @@
       class="descriptions dropdown-content"
       [class.open]="prerequisitesRef.classList.contains('open')"
     >
-      <div class="description" *ngFor="let desc of walkin.prerequisites">
-        <small>{{ desc.title }} :</small>
-        <p>{{ desc.description }}</p>
+      <div class="description" *ngFor="let prerequisite of walkin.prerequisites">
+        <small>{{ prerequisite.title }} :</small>
+        <p>{{ prerequisite.description }}</p>
       </div>
     </div>
   </div>
@@ -78,21 +78,21 @@
         <div class="form-radio-items">
           <div
             class="form-radio-item"
-            *ngFor="let time_slot of walkin.time_slots"
-            (click)="time_slot_selected = time_slot.id"
+            *ngFor="let timeSlot of walkin.timeSlots"
+            (click)="time_slot_selected = timeSlot.id"
           >
             <img
-              *ngIf="time_slot_selected === time_slot.id"
+              *ngIf="time_slot_selected === timeSlot.id"
               src="../../../assets/icons/radio-button-checked.svg"
               alt="selected"
             />
 
             <img
-              *ngIf="time_slot_selected !== time_slot.id"
+              *ngIf="time_slot_selected !== timeSlot.id"
               src="../../../assets/icons/radio-button-unchecked.svg"
               alt="unselected"
             />
-            <p>{{ time_slot.start_time }} to {{ time_slot.end_time }}</p>
+            <p>{{ timeSlot.startTime }} to {{ timeSlot.endTime }}</p>
           </div>
         </div>
       </div>
@@ -101,7 +101,7 @@
         <small>Select your Preference</small>
         <div
           class="form-checkbox"
-          *ngFor="let role of walkin.preffered_job_roles"
+          *ngFor="let role of walkin.preferredJobRoles"
         >
           <div
             class="form-checkbox-input"
@@ -118,7 +118,7 @@
               alt="unchecked"
             />
           </div>
-          <p class="form-checkbox-label">{{ role.job_title }}</p>
+          <p class="form-checkbox-label">{{ role.jobTitle }}</p>
         </div>
       </div>
 
@@ -138,13 +138,13 @@
     </form>
   </div>
 
-  <div class="dropdown" *ngFor="let jobRole of walkin.job_roles">
+  <div class="dropdown" *ngFor="let jobRole of walkin.jobRoles">
     <div
       class="dropdown-toggle"
       (click)="templateRef.classList.toggle('open')"
       #templateRef
     >
-      <p>{{ jobRole.job_title }}</p>
+      <p>{{ jobRole.jobTitle }}</p>
       <div class="dropdown-toggle-image">
         <img
           [class.open]="templateRef.classList.contains('open')"
