@@ -3,17 +3,17 @@ import { ITechnologies } from './technologies.model';
 
 export interface ICollege {
   id:number,
-  college_name:string
+  collegeName:string
 }
 
 export interface IStream {
   id:number,
-  stream_name:string
+  streamName:string
 }
 
 export interface IQualification {
   id:number,
-  qualification_name:string
+  qualificationName:string
 }
 
 export interface IPersonalDetails {
@@ -84,6 +84,7 @@ export interface IUser {
   first_name: string;
   last_name: string;
   user_email: string;
+  user_password:string;
   phone_number: number[];
   portfolio_url?: string;
   preferred_job_roles: IJobRole[];

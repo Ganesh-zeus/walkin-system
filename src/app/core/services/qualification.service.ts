@@ -8,7 +8,9 @@ import { IQualification } from 'src/app/shared/models/user.model';
   providedIn: 'root'
 })
 export class QualificationService {
-  api_url:string = "http://localhost:3000";
+  // api_url:string = "http://localhost:3000";
+  api_url: string = 'http://localhost:50920/api';
+  
   constructor(private httpClient:HttpClient) { }
 
   getQualifications(): Observable<IQualification[]> {

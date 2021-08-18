@@ -1,5 +1,5 @@
 export interface ITechnologies {
     id:number,
-    title:string,
+    technologyName:string,
     selected?:boolean
 }

@@ -9,7 +9,8 @@ import { ITechnologies } from 'src/app/shared/models/technologies.model';
 })
 export class TechnologyService {
 
-  api_url: string = 'http://localhost:3000';
+  // api_url: string = 'http://localhost:3000';
+  api_url: string = 'http://localhost:50920/api';
 
   constructor(private httpClient: HttpClient) {}
 

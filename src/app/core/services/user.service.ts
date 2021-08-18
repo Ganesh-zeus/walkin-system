@@ -78,7 +78,7 @@ export class UserService {
         this.educationalQualifications.qualification = this
           .educationalQualifications.qualification
           ? this.educationalQualifications.qualification
-          : this.qualifications[0].qualification_name;
+          : this.qualifications[0].qualificationName;
       });
 
     // get streams
@@ -88,7 +88,7 @@ export class UserService {
       this.educationalQualifications.stream = this.educationalQualifications
         .stream
         ? this.educationalQualifications.stream
-        : this.streams[0].stream_name;
+        : this.streams[0].streamName;
     });
 
     // get colleges
@@ -98,7 +98,7 @@ export class UserService {
       this.educationalQualifications.college = this.educationalQualifications
         .college
         ? this.educationalQualifications.college
-        : this.colleges[0].college_name;
+        : this.colleges[0].collegeName;
     });
 
     // get technologies

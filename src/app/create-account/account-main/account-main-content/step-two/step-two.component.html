@@ -80,10 +80,10 @@
                   (click)="
                     qualificationRef.classList.toggle('open');
                     educationalQualifications.qualification =
-                      qualification.qualification_name
+                      qualification.qualificationName
                   "
                 >
-                  {{ qualification.qualification_name }}
+                  {{ qualification.qualificationName }}
                 </div>
               </div>
             </div>
@@ -115,10 +115,10 @@
                   *ngFor="let stream of streams"
                   (click)="
                     streamRef.classList.toggle('open');
-                    educationalQualifications.stream = stream.stream_name
+                    educationalQualifications.stream = stream.streamName
                   "
                 >
-                  {{ stream.stream_name }}
+                  {{ stream.streamName }}
                 </div>
               </div>
             </div>
@@ -150,10 +150,10 @@
                   *ngFor="let college of colleges"
                   (click)="
                     collegeRef.classList.toggle('open');
-                    educationalQualifications.college = college.college_name
+                    educationalQualifications.college = college.collegeName
                   "
                 >
-                  {{ college.college_name }}
+                  {{ college.collegeName }}
                 </div>
               </div>
             </div>
@@ -325,7 +325,7 @@
               alt="unchecked"
             />
           </div>
-          <p class="form-checkbox-label">{{ technology.title }}</p>
+          <p class="form-checkbox-label">{{ technology.technologyName }}</p>
         </div>
       </div>
 
@@ -369,7 +369,7 @@
               alt="unchecked"
             />
           </div>
-          <p class="form-checkbox-label">{{ technology.title }}</p>
+          <p class="form-checkbox-label">{{ technology.technologyName }}</p>
         </div>
       </div>
 
@@ -555,7 +555,7 @@
               alt="unchecked"
             />
           </div>
-          <p class="form-checkbox-label">{{ technology.title }}</p>
+          <p class="form-checkbox-label">{{ technology.technologyName }}</p>
         </div>
       </div>
 
