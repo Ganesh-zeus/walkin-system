@@ -22,7 +22,7 @@ export class AccountMainStatusComponent implements OnInit {
         this.currentUrl = event.url;
         this.setCompletionStatus();
       }
-    })
+    });
   }
 
   setCompletionStatus(){

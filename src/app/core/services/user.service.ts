@@ -98,6 +98,27 @@ export class UserService {
     });
   }
 
+  createUser(){
+    if(this.applicant_type == 'Fresher'){
+      let user = {
+        personalDetails:this.personalDetails,
+        educationalQualifications:this.educationalQualifications,
+        fresherQualifications:this.fresherQualifications
+      }
+
+      console.log("user created => \n",user);
+      
+    }else{
+      let user = {
+        personalDetails:this.personalDetails,
+        educationalQualifications:this.educationalQualifications,
+        experiencedQualifications:this.experiencedQualifications
+      }
+
+      console.log("user created => \n",user);
+    }
+  }
+  
   errorHandler(error: any) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {

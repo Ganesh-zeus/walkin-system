@@ -50,7 +50,7 @@ body {
   cursor: pointer;
 }
 
-.btn-disabled {
+.btn-success.disabled {
   opacity: 0.5;
   cursor: unset;
 }

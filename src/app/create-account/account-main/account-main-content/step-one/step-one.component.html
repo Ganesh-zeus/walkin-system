@@ -89,12 +89,9 @@
       <small>Preferred Job Roles*</small>
       <div
         class="form-checkbox"
-        *ngFor="let job_role of preferredJobRoles;let idx = index"
+        *ngFor="let job_role of preferredJobRoles; let idx = index"
       >
-        <div
-          class="form-checkbox-input"
-          (click)="toggleJobRoleSelected(idx)"
-        >
+        <div class="form-checkbox-input" (click)="toggleJobRoleSelected(idx)">
           <img
             *ngIf="job_role.selected"
             src="../../../../../assets/icons/checkbox-checked.svg"
@@ -123,9 +120,7 @@
     </div>
 
     <div class="form-group">
-      <div
-        class="form-checkbox"
-      >
+      <div class="form-checkbox">
         <div
           class="form-checkbox-input"
           (click)="personal.jobUpdates = !personal.jobUpdates"
@@ -157,7 +152,9 @@
 <div class="next center">
   <button
     class="btn-success"
-    (click)="navigateTo(personalForm.valid, 'qualification')"
+    [class.disabled]="!isPersonalFormValid()"
+    (click)="navigateTo('qualification')"
+    [disabled]="!isPersonalFormValid()"
   >
     NEXT
   </button>

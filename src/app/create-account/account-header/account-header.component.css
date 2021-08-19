@@ -31,11 +31,6 @@
   width: 200px;
 }
 
-
-.btn-success.disable {
-  opacity: 0.5;
-}
-
 @media (max-width: 610px) {
   .account-header {
     padding: 1rem;

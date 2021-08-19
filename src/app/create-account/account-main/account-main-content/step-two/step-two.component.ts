@@ -1,4 +1,11 @@
-import { Component, ChangeDetectorRef, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ChangeDetectorRef,
+  OnInit,
+  ViewChild,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { UserService } from 'src/app/core/services/user.service';
@@ -24,28 +31,38 @@ export class StepTwoComponent implements OnInit {
   @ViewChild('exeperiencedForm') exeperiencedForm?: any;
   @ViewChild('fresherForm') fresherForm?: any;
 
+  // educational and professional isValid methods
+  isEducationalFormValid(): boolean {
+    return this.educationalForm?.valid;
+  }
+
+  isFresherFormValid(): boolean {
+    return this.fresherForm?.valid;
+  }
+
+  isExeperiencedFormValid(): boolean {
+    return this.exeperiencedForm?.valid;
+  }
+
+  isQualificationFormValid(): boolean {
+    if (this.applicant_type === this.APPLICANT_TYPE[0]) {
+      return this.isEducationalFormValid() && this.isFresherFormValid();
+    } else {
+      return this.isEducationalFormValid() && this.isExeperiencedFormValid();
+    }
+  }
+
   // educational and professional form objects
   educationalQualifications: IEducationalQualifications;
   fresherQualifications: IFresherQualifications;
   experiencedQualifications: IExperiencedQualifications;
 
-  // educational and professional isValid methods
-  educationalFormIsValid(): boolean {
-    return this.educationalForm.valid;
-  }
-
-  exeperiencedFormIsValid(): boolean {
-    return this.exeperiencedForm.valid;
-  }
-
-  fresherFormIsValid(): boolean {
-    return this.fresherForm.valid;
-  }
-
+  // technologies
   fresher_familiar_technologies: ITechnologies[];
   experienced_familiar_technologies: ITechnologies[];
   experienced_expertise_technologies: ITechnologies[];
 
+  // educational select options
   qualifications: IQualification[];
   streams: IStream[];
   colleges: ICollege[];
@@ -66,7 +83,6 @@ export class StepTwoComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-
     // get form objects from user service
     this.educationalQualifications = this.userService.educationalQualifications;
     this.fresherQualifications = this.userService.fresherQualifications;
@@ -139,35 +155,31 @@ export class StepTwoComponent implements OnInit {
       this.appeared_test_before[0] = !this.appeared_test_before[0];
       this.userService.fresherQualifications.appearedTestBefore =
         this.appeared_test_before[0];
-      
-      if(!this.appeared_test_before[0]){
-        this.fresherQualifications.roleAppearedBefore = "";
+
+      if (!this.appeared_test_before[0]) {
+        this.fresherQualifications.roleAppearedBefore = '';
       }
     } else {
       this.appeared_test_before[1] = !this.appeared_test_before[1];
       this.userService.experiencedQualifications.appearedTestBefore =
         this.appeared_test_before[1];
 
-        if(!this.appeared_test_before[1]){
-          this.experiencedQualifications.roleAppearedBefore = "";
-        }
+      if (!this.appeared_test_before[1]) {
+        this.experiencedQualifications.roleAppearedBefore = '';
+      }
     }
     this.cdr.detectChanges();
   }
 
   toggleNoticePeriodStatus() {
     this.currently_under_notice_period = !this.currently_under_notice_period;
-    
+
     this.userService.experiencedQualifications.currentlyUnderNoticePeriod =
       this.currently_under_notice_period;
     this.cdr.detectChanges();
   }
 
   navigateTo(path: string) {
-    console.log(this.userService.educationalQualifications);
-    console.log(this.userService.experiencedQualifications);
-    console.log(this.userService.fresherQualifications);
-    
     this.router.navigate(['../', path], { relativeTo: this.route });
   }
 }

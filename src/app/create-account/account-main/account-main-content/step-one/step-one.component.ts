@@ -1,4 +1,4 @@
-import { Component, OnInit,ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { UserService } from 'src/app/core/services/user.service';
@@ -11,8 +11,10 @@ import { IPersonalDetails } from 'src/app/shared/models/user.model';
   styleUrls: ['./step-one.component.css'],
 })
 export class StepOneComponent implements OnInit {
+  @ViewChild('personalForm') personalForm?: any;
+
   personal: IPersonalDetails;
-  preferredJobRoles: IJobRole[];
+  preferredJobRoles: IJobRole[] = [];
 
   constructor(
     private router: Router,
@@ -35,12 +37,23 @@ export class StepOneComponent implements OnInit {
     this.cdr.detectChanges();
   }
 
-  navigateTo(isFormValid: boolean | null, path: string) {
-    this.userService.stepOneIsValid = false;
+  isPersonalFormValid(): boolean {
+    let atleastOneRoleSelected: boolean = false;
 
-    if (isFormValid) {
-      this.userService.stepOneIsValid = true;
-      this.router.navigate(['../', path], { relativeTo: this.route });
+    for (let jobRole of this.preferredJobRoles) {
+      if (jobRole.selected === true) {
+        atleastOneRoleSelected = true;
+      }
     }
+    return this.personalForm?.value && atleastOneRoleSelected;
+  }
+
+  navigateTo(path:string) {
+    console.log(this.personalForm);
+    console.log(this.personal);
+
+    console.log(this.isPersonalFormValid());
+
+    this.router.navigate(['../', path], { relativeTo: this.route });
   }
 }

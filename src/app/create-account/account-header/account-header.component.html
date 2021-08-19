@@ -5,6 +5,13 @@
   <h3>Create an Account</h3>
   <div class="account-handle">
     <button class="btn-success">CANCEL</button>
-    <button class="btn-success disable" disabled>CREATE</button>
+    <button
+      class="btn-success"
+      [class.disabled]="!isFormCompleted()"
+      (click)="createUser()"
+      [disabled]="!isFormCompleted()"
+    >
+      CREATE
+    </button>
   </div>
 </div>

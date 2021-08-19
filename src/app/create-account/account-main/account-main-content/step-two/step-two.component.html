@@ -519,7 +519,7 @@
             role_appeared_before.touched && role_appeared_before.invalid
           "
           [(ngModel)]="experiencedQualifications.roleAppearedBefore"
-          pattern="^[a-zA-Z]*$"
+          pattern="^[a-zA-Z\s]*$"
           [required]="
             applicant_type === APPLICANT_TYPE[1] && appeared_test_before[1]
           "
@@ -641,5 +641,12 @@
   <button class="btn-success previous" (click)="navigateTo('personal')">
     PREVIOUS
   </button>
-  <button class="btn-success" (click)="navigateTo('review')">NEXT</button>
+  <button
+    class="btn-success"
+    [class.disabled]="!isQualificationFormValid()"
+    (click)="navigateTo('review')"
+    [disabled]="!isQualificationFormValid()"
+  >
+    NEXT
+  </button>
 </div>

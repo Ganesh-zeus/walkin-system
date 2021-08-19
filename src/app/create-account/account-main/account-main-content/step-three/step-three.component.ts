@@ -31,9 +31,9 @@ export class StepThreeComponent implements OnInit {
 
   preferredJobRoles: IJobRole[] = [];
 
-  fresher_familiar_technologies: ITechnologies[];
-  experienced_familiar_technologies: ITechnologies[];
-  experienced_expertise_technologies: ITechnologies[];
+  fresher_familiar_technologies: ITechnologies[] = [];
+  experienced_familiar_technologies: ITechnologies[] = [];
+  experienced_expertise_technologies: ITechnologies[] = [];
 
   APPLICANT_TYPE = ['Fresher', 'Experienced'];
 
