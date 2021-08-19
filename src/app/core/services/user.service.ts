@@ -51,9 +51,9 @@ export class UserService {
     private technologyService: TechnologyService
   ) {
     // necessary initializations
-    this.fresherQualifications.appeared_test_before = false;
-    this.experiencedQualifications.appeared_test_before = false;
-    this.experiencedQualifications.currently_under_notice_period = false;
+    this.fresherQualifications.appearedTestBefore = false;
+    this.experiencedQualifications.appearedTestBefore = false;
+    this.experiencedQualifications.currentlyUnderNoticePeriod = false;
 
     // get preferred job roles
     this.jobRoleService.getJobRoles().subscribe((_jobRoles) => {
@@ -86,15 +86,15 @@ export class UserService {
 
     // get technologies
     this.technologyService.getTechnologies().subscribe((_technologies) => {
-      this.fresherQualifications.familiar_technologies = _technologies;
+      this.fresherQualifications.familiarTechnologies = _technologies;
     });
 
     this.technologyService.getTechnologies().subscribe((_technologies) => {
-      this.experiencedQualifications.familiar_technologies = _technologies;
+      this.experiencedQualifications.familiarTechnologies = _technologies;
     });
 
     this.technologyService.getTechnologies().subscribe((_technologies) => {
-      this.experiencedQualifications.expertise_technologies = _technologies;
+      this.experiencedQualifications.expertiseTechnologies = _technologies;
     });
   }
 

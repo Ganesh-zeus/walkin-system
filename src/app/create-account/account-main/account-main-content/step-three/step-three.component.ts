@@ -7,6 +7,7 @@ import { ITechnologies } from 'src/app/shared/models/technologies.model';
 import {
   IEducationalQualifications,
   IExperiencedQualifications,
+  IFresherQualifications,
   IPersonalDetails,
 } from 'src/app/shared/models/user.model';
 
@@ -25,6 +26,7 @@ export class StepThreeComponent implements OnInit {
 
   personalDetails: IPersonalDetails;
   educationalDetails: IEducationalQualifications;
+  fresherDetails: IFresherQualifications;
   experiencedDetails: IExperiencedQualifications;
 
   preferredJobRoles: IJobRole[] = [];
@@ -44,18 +46,19 @@ export class StepThreeComponent implements OnInit {
   ngOnInit(): void {
     this.personalDetails = this.userService.personalDetails;
     this.educationalDetails = this.userService.educationalQualifications;
+    this.fresherDetails = this.userService.fresherQualifications;
     this.experiencedDetails = this.userService.experiencedQualifications;
 
     this.fresher_familiar_technologies = this.filterTechnologies(
-      this.userService.fresherQualifications.familiar_technologies
+      this.userService.fresherQualifications.familiarTechnologies
     );
 
     this.experienced_familiar_technologies = this.filterTechnologies(
-      this.userService.experiencedQualifications.familiar_technologies
+      this.userService.experiencedQualifications.familiarTechnologies
     );
 
     this.experienced_expertise_technologies = this.filterTechnologies(
-      this.userService.experiencedQualifications.expertise_technologies
+      this.userService.experiencedQualifications.expertiseTechnologies
     );
 
     this.preferredJobRoles = this.personalDetails.preferredJobRoles;
@@ -67,12 +70,12 @@ export class StepThreeComponent implements OnInit {
     this.applicant_type = this.userService.applicant_type;
 
     this.appeared_test_before[0] =
-      this.userService.fresherQualifications.appeared_test_before;
+      this.userService.fresherQualifications.appearedTestBefore;
     this.appeared_test_before[1] =
-      this.userService.experiencedQualifications.appeared_test_before;
+      this.userService.experiencedQualifications.appearedTestBefore;
 
     this.currently_under_notice_period =
-      this.userService.experiencedQualifications.currently_under_notice_period;
+      this.userService.experiencedQualifications.currentlyUnderNoticePeriod;
   }
 
   filterTechnologies(technologies: ITechnologies[]) {

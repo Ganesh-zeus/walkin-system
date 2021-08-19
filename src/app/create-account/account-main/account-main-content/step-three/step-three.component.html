@@ -161,7 +161,14 @@
 
             <div class="form-group">
               <small>If Others, Please Enter Your College Name</small>
-              <p *ngIf="educationalDetails.otherCollegeName;else otherCollegeDash">{{ educationalDetails.otherCollegeName }}</p>
+              <p
+                *ngIf="
+                  educationalDetails.otherCollegeName;
+                  else otherCollegeDash
+                "
+              >
+                {{ educationalDetails.otherCollegeName }}
+              </p>
               <ng-template #otherCollegeDash>
                 <p>-</p>
               </ng-template>
@@ -210,17 +217,17 @@
       <form #exeperiencedForm="ngForm">
         <div class="form-group">
           <small>Years Of Experience*</small>
-          <p>{{ experiencedDetails.years_of_experience }}</p>
+          <p>{{ experiencedDetails.yearsOfExperience }}</p>
         </div>
 
         <div class="form-group">
           <small>Current CTC* (In Rupees)</small>
-          <p>{{ experiencedDetails.current_ctc }}</p>
+          <p>{{ experiencedDetails.currentCtc }}</p>
         </div>
 
         <div class="form-group">
           <small>Expected CTC* (In Rupees)</small>
-          <p>{{ experiencedDetails.expected_ctc }}</p>
+          <p>{{ experiencedDetails.expectedCtc }}</p>
         </div>
 
         <div class="form-group">
@@ -232,10 +239,17 @@
 
         <div class="form-group w-lg">
           <small>If others,please mention</small>
-          <p *ngIf="experiencedDetails.other_expertise_technologies">
-            {{ experiencedDetails.other_expertise_technologies }}
+          <p
+            *ngIf="
+              experiencedDetails.otherExpertiseTechnologies;
+              else experiencedOtherExpertiseTechDash
+            "
+          >
+            {{ experiencedDetails.otherExpertiseTechnologies }}
           </p>
-          <p *ngIf="!experiencedDetails.other_expertise_technologies">-</p>
+          <ng-template #experiencedOtherExpertiseTechDash>
+            <p>-</p>
+          </ng-template>
         </div>
 
         <div class="form-group">
@@ -247,10 +261,17 @@
 
         <div class="form-group w-lg">
           <small>If others,please mention</small>
-          <p *ngIf="experiencedDetails.other_familiar_technologies">
-            {{ experiencedDetails.other_familiar_technologies }}
+          <p
+            *ngIf="
+              experiencedDetails.otherFamiliarTechnologies;
+              else experiencedOtherFamiliarTechDash
+            "
+          >
+            {{ experiencedDetails.otherFamiliarTechnologies }}
           </p>
-          <p *ngIf="!experiencedDetails.other_familiar_technologies">-</p>
+          <ng-template #experiencedOtherFamiliarTechDash>
+            <p>-</p>
+          </ng-template>
         </div>
 
         <div class="form-group">
@@ -262,18 +283,32 @@
         <div class="notice-period">
           <div class="form-group w-lg">
             <small>If yes,when will your notice period end?*</small>
-            <p *ngIf="experiencedDetails.notice_period_end">
-              {{ experiencedDetails.notice_period_end }}
+            <p
+              *ngIf="
+                experiencedDetails.noticePeriodEnd;
+                else experiencedNoticePeriodEndDash
+              "
+            >
+              {{ experiencedDetails.noticePeriodEnd }}
             </p>
-            <p *ngIf="!experiencedDetails.notice_period_end">-</p>
+            <ng-template #experiencedNoticePeriodEndDash>
+              <p>-</p>
+            </ng-template>
           </div>
 
           <div class="form-group w-lg">
             <small>how long is your notice period?* (mention in months)</small>
-            <p *ngIf="experiencedDetails.notice_period_months">
-              {{ experiencedDetails.notice_period_months }} months
+            <p
+              *ngIf="
+                experiencedDetails.noticePeriodMonths;
+                else experiencedNoticePeriodMonthDash
+              "
+            >
+              {{ experiencedDetails.noticePeriodMonths }} months
             </p>
-            <p *ngIf="experiencedDetails.notice_period_months">-</p>
+            <ng-template #experiencedNoticePeriodMonthDash>
+              <p>-</p>
+            </ng-template>
           </div>
         </div>
 
@@ -287,10 +322,17 @@
 
         <div class="form-group w-lg">
           <small>If yes,which role did you apply for?</small>
-          <p *ngIf="experiencedDetails.role_appeared_before">
-            {{ experiencedDetails.role_appeared_before }}
+          <p
+            *ngIf="
+              experiencedDetails.roleAppearedBefore;
+              else experiencedRoleAppearedBeforeDash
+            "
+          >
+            {{ experiencedDetails.roleAppearedBefore }}
           </p>
-          <p *ngIf="!experiencedDetails.role_appeared_before">-</p>
+          <ng-template #experiencedRoleAppearedBeforeDash>
+            <p>-</p>
+          </ng-template>
         </div>
       </form>
     </div>
@@ -314,10 +356,17 @@
 
         <div class="form-group w-100">
           <small>If Yes,Which role did you apply For?</small>
-          <p *ngIf="experiencedDetails.role_appeared_before">
-            {{ experiencedDetails.role_appeared_before }}
+          <p
+            *ngIf="
+              fresherDetails.roleAppearedBefore;
+              else fresherRoleAppliedBeforeDash
+            "
+          >
+            {{ fresherDetails.roleAppearedBefore }}
           </p>
-          <p *ngIf="!experiencedDetails.role_appeared_before">-</p>
+          <ng-template #fresherRoleAppliedBeforeDash>
+            <p>-</p>
+          </ng-template>
         </div>
       </form>
     </div>

@@ -42,64 +42,29 @@ export interface IEducationalQualifications {
 }
 
 export interface IFresherQualifications {
-  familiar_technologies: ITechnologies[];
-  other_familiar_technologies?: string;
 
-  appeared_test_before: boolean;
-  role_appeared_before?: string;
+  familiarTechnologies: ITechnologies[];
+  otherFamiliarTechnologies?: string;
+
+  appearedTestBefore: boolean;
+  roleAppearedBefore?: string;
 }
 
 export interface IExperiencedQualifications {
-  years_of_experience: number;
-  current_ctc?: number;
-  expected_ctc?: number;
-  expertise_technologies: ITechnologies[];
-  other_expertise_technologies?: string;
-  currently_under_notice_period: boolean;
-  notice_period_end: string;
-  notice_period_months?: number;
 
-  familiar_technologies: ITechnologies[];
-  other_familiar_technologies?: string;
+  yearsOfExperience: number;
+  currentCtc?: number;
+  expectedCtc?: number;
+  expertiseTechnologies: ITechnologies[];
+  otherExpertiseTechnologies?: string;
+  currentlyUnderNoticePeriod: boolean;
+  noticePeriodEnd: string;
+  noticePeriodMonths?: number;
 
-  appeared_test_before: boolean;
-  role_appeared_before?: string;
-}
+  familiarTechnologies: ITechnologies[];
+  otherFamiliarTechnologies?: string;
 
-export interface IUser {
-  // personal
-  first_name: string;
-  last_name: string;
-  user_email: string;
-  user_password: string;
-  phone_number: number[];
-  portfolio_url?: string;
-  preferred_job_roles: IJobRole[];
-  referral_name?: string;
-  job_updates: boolean;
+  appearedTestBefore: boolean;
+  roleAppearedBefore?: string;
 
-  // educational
-  aggregate_percentage: number;
-  year_of_passing: number;
-  qualification: string;
-  stream: string;
-  college: string;
-  other_college?: string;
-  college_location: string;
-
-  // professional
-  applicant_type: string;
-  years_of_experience?: number;
-  current_ctc?: number;
-  expected_ctc?: number;
-  expertise_technologies?: string[];
-  other_expertise_technologies?: string;
-  currently_under_notice_period?: boolean;
-  notice_period_end?: string;
-  notice_period_months?: number;
-
-  familiar_technologies?: string[];
-  other_familiar_technologies?: string;
-  appeared_test_before: boolean;
-  role_appeared_before?: IJobRole;
 }

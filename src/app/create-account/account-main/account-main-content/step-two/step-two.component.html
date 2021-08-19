@@ -267,7 +267,7 @@
           [class.err]="
             years_of_experience.touched && years_of_experience.invalid
           "
-          [(ngModel)]="experiencedQualifications.years_of_experience"
+          [(ngModel)]="experiencedQualifications.yearsOfExperience"
           pattern="^[0-9]{1,2}$"
           [required]="applicant_type === APPLICANT_TYPE[1]"
         />
@@ -281,7 +281,7 @@
           name="current_ctc"
           #current_ctc="ngModel"
           [class.err]="current_ctc.touched && current_ctc.invalid"
-          [(ngModel)]="experiencedQualifications.current_ctc"
+          [(ngModel)]="experiencedQualifications.currentCtc"
           pattern="^[0-9]{1,}$"
           [required]="applicant_type === APPLICANT_TYPE[1]"
         />
@@ -295,7 +295,7 @@
           name="expected_ctc"
           #expected_ctc="ngModel"
           [class.err]="expected_ctc.touched && expected_ctc.invalid"
-          [(ngModel)]="experiencedQualifications.expected_ctc"
+          [(ngModel)]="experiencedQualifications.expectedCtc"
           pattern="^[0-9]{1,}$"
           [required]="applicant_type === APPLICANT_TYPE[1]"
         />
@@ -340,8 +340,8 @@
             other_expertise_technologies.touched &&
             other_expertise_technologies.invalid
           "
-          pattern="^[a-zA-Z]*$"
-          [(ngModel)]="experiencedQualifications.other_expertise_technologies"
+          pattern="^[a-zA-Z0-9,\s]*$"
+          [(ngModel)]="experiencedQualifications.otherExpertiseTechnologies"
         />
       </div>
 
@@ -384,8 +384,8 @@
             other_familiar_technologies.touched &&
             other_familiar_technologies.invalid
           "
-          pattern="^[a-zA-Z]*$"
-          [(ngModel)]="experiencedQualifications.other_familiar_technologies"
+          pattern="^[a-zA-Z0-9,\s]*$"
+          [(ngModel)]="experiencedQualifications.otherFamiliarTechnologies"
         />
       </div>
 
@@ -438,7 +438,7 @@
             name="notice_period_end"
             #notice_period_end="ngModel"
             [class.err]="notice_period_end.touched && notice_period_end.invalid"
-            [(ngModel)]="experiencedQualifications.notice_period_end"
+            [(ngModel)]="experiencedQualifications.noticePeriodEnd"
             [required]="
               applicant_type === APPLICANT_TYPE[1] &&
               currently_under_notice_period
@@ -456,7 +456,7 @@
             [class.err]="
               notice_period_months.touched && notice_period_months.invalid
             "
-            [(ngModel)]="experiencedQualifications.notice_period_months"
+            [(ngModel)]="experiencedQualifications.noticePeriodMonths"
             pattern="^[0-9]{1,2}$"
             [required]="
               applicant_type === APPLICANT_TYPE[1] &&
@@ -518,7 +518,7 @@
           [class.err]="
             role_appeared_before.touched && role_appeared_before.invalid
           "
-          [(ngModel)]="experiencedQualifications.role_appeared_before"
+          [(ngModel)]="experiencedQualifications.roleAppearedBefore"
           pattern="^[a-zA-Z]*$"
           [required]="
             applicant_type === APPLICANT_TYPE[1] && appeared_test_before[1]
@@ -571,7 +571,7 @@
             other_familiar_technologies.invalid
           "
           pattern="^[a-zA-Z]*$"
-          [(ngModel)]="fresherQualifications.other_familiar_technologies"
+          [(ngModel)]="fresherQualifications.otherFamiliarTechnologies"
         />
       </div>
 
@@ -581,7 +581,6 @@
         >
         <div class="form-radio-items">
           <div
-
             class="form-radio-item"
             name="appeared-test"
             (click)="toggleAppearedStatus(APPLICANT_TYPE[0])"
@@ -627,8 +626,8 @@
           [class.err]="
             role_appeared_before.touched && role_appeared_before.invalid
           "
-          [(ngModel)]="fresherQualifications.role_appeared_before"
-          pattern="^[a-zA-Z]*$"
+          [(ngModel)]="fresherQualifications.roleAppearedBefore"
+          pattern="^[a-zA-Z\s]*$"
           [required]="
             applicant_type === APPLICANT_TYPE[0] && appeared_test_before[0]
           "

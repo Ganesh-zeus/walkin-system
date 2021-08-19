@@ -26,8 +26,8 @@ export class StepTwoComponent implements OnInit {
 
   // educational and professional form objects
   educationalQualifications: IEducationalQualifications;
-  experiencedQualifications: IExperiencedQualifications;
   fresherQualifications: IFresherQualifications;
+  experiencedQualifications: IExperiencedQualifications;
 
   // educational and professional isValid methods
   educationalFormIsValid(): boolean {
@@ -69,8 +69,8 @@ export class StepTwoComponent implements OnInit {
 
     // get form objects from user service
     this.educationalQualifications = this.userService.educationalQualifications;
-    this.experiencedQualifications = this.userService.experiencedQualifications;
     this.fresherQualifications = this.userService.fresherQualifications;
+    this.experiencedQualifications = this.userService.experiencedQualifications;
 
     // get educational select options from user service
     this.qualifications = this.userService.qualifications;
@@ -80,21 +80,21 @@ export class StepTwoComponent implements OnInit {
     this.applicant_type = this.userService.applicant_type;
 
     this.appeared_test_before[0] =
-      this.userService.fresherQualifications.appeared_test_before;
+      this.userService.fresherQualifications.appearedTestBefore;
     this.appeared_test_before[1] =
-      this.userService.experiencedQualifications.appeared_test_before;
+      this.userService.experiencedQualifications.appearedTestBefore;
 
     this.currently_under_notice_period =
-      this.userService.experiencedQualifications.currently_under_notice_period;
+      this.userService.experiencedQualifications.currentlyUnderNoticePeriod;
 
     this.fresher_familiar_technologies =
-      this.fresherQualifications.familiar_technologies;
+      this.fresherQualifications.familiarTechnologies;
 
     this.experienced_familiar_technologies =
-      this.experiencedQualifications.familiar_technologies;
+      this.experiencedQualifications.familiarTechnologies;
 
     this.experienced_expertise_technologies =
-      this.experiencedQualifications.expertise_technologies;
+      this.experiencedQualifications.expertiseTechnologies;
   }
 
   toggleApplicantType() {
@@ -111,7 +111,7 @@ export class StepTwoComponent implements OnInit {
       this.fresher_familiar_technologies[idx].selected =
         !this.fresher_familiar_technologies[idx].selected;
 
-      this.userService.fresherQualifications.familiar_technologies =
+      this.userService.fresherQualifications.familiarTechnologies =
         this.fresher_familiar_technologies;
     }
 
@@ -119,7 +119,7 @@ export class StepTwoComponent implements OnInit {
       this.experienced_familiar_technologies[idx].selected =
         !this.experienced_familiar_technologies[idx].selected;
 
-      this.userService.experiencedQualifications.familiar_technologies =
+      this.userService.experiencedQualifications.familiarTechnologies =
         this.experienced_familiar_technologies;
     }
 
@@ -127,7 +127,7 @@ export class StepTwoComponent implements OnInit {
       this.experienced_expertise_technologies[idx].selected =
         !this.experienced_expertise_technologies[idx].selected;
 
-      this.userService.experiencedQualifications.expertise_technologies =
+      this.userService.experiencedQualifications.expertiseTechnologies =
         this.experienced_expertise_technologies;
     }
 
@@ -137,12 +137,20 @@ export class StepTwoComponent implements OnInit {
   toggleAppearedStatus(applicantType: string) {
     if (applicantType === this.APPLICANT_TYPE[0]) {
       this.appeared_test_before[0] = !this.appeared_test_before[0];
-      this.userService.fresherQualifications.appeared_test_before =
+      this.userService.fresherQualifications.appearedTestBefore =
         this.appeared_test_before[0];
+      
+      if(!this.appeared_test_before[0]){
+        this.fresherQualifications.roleAppearedBefore = "";
+      }
     } else {
       this.appeared_test_before[1] = !this.appeared_test_before[1];
-      this.userService.experiencedQualifications.appeared_test_before =
+      this.userService.experiencedQualifications.appearedTestBefore =
         this.appeared_test_before[1];
+
+        if(!this.appeared_test_before[1]){
+          this.experiencedQualifications.roleAppearedBefore = "";
+        }
     }
     this.cdr.detectChanges();
   }
@@ -150,7 +158,7 @@ export class StepTwoComponent implements OnInit {
   toggleNoticePeriodStatus() {
     this.currently_under_notice_period = !this.currently_under_notice_period;
     
-    this.userService.experiencedQualifications.currently_under_notice_period =
+    this.userService.experiencedQualifications.currentlyUnderNoticePeriod =
       this.currently_under_notice_period;
     this.cdr.detectChanges();
   }
