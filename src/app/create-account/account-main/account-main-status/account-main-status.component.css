@@ -45,6 +45,16 @@
   background-color: #757575;
 }
 
+
+.step-icon span {
+  font-family: QuicksandBold, sans-serif;
+}
+
+.step-icon img {
+  height: 1rem;
+  width: 1rem;
+}
+
 .step .step-icon.completed {
   background-color: #3fd28b;
 }

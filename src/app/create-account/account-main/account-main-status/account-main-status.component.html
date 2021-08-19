@@ -2,19 +2,29 @@
   <div class="bg-line"><hr /></div>
   <div class="steps">
     <div class="step" (click)="goTo('personal')">
-      <div class="step-icon center completed">
-        <span>1</span>
+      <div class="step-icon center" [class.completed]="completionStatus[0]">
+        <span *ngIf="!completionStatus[1]">1</span>
+        <img
+          *ngIf="completionStatus[1]"
+          src="../../../../assets/icons/edit.svg"
+          alt="edit"
+        />
       </div>
       <p class="step-title">Personal Information</p>
     </div>
     <div class="step" (click)="goTo('qualification')">
-      <div class="step-icon center">
-        <span>2</span>
+      <div class="step-icon center" [class.completed]="completionStatus[1]">
+        <span *ngIf="!completionStatus[2]">2</span>
+        <img
+          *ngIf="completionStatus[2]"
+          src="../../../../assets/icons/edit.svg"
+          alt="edit"
+        />
       </div>
       <p class="step-title">Qualifications Details</p>
     </div>
     <div class="step" (click)="goTo('review')">
-      <div class="step-icon center">
+      <div class="step-icon center" [class.completed]="completionStatus[2]">
         <span>3</span>
       </div>
       <p class="step-title">Review and Proceed</p>
