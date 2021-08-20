@@ -22,7 +22,6 @@ export class WalkinComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params) => {
-      console.log(params['walkinId']);
       this.walkinId = params['walkinId'];
     });
 

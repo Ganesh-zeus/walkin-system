@@ -1,7 +1,6 @@
 <div class="container">
   <div class="app-login center">
     <form class="login-form" #loginForm="ngForm">
-      <!-- {{ loginForm.value | json }} -->
       <div class="login-header">
         <h2>Login</h2>
       </div>
@@ -10,11 +9,10 @@
         <input
           type="text"
           name="user_email"
-          #userEmail="ngModel"
-          pattern='^(([^()[\]\\.,;:\s@\"]+(\.[^()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$'
-          [(ngModel)]="user_email"
+          #user_email="ngModel"
+          [(ngModel)]="userEmail"
           placeholder="Email ID*"
-          [class.err]="userEmail.invalid && userEmail.touched"
+          [class.err]="user_email.invalid && user_email.touched"
           required
         />
         <a href="#" class="recovery-link">FORGOT EMAIL ID?</a>
@@ -24,12 +22,12 @@
         <input
           type="password"
           name="user_password"
-          #userPassword="ngModel"
-          [(ngModel)]="user_password"
+          #user_password="ngModel"
+          [(ngModel)]="userPassword"
           placeholder="Password*"
-          [class.err]="userPassword.invalid && userPassword.touched"
+          [class.err]="user_password.invalid && user_password.touched"
           required
-          [attr.type]="password_show ? 'text' : 'password'"
+          [attr.type]="passwordShow ? 'text' : 'password'"
         />
 
         <img
@@ -37,11 +35,11 @@
           class="password-toggle"
           alt="password-toggle"
           [attr.src]="
-            password_show
+            passwordShow
               ? '../../assets/icons/hide-visibility.svg'
               : '../../assets/icons/preview.svg'
           "
-          (click)="password_show = !password_show"
+          (click)="passwordShow = !passwordShow"
         />
         <a href="#" class="recovery-link">FORGOT PASSWORD?</a>
       </div>
@@ -49,7 +47,7 @@
         <img
           *ngIf="rememberChecked"
           src="../../assets/icons/checkbox-checked.svg"
-          (click)="rememberChecked=!rememberChecked"
+          (click)="rememberChecked = !rememberChecked"
           alt="checked"
         />
         <img
@@ -61,11 +59,15 @@
         <label for="login-remember">Remember</label>
       </div>
 
-      <div class="login-btn">
-        <button type="submit" (click)="validate()" class="login-btn">
-          LOGIN
-        </button>
-      </div>
+      <button
+        type="submit"
+        (click)="login()"
+        class="login-btn"
+        [class.disabled]="!loginForm.valid"
+        [disabled]="!loginForm.valid"
+      >
+        LOGIN
+      </button>
 
       <p>Not registered yet?</p>
       <a [routerLink]="['/create-account']" class="create-account"

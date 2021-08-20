@@ -1,12 +1,10 @@
 <div class="app-header">
-  <div class="container navbar">
+  <div class="navbar">
     <a [routerLink]="['/']" class="app-logo">
       <img src="../../../assets/icons/logo-header.svg" alt="logo" />
     </a>
-    <!-- 
-      <div class="profile-icon center">
-        <p class="profile-icon-text">U</p>
-      </div> 
-    -->
+    <div *ngIf="isWalkinDashboard" class="profile-icon center">
+      <p class="profile-icon-text">{{userInitial | uppercase}}</p>
+    </div>
   </div>
 </div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../core/services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -8,19 +9,26 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   rememberChecked = true;
-  user_email:string = "";
-  user_password:string = "Password";
-  password_show:boolean = false;
+  userEmail:string;
+  userPassword:string = "Password";
+  passwordShow:boolean = false;
 
-  constructor(private router:Router) { }
+  constructor(private router:Router,private authService:AuthService) { }
 
   ngOnInit(): void {
+    this.userEmail = this.authService.userEmail;
+    this.userPassword = this.authService.userPassword;
   }
 
-  validate(){
-    if(this.user_email!=="" && this.user_password!==""){
-      this.router.navigateByUrl("walkins");  
-    }
+  login(){
+    this.authService.userEmail = this.userEmail;
+    this.userEmail = "";
+    this.userPassword = "";
+    
+    // write validation logic below
+    // this.authService.validate();
+
+    this.router.navigateByUrl("walkins");
   }
 
 }
