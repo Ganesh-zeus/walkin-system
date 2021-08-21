@@ -6,7 +6,7 @@
       <div class="date-time">
         <small>Date & Time</small>
         <p class="date-time-content">
-          {{ walkin.startDate }} to {{ walkin.lastDate }}
+          {{ walkin.startDate }} to {{ walkin.endDate }}
         </p>
       </div>
       <span class="tilde"></span>
@@ -21,20 +21,26 @@
     <div class="job-roles">
       <p class="job-role-label">Job Roles :</p>
       <div class="job-role-list">
-        <div class="job-role" *ngFor="let job_role of walkin.jobRoles">
+        <div class="job-role" *ngFor="let jobRole of walkin.jobRoles">
           <div class="job-role-image">
-            <!-- <img [attr.src]="job_role.jobImageUrl" alt="job-role-image" /> -->
             <img
-              src="../../../assets/icons/computer.svg"
+              *ngIf="jobRole.imageUrl; else jobRoleImageElse"
+              [attr.src]="jobRole.imageUrl"
               alt="job-role-image"
             />
+            <ng-template #jobRoleImageElse>
+              <img
+                src="../../../assets/icons/computer.svg"
+                alt="job-role-image"
+              />
+            </ng-template>
           </div>
-          <p>{{ job_role.jobTitle }}</p>
+          <p>{{ jobRole.title }}</p>
         </div>
       </div>
     </div>
 
-    <div 
+    <div
       class="opportunity center"
       *ngFor="let opportunity of walkin.opportunities"
     >
@@ -62,9 +68,12 @@
       class="descriptions dropdown-content"
       [class.open]="prerequisitesRef.classList.contains('open')"
     >
-      <div class="description" *ngFor="let prerequisite of walkin.prerequisites">
+      <div
+        class="description"
+        *ngFor="let prerequisite of walkin.prerequisites"
+      >
         <small>{{ prerequisite.title }} :</small>
-        <p>{{ prerequisite.description }}</p>
+        <p>{{ prerequisite.prerequisite }}</p>
       </div>
     </div>
   </div>
@@ -118,7 +127,7 @@
               alt="unchecked"
             />
           </div>
-          <p class="form-checkbox-label">{{ role.jobTitle }}</p>
+          <p class="form-checkbox-label">{{ role.title }}</p>
         </div>
       </div>
 
@@ -144,7 +153,7 @@
       (click)="templateRef.classList.toggle('open')"
       #templateRef
     >
-      <p>{{ jobRole.jobTitle }}</p>
+      <p>{{ jobRole.title }}</p>
       <div class="dropdown-toggle-image">
         <img
           [class.open]="templateRef.classList.contains('open')"
@@ -158,7 +167,7 @@
       class="descriptions dropdown-content"
       [class.open]="templateRef.classList.contains('open')"
     >
-      <div class="description" *ngFor="let desc of jobRole.descriptions">
+      <div class="description" *ngFor="let desc of jobRole.jobRoleDetails">
         <small>{{ desc.title }} :</small>
         <p>{{ desc.description }}</p>
       </div>

@@ -145,7 +145,7 @@
       "id": 1,
       "title": "Walk In for Designer Job Role",
       "startDate": "2021-07-10",
-      "lastDate": "2021-07-11",
+      "endDate": "2021-07-11",
       "city": "Mumbai",
       "opportunities": [],
       "jobRoles": [
@@ -218,7 +218,7 @@
       "id": 2,
       "title": "Walkin For Multiple Job Roles",
       "startDate": "2021-07-10",
-      "lastDate": "2021-07-11",
+      "endDate": "2021-07-11",
       "city": "Chennai",
       "opportunities": [
         {

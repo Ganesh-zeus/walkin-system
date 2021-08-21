@@ -29,7 +29,7 @@ export class JobRoleService {
         for(let _jobRole of _jobRoleDetails){
           jobRoles.push({
             id:_jobRole.id,
-            jobTitle:_jobRole.jobTitle,
+            title:_jobRole.title,
             selected:false
           })
         }

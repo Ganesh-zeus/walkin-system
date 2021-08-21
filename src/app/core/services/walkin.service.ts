@@ -8,8 +8,7 @@ import { IWalkin,IWalkinDetails } from 'src/app/shared/models/walkin.model';
   providedIn: 'root',
 })
 export class WalkinService {
-  api_url: string = 'http://localhost:3000';
-
+  api_url: string = 'http://localhost:50920/api';
   constructor(private httpClient: HttpClient) {}
 
   getWalkinById(id: number): Observable<IWalkinDetails> {
@@ -20,17 +19,14 @@ export class WalkinService {
         tap((walkin) => {
           for (let job_role of walkin.preferredJobRoles) {
             job_role.selected = false;
-          }
-
-          console.log(walkin.timeSlots);
-          
+          } 
         })
       )
       .pipe(catchError(this.errorHandler));
   }
 
   getAllWalkins(): Observable<IWalkin[]> {
-    let API_URL = `${this.api_url}/walkin-list`;
+    let API_URL = `${this.api_url}/walkins/`;
     return this.httpClient
       .get<IWalkin[]>(API_URL)
       .pipe(catchError(this.errorHandler));

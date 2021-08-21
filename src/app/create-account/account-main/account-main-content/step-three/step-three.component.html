@@ -58,7 +58,7 @@
       <div class="form-group">
         <small>Preferred Job Roles*</small>
         <p *ngFor="let job_roles of preferredJobRoles">
-          {{ job_roles.jobTitle }}
+          {{ job_roles.title }}
         </p>
         <p *ngIf="preferredJobRoles.length === 0">-</p>
       </div>

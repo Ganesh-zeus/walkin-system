@@ -12,25 +12,32 @@ export interface IOpportunity {
   opportunity:string
 }
 
+export interface IPrerequisites {
+  id:number;
+  title:string,
+  prerequisite:string
+}
+
 export interface IWalkin {
   id: number;
   title: string;
   startDate:string;
-  lastDate:string;
+  endDate:string;
   city: string;
   opportunities: IOpportunity[];
   jobRoles: IJobRole[];
+  venue:string
 }
 
 export interface IWalkinDetails {
   id: number;
   title: string;
   startDate:string;
-  lastDate:string;
+  endDate:string;
   city: string;
   opportunities: IOpportunity[];
   jobRoles: IJobRoleDetails[]; 
-  prerequisites: IDescription[];
+  prerequisites: IPrerequisites[];
   timeSlots: ITimeSlot[];
   preferredJobRoles: IJobRole[];
   venue:string

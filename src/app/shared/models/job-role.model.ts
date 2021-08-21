@@ -2,14 +2,14 @@ import { IDescription } from './description.model';
 
 export interface IJobRole {
   id: number;
-  jobTitle: string;
-  jobImageUrl?: string;
+  title: string;
+  imageUrl?: string;
   selected?: boolean;
 }
 
 export interface IJobRoleDetails {
   id: number;
-  jobTitle: string;
-  jobImageUrl?: string;
-  descriptions: IDescription[];
+  title: string;
+  imageUrl?: string;
+  jobRoleDetails: IDescription[];
 }

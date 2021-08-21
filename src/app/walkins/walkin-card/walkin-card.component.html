@@ -5,7 +5,7 @@
     <div class="date-time">
       <small>Date & Time</small>
       <p class="date-time-content">
-        {{ walkin.startDate}} to {{ walkin.lastDate }}
+        {{ walkin.startDate}} to {{ walkin.endDate }}
       </p>
     </div>
     <span class="tilde"></span>
@@ -20,12 +20,21 @@
   <div class="job-roles">
     <p class="job-role-label">Job Roles :</p>
     <div class="job-role-list">
-      <div class="job-role" *ngFor="let job_role of walkin.jobRoles">
+      <div class="job-role" *ngFor="let jobRole of walkin.jobRoles">
         <div class="job-role-image">
-          <!-- <img [attr.src]="" alt="job-role-image" /> -->
-          <img src="../../../assets/icons/computer.svg" alt="job-role-image" />
+          <img
+              *ngIf="jobRole.imageUrl; else jobRoleImageElse"
+              [attr.src]="jobRole.imageUrl"
+              alt="job-role-image"
+            />
+            <ng-template #jobRoleImageElse>
+              <img
+                src="../../../assets/icons/computer.svg"
+                alt="job-role-image"
+              />
+            </ng-template>
         </div>
-        <p>{{ job_role.jobTitle }}</p>
+        <p>{{ jobRole.title }}</p>
       </div>
     </div>
   </div>

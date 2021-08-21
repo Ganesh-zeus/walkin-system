@@ -1,11 +1,11 @@
-.box > * {
-  box-sizing: border-box;
-}
-
 .box {
   background-color: #fff;
   padding: 1rem;
   box-shadow: 0 4px 6px #0000003d;
+}
+
+.walkin-container {
+  padding-bottom: 1rem;
 }
 
 .descriptions {
