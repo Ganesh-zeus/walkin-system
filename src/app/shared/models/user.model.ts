@@ -22,7 +22,7 @@ export interface IPersonalDetails {
   userEmail: string;
   userPassword?: string;
   countryCode: number;
-  phoneNumber: number;
+  phoneNumber: string;
   portfolioUrl?: string;
   resumePath?: string;
   profileImagePath?: string;
@@ -59,12 +59,19 @@ export interface IExperiencedQualifications {
   otherExpertiseTechnologies?: string;
   currentlyUnderNoticePeriod: boolean;
   noticePeriodEnd: string;
-  noticePeriodMonths?: number;
+  noticePeriodInMonths?: number;
 
   familiarTechnologies: ITechnologies[];
   otherFamiliarTechnologies?: string;
 
   appearedTestBefore: boolean;
   roleAppearedBefore?: string;
+}
 
+export interface IUser {
+  personalDetails:IPersonalDetails,
+  educationalQualifications:IEducationalQualifications,
+  applicantType:string,
+  fresherQualifications:IFresherQualifications|null,
+  experiencedQualifications?:IExperiencedQualifications|null;
 }

@@ -456,7 +456,7 @@
             [class.err]="
               notice_period_months.touched && notice_period_months.invalid
             "
-            [(ngModel)]="experiencedQualifications.noticePeriodMonths"
+            [(ngModel)]="experiencedQualifications.noticePeriodInMonths"
             pattern="^[0-9]{1,2}$"
             [required]="
               applicant_type === APPLICANT_TYPE[1] &&

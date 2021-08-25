@@ -306,11 +306,11 @@
             <small>how long is your notice period?* (mention in months)</small>
             <p
               *ngIf="
-                experiencedDetails.noticePeriodMonths;
+                experiencedDetails.noticePeriodInMonths;
                 else experiencedNoticePeriodMonthDash
               "
             >
-              {{ experiencedDetails.noticePeriodMonths }} months
+              {{ experiencedDetails.noticePeriodInMonths }} months
             </p>
             <ng-template #experiencedNoticePeriodMonthDash>
               <p>-</p>

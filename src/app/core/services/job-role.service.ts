@@ -8,19 +8,12 @@ import { catchError,map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class JobRoleService {
-  api_url:string = "http://localhost:3000";
+  api_url:string =  "http://localhost:50920/api";
 
   constructor(private httpClient:HttpClient) { }
 
-  getJobRolesWithDetails(): Observable<IJobRoleDetails[]> {
-    let API_URL = `${this.api_url}/job_roles`;
-    return this.httpClient
-      .get<IJobRoleDetails[]>(API_URL)
-      .pipe(catchError(this.errorHandler))
-  }
-
   getJobRoles(): Observable<IJobRole[]> {
-    let API_URL = `${this.api_url}/job_roles`;
+    let API_URL = `${this.api_url}/job-roles`;
     return this.httpClient
       .get<IJobRoleDetails[]>(API_URL)
       .pipe(map(_jobRoleDetails => {
@@ -30,6 +23,7 @@ export class JobRoleService {
           jobRoles.push({
             id:_jobRole.id,
             title:_jobRole.title,
+            imageUrl:_jobRole.imageUrl,
             selected:false
           })
         }

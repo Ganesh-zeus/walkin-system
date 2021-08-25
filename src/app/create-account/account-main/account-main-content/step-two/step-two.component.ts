@@ -3,8 +3,7 @@ import {
   ChangeDetectorRef,
   OnInit,
   ViewChild,
-  OnChanges,
-  SimpleChanges,
+  AfterViewInit,
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -25,7 +24,7 @@ import {
   templateUrl: './step-two.component.html',
   styleUrls: ['./step-two.component.css'],
 })
-export class StepTwoComponent implements OnInit {
+export class StepTwoComponent implements OnInit,AfterViewInit {
   // educational and professional form ref
   @ViewChild('educationalForm') educationalForm?: any;
   @ViewChild('exeperiencedForm') exeperiencedForm?: any;
@@ -70,7 +69,7 @@ export class StepTwoComponent implements OnInit {
   // for radio elements
   applicant_type: string;
   appeared_test_before: [boolean, boolean] = [false, false];
-  currently_under_notice_period: boolean;
+  currently_under_notice_period: boolean = false;
 
   APPLICANT_TYPE = ['Fresher', 'Experienced'];
   TECHNOLOGY_TYPE = ['F_Familiar', 'E_Familiar', 'E_Expertise'];
@@ -111,6 +110,10 @@ export class StepTwoComponent implements OnInit {
 
     this.experienced_expertise_technologies =
       this.experiencedQualifications.expertiseTechnologies;
+  }
+
+  ngAfterViewInit(){
+    console.log("ng after view init");
   }
 
   toggleApplicantType() {
@@ -174,8 +177,8 @@ export class StepTwoComponent implements OnInit {
   toggleNoticePeriodStatus() {
     this.currently_under_notice_period = !this.currently_under_notice_period;
 
-    this.userService.experiencedQualifications.currentlyUnderNoticePeriod =
-      this.currently_under_notice_period;
+    this.userService.experiencedQualifications.currentlyUnderNoticePeriod = this.currently_under_notice_period;
+      
     this.cdr.detectChanges();
   }
 

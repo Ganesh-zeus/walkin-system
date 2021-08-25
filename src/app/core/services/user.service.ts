@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 // model imports
 import {
@@ -11,6 +12,7 @@ import {
   IPersonalDetails,
   IQualification,
   IStream,
+  IUser,
 } from 'src/app/shared/models/user.model';
 
 // service imports
@@ -98,27 +100,63 @@ export class UserService {
     });
   }
 
-  createUser(){
-    if(this.applicant_type == 'Fresher'){
-      let user = {
-        personalDetails:this.personalDetails,
-        educationalQualifications:this.educationalQualifications,
-        fresherQualifications:this.fresherQualifications
-      }
-
-      console.log("user created => \n",user);
-      
-    }else{
-      let user = {
-        personalDetails:this.personalDetails,
-        educationalQualifications:this.educationalQualifications,
-        experiencedQualifications:this.experiencedQualifications
-      }
-
-      console.log("user created => \n",user);
-    }
+  addUser(user: any): Observable<any> {
+    let API_URL = `${this.api_url}/users`;
+    return this.httpClient
+      .post<any>(API_URL, user)
+      .pipe(catchError(this.errorHandler));
   }
-  
+
+  createUser() {
+    let user = {} as IUser;
+
+    user.personalDetails = this.personalDetails;
+    user.educationalQualifications = this.educationalQualifications;
+    user.applicantType = this.applicant_type;
+
+    user.personalDetails.preferredJobRoles = this.filterSelectedItems(
+      this.personalDetails.preferredJobRoles
+    );
+
+    user.personalDetails.profileImagePath = "path/to/profile-image";
+    user.personalDetails.resumePath = "path/to/resume";
+
+    if (this.applicant_type == 'Fresher') {
+      user.fresherQualifications = this.fresherQualifications;
+      user.experiencedQualifications = null;
+
+      user.fresherQualifications.familiarTechnologies =
+        this.filterSelectedItems(
+          user.fresherQualifications.familiarTechnologies
+        );
+    } else {
+      user.fresherQualifications = null;
+      user.experiencedQualifications = this.experiencedQualifications;
+
+      user.experiencedQualifications.familiarTechnologies =
+        this.filterSelectedItems(
+          user.experiencedQualifications.familiarTechnologies
+        );
+
+      user.experiencedQualifications.expertiseTechnologies =
+        this.filterSelectedItems(
+          user.experiencedQualifications.expertiseTechnologies
+        );
+    }
+
+    console.log('user created => \n', user);
+    this.addUser(user);
+  }
+
+  filterSelectedItems(list: any[]) {
+    let filteredList = list.filter((item) => item.selected === true);
+
+    return filteredList.map((item) => {
+      delete item.selected;
+      return item;
+    });
+  }
+
   errorHandler(error: any) {
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
