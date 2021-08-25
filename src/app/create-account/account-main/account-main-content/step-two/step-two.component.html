@@ -61,7 +61,7 @@
                 (click)="qualificationRef.classList.toggle('open')"
                 #qualificationRef
               >
-                <p>{{ educationalQualifications.qualificationName }}</p>
+                <p>{{ educationalQualifications.qualification?.qualificationName }}</p>
                 <img
                   [class.open]="qualificationRef.classList.contains('open')"
                   src="../../../../../assets/icons/arrow-down.svg"
@@ -69,18 +69,17 @@
                 />
               </div>
               <div
-                *ngIf="qualifications"
                 class="options"
                 [class.open]="qualificationRef.classList.contains('open')"
               >
                 <!-- qualifications -->
                 <div
                   class="option"
-                  *ngFor="let qualification of qualifications"
+                  *ngFor="let qualification of userService.qualifications"
                   (click)="
                     qualificationRef.classList.toggle('open');
-                    educationalQualifications.qualificationName =
-                      qualification.qualificationName
+                    educationalQualifications.qualification =
+                      qualification
                   "
                 >
                   {{ qualification.qualificationName }}
@@ -99,7 +98,7 @@
                 (click)="streamRef.classList.toggle('open')"
                 #streamRef
               >
-                <p>{{ educationalQualifications.streamName }}</p>
+                <p>{{ educationalQualifications.stream?.streamName }}</p>
                 <img
                   [class.open]="streamRef.classList.contains('open')"
                   src="../../../../../assets/icons/arrow-down.svg"
@@ -112,10 +111,10 @@
               >
                 <div
                   class="option"
-                  *ngFor="let stream of streams"
+                  *ngFor="let stream of userService.streams"
                   (click)="
                     streamRef.classList.toggle('open');
-                    educationalQualifications.streamName = stream.streamName
+                    educationalQualifications.stream = stream
                   "
                 >
                   {{ stream.streamName }}
@@ -134,7 +133,7 @@
                 (click)="collegeRef.classList.toggle('open')"
                 #collegeRef
               >
-                <p>{{ educationalQualifications.collegeName }}</p>
+                <p>{{ educationalQualifications.college?.collegeName }}</p>
                 <img
                   [class.open]="collegeRef.classList.contains('open')"
                   src="../../../../../assets/icons/arrow-down.svg"
@@ -147,10 +146,10 @@
               >
                 <div
                   class="option"
-                  *ngFor="let college of colleges"
+                  *ngFor="let college of userService.colleges"
                   (click)="
                     collegeRef.classList.toggle('open');
-                    educationalQualifications.collegeName = college.collegeName
+                    educationalQualifications.college = college
                   "
                 >
                   {{ college.collegeName }}

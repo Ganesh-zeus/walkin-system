@@ -34,9 +34,9 @@ export interface IPersonalDetails {
 export interface IEducationalQualifications {
   aggregatePercentage: number;
   yearOfPassing: number;
-  qualificationName: string;
-  streamName: string;
-  collegeName: string;
+  qualification: IQualification;
+  stream: IStream;
+  college: ICollege;
   otherCollegeName?: string;
   collegeLocation: string;
 }

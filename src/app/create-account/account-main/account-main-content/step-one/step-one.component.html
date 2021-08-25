@@ -89,7 +89,7 @@
       <small>Preferred Job Roles*</small>
       <div
         class="form-checkbox"
-        *ngFor="let job_role of preferredJobRoles; let idx = index"
+        *ngFor="let job_role of personal.preferredJobRoles; let idx = index"
       >
         <div class="form-checkbox-input" (click)="toggleJobRoleSelected(idx)">
           <img

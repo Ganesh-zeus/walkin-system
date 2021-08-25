@@ -60,7 +60,7 @@
         <p *ngFor="let job_roles of preferredJobRoles">
           {{ job_roles.title }}
         </p>
-        <p *ngIf="preferredJobRoles.length === 0">-</p>
+        <p *ngIf="!preferredJobRoles">-</p>
       </div>
 
       <div class="form-group referral">
@@ -148,19 +148,19 @@
             <!-- qualification -->
             <div class="form-select">
               <small>Qualification*</small>
-              <p>{{ educationalDetails.qualificationName }}</p>
+              <p>{{ educationalDetails.qualification?.qualificationName }}</p>
             </div>
 
             <!-- stream -->
             <div class="form-select">
               <small>Stream*</small>
-              <p>{{ educationalDetails.streamName }}</p>
+              <p>{{ educationalDetails.stream?.streamName }}</p>
             </div>
 
             <!-- college -->
             <div class="form-select">
               <small>College*</small>
-              <p>{{ educationalDetails.collegeName }}</p>
+              <p>{{ educationalDetails.college?.collegeName }}</p>
             </div>
 
             <div class="form-group">
@@ -350,7 +350,7 @@
           <p *ngFor="let technology of fresher_familiar_technologies">
             {{ technology.technologyName }}
           </p>
-          <p *ngIf="fresher_familiar_technologies.length === 0">-</p>
+          <p *ngIf="!fresher_familiar_technologies">-</p>
         </div>
 
         <div class="form-radio">

@@ -40,7 +40,7 @@ export class StepThreeComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private userService: UserService
+    public userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -61,9 +61,9 @@ export class StepThreeComponent implements OnInit {
       this.userService.experiencedQualifications.expertiseTechnologies
     );
 
-    this.preferredJobRoles = this.personalDetails.preferredJobRoles;
+    // this.preferredJobRoles = this.personalDetails.preferredJobRoles;
 
-    this.preferredJobRoles = this.preferredJobRoles.filter(
+    this.preferredJobRoles = this.personalDetails.preferredJobRoles?.filter(
       (jobRole) => jobRole.selected === true
     );
 
@@ -79,7 +79,7 @@ export class StepThreeComponent implements OnInit {
   }
 
   filterTechnologies(technologies: ITechnologies[]) {
-    return technologies.filter((technology) => technology.selected === true);
+    return technologies?.filter((technology) => technology.selected === true);
   }
 
   navigateTo(path: string) {

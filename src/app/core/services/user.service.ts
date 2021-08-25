@@ -68,22 +68,22 @@ export class UserService {
       .subscribe((_qualifications) => {
         this.qualifications = _qualifications;
 
-        this.educationalQualifications.qualificationName =
-          this.qualifications[0].qualificationName;
+        this.educationalQualifications.qualification =
+          this.qualifications[0];
       });
 
     // get streams
     this.streamService.getStreams().subscribe((_streams) => {
       this.streams = _streams;
 
-      this.educationalQualifications.streamName = this.streams[0].streamName;
+      this.educationalQualifications.stream = this.streams[0];
     });
 
     // get colleges
     this.collegeService.getColleges().subscribe((_colleges) => {
       this.colleges = _colleges;
 
-      this.educationalQualifications.collegeName = this.colleges[0].collegeName;
+      this.educationalQualifications.college = this.colleges[0];
     });
 
     // get technologies

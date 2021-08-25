@@ -87,34 +87,35 @@
         <div class="form-radio-items">
           <div
             class="form-radio-item"
-            *ngFor="let timeSlot of walkin.timeSlots"
-            (click)="time_slot_selected = timeSlot.id"
+            *ngFor="let timeSlot of walkin.timeSlots;let idx = index"
+            (click)="toggleTimeSlotSelected(idx)"
           >
             <img
-              *ngIf="time_slot_selected === timeSlot.id"
+              *ngIf="time_slot_selected === timeSlot"
               src="../../../assets/icons/radio-button-checked.svg"
               alt="selected"
             />
 
             <img
-              *ngIf="time_slot_selected !== timeSlot.id"
+              *ngIf="time_slot_selected !== timeSlot"
               src="../../../assets/icons/radio-button-unchecked.svg"
               alt="unselected"
             />
             <p>{{ timeSlot.startTime }} to {{ timeSlot.endTime }}</p>
-          </div>
+          </div>        
         </div>
       </div>
 
       <div class="form-checkbox-container">
         <small>Select your Preference</small>
+        
         <div
           class="form-checkbox"
-          *ngFor="let role of walkin.preferredJobRoles"
+          *ngFor="let role of walkin.preferredJobRoles;let idx = index"
         >
           <div
             class="form-checkbox-input"
-            (click)="role.selected = !role.selected"
+            (click)="toggleJobRoleSelected(idx)"
           >
             <img
               *ngIf="role.selected"
@@ -172,6 +173,15 @@
         <p>{{ desc.description }}</p>
       </div>
     </div>
+  </div>
+
+  <div>
+    <button 
+    class="btn-success apply-btn"
+    [class.disabled]="!formIsValid()"
+    (click)="walkinApply()"
+    [disabled]="!formIsValid()"
+      >APPLY</button>
   </div>
 </div>
 

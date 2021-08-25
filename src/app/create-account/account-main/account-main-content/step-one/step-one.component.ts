@@ -14,25 +14,21 @@ export class StepOneComponent implements OnInit {
   @ViewChild('personalForm') personalForm?: any;
 
   personal: IPersonalDetails;
-  preferredJobRoles: IJobRole[] = [];
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private userService: UserService,
+    public userService: UserService,
     private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
     this.personal = this.userService.personalDetails;
-    this.preferredJobRoles = this.userService.personalDetails.preferredJobRoles;
   }
 
   toggleJobRoleSelected(idx: number) {
-    this.preferredJobRoles[idx].selected =
-      !this.preferredJobRoles[idx].selected;
-
-    this.userService.personalDetails.preferredJobRoles = this.preferredJobRoles;
+    this.personal.preferredJobRoles[idx].selected =
+      !this.personal.preferredJobRoles[idx].selected;
 
     this.cdr.detectChanges();
   }
@@ -40,7 +36,7 @@ export class StepOneComponent implements OnInit {
   isPersonalFormValid(): boolean {
     let atleastOneRoleSelected: boolean = false;
 
-    for (let jobRole of this.preferredJobRoles) {
+    for (let jobRole of this.personal.preferredJobRoles) {
       if (jobRole.selected === true) {
         atleastOneRoleSelected = true;
       }
@@ -48,12 +44,7 @@ export class StepOneComponent implements OnInit {
     return this.personalForm?.value && atleastOneRoleSelected;
   }
 
-  navigateTo(path:string) {
-    console.log(this.personalForm);
-    console.log(this.personal);
-
-    console.log(this.isPersonalFormValid());
-
+  navigateTo(path: string) {
     this.router.navigate(['../', path], { relativeTo: this.route });
   }
 }

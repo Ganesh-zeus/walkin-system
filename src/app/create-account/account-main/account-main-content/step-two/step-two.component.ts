@@ -3,7 +3,6 @@ import {
   ChangeDetectorRef,
   OnInit,
   ViewChild,
-  AfterViewInit,
 } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -11,12 +10,9 @@ import { UserService } from 'src/app/core/services/user.service';
 import { ITechnologies } from 'src/app/shared/models/technologies.model';
 
 import {
-  ICollege,
   IEducationalQualifications,
   IExperiencedQualifications,
   IFresherQualifications,
-  IQualification,
-  IStream,
 } from 'src/app/shared/models/user.model';
 
 @Component({
@@ -24,7 +20,7 @@ import {
   templateUrl: './step-two.component.html',
   styleUrls: ['./step-two.component.css'],
 })
-export class StepTwoComponent implements OnInit,AfterViewInit {
+export class StepTwoComponent implements OnInit{
   // educational and professional form ref
   @ViewChild('educationalForm') educationalForm?: any;
   @ViewChild('exeperiencedForm') exeperiencedForm?: any;
@@ -32,23 +28,27 @@ export class StepTwoComponent implements OnInit,AfterViewInit {
 
   // educational and professional isValid methods
   isEducationalFormValid(): boolean {
-    return this.educationalForm?.valid;
+    return this.educationalForm?this.educationalForm.valid:false;
   }
 
   isFresherFormValid(): boolean {
-    return this.fresherForm?.valid;
+    return this.fresherForm?this.fresherForm.valid:false;
   }
 
   isExeperiencedFormValid(): boolean {
-    return this.exeperiencedForm?.valid;
+    return this.exeperiencedForm?this.exeperiencedForm.valid:false;
   }
 
   isQualificationFormValid(): boolean {
     if (this.applicant_type === this.APPLICANT_TYPE[0]) {
       return this.isEducationalFormValid() && this.isFresherFormValid();
-    } else {
+    } 
+
+    if (this.applicant_type === this.APPLICANT_TYPE[1]) {
       return this.isEducationalFormValid() && this.isExeperiencedFormValid();
     }
+
+    return false;
   }
 
   // educational and professional form objects
@@ -62,9 +62,9 @@ export class StepTwoComponent implements OnInit,AfterViewInit {
   experienced_expertise_technologies: ITechnologies[];
 
   // educational select options
-  qualifications: IQualification[];
-  streams: IStream[];
-  colleges: ICollege[];
+  // qualifications: IQualification[];
+  // streams: IStream[];
+  // colleges: ICollege[];
 
   // for radio elements
   applicant_type: string;
@@ -77,7 +77,7 @@ export class StepTwoComponent implements OnInit,AfterViewInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private userService: UserService,
+    public userService: UserService,
     private cdr: ChangeDetectorRef
   ) {}
 
@@ -88,9 +88,9 @@ export class StepTwoComponent implements OnInit,AfterViewInit {
     this.experiencedQualifications = this.userService.experiencedQualifications;
 
     // get educational select options from user service
-    this.qualifications = this.userService.qualifications;
-    this.streams = this.userService.streams;
-    this.colleges = this.userService.colleges;
+    // this.qualifications = this.userService.qualifications;
+    // this.streams = this.userService.streams;
+    // this.colleges = this.userService.colleges;
 
     this.applicant_type = this.userService.applicant_type;
 
@@ -110,10 +110,6 @@ export class StepTwoComponent implements OnInit,AfterViewInit {
 
     this.experienced_expertise_technologies =
       this.experiencedQualifications.expertiseTechnologies;
-  }
-
-  ngAfterViewInit(){
-    console.log("ng after view init");
   }
 
   toggleApplicantType() {
